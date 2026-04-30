@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Send, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
 import { AuroraBackground } from '@/components/ui/aurora-background'
@@ -24,38 +24,10 @@ function FadeUp({ children, delay = 0, className }: { children: React.ReactNode;
 }
 
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
   const sectionRef = useRef<HTMLElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
   const auroraY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
-    try {
-      const res = await fetch('https://formspree.io/f/mgodeynl', {
-        method: 'POST',
-        body: new FormData(e.currentTarget),
-        headers: { Accept: 'application/json' },
-      })
-      if (res.ok) {
-        setSubmitted(true)
-        formRef.current?.reset()
-      } else {
-        const data = await res.json()
-        setError(data?.errors?.[0]?.message ?? 'Something went wrong. Please try again.')
-      }
-    } catch {
-      setError('Could not send message. Check your connection and try again.')
-    } finally {
-      setLoading(false)
-    }
-  }
 
   return (
     <section ref={sectionRef} id="contact" className="relative overflow-hidden">
@@ -134,100 +106,81 @@ export function Contact() {
               transition={{ duration: 0.65, delay: 0.15 }}
               className="lg:col-span-3 bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl p-8 shadow-xl shadow-neutral-200/50"
             >
-              {submitted ? (
-                <div className="flex flex-col items-center justify-center text-center py-16 gap-4">
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                    className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center"
-                  >
-                    <Send size={24} className="text-purple-600" />
-                  </motion.div>
-                  <h3 className="text-2xl font-bold text-neutral-900">Message sent!</h3>
-                  <p className="text-neutral-500 text-sm max-w-xs">
-                    Thanks for reaching out. We&apos;ll be in touch within 24 hours.
-                  </p>
-                </div>
-              ) : (
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        required
-                        placeholder="Jane Smith"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
-                        Your Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        placeholder="jane@company.com"
-                        className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
-                      />
-                    </div>
-                  </div>
+              <form
+                action="https://formspree.io/f/mgodeynl"
+                method="POST"
+                className="space-y-5"
+              >
+                <input type="hidden" name="_next" value="https://hkcreativeweb.com" />
 
+                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
-                      What do you need help with?
+                      Your Name
                     </label>
-                    <select
-                      name="service"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 appearance-none cursor-pointer"
-                    >
-                      <option value="">Select a service...</option>
-                      <option value="web">Website Design and Build</option>
-                      <option value="social">Social Media Management</option>
-                      <option value="ai">AI Tools and Automation</option>
-                      <option value="brand">Branding and Identity</option>
-                      <option value="email">Email Marketing</option>
-                      <option value="tiktok">TikTok and Content Creation</option>
-                      <option value="other">Not sure yet, let&apos;s talk</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
-                      Tell us about your business and what you&apos;re looking for
-                    </label>
-                    <textarea
-                      name="message"
+                    <input
+                      type="text"
+                      name="name"
                       required
-                      rows={5}
-                      placeholder="What are you building? Timeline? Budget range?"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 resize-none"
+                      placeholder="Jane Smith"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
                     />
                   </div>
+                  <div>
+                    <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                      Your Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="jane@company.com"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
+                    />
+                  </div>
+                </div>
 
-                  {error && (
-                    <p className="text-red-500 text-sm">{error}</p>
-                  )}
-
-                  <motion.button
-                    type="submit"
-                    disabled={loading}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-60 text-white text-sm font-bold transition-colors duration-200 shadow-lg shadow-purple-600/25"
+                <div>
+                  <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                    What do you need help with?
+                  </label>
+                  <select
+                    name="service"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 appearance-none cursor-pointer"
                   >
-                    {loading
-                      ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      : <><Send size={16} /> Send Message</>
-                    }
-                  </motion.button>
-                </form>
-              )}
+                    <option value="">Select a service...</option>
+                    <option value="web">Website Design and Build</option>
+                    <option value="social">Social Media Management</option>
+                    <option value="ai">AI Tools and Automation</option>
+                    <option value="brand">Branding and Identity</option>
+                    <option value="email">Email Marketing</option>
+                    <option value="tiktok">TikTok and Content Creation</option>
+                    <option value="other">Not sure yet, let&apos;s talk</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                    Tell us about your business and what you&apos;re looking for
+                  </label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={5}
+                    placeholder="What are you building? Timeline? Budget range?"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 resize-none"
+                  />
+                </div>
+
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold transition-colors duration-200 shadow-lg shadow-purple-600/25"
+                >
+                  <Send size={16} /> Send Message
+                </motion.button>
+              </form>
             </motion.div>
           </div>
         </div>
