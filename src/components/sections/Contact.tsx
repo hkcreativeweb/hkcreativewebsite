@@ -1,9 +1,10 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Send, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
 import { AuroraBackground } from '@/components/ui/aurora-background'
+import { useForm, ValidationError } from '@formspree/react'
 
 // Update to your real UK WhatsApp number (format: 447xxxxxxxxx)
 const WHATSAPP_NUMBER = '447404197864'
@@ -25,25 +26,11 @@ function FadeUp({ children, delay = 0, className }: { children: React.ReactNode;
 }
 
 export function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', service: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [state, handleSubmit] = useForm('mgodeynl')
   const sectionRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
   const auroraY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(f => ({ ...f, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    await new Promise(r => setTimeout(r, 1200))
-    setLoading(false)
-    setSubmitted(true)
-  }
 
   return (
     <section ref={sectionRef} id="contact" className="relative overflow-hidden">
@@ -122,7 +109,7 @@ export function Contact() {
               transition={{ duration: 0.65, delay: 0.15 }}
               className="lg:col-span-3 bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl p-8 shadow-xl shadow-neutral-200/50"
             >
-              {submitted ? (
+              {state.succeeded ? (
                 <div className="flex flex-col items-center justify-center text-center py-16 gap-4">
                   <motion.div
                     initial={{ scale: 0 }}
@@ -140,25 +127,31 @@ export function Contact() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid sm:grid-cols-2 gap-4">
-                    {[
-                      { name: 'name',  type: 'text',  label: 'Your Name',  placeholder: 'Jane Smith' },
-                      { name: 'email', type: 'email', label: 'Your Email', placeholder: 'jane@company.com' },
-                    ].map(f => (
-                      <div key={f.name}>
-                        <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
-                          {f.label}
-                        </label>
-                        <input
-                          type={f.type}
-                          name={f.name}
-                          required
-                          value={form[f.name as keyof typeof form]}
-                          onChange={handleChange}
-                          placeholder={f.placeholder}
-                          className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
-                        />
-                      </div>
-                    ))}
+                    <div>
+                      <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        required
+                        placeholder="Jane Smith"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                        Your Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="jane@company.com"
+                        className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
+                      />
+                      <ValidationError field="email" errors={state.errors} className="text-red-500 text-xs mt-1" />
+                    </div>
                   </div>
 
                   <div>
@@ -167,8 +160,6 @@ export function Contact() {
                     </label>
                     <select
                       name="service"
-                      value={form.service}
-                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 appearance-none cursor-pointer"
                     >
                       <option value="">Select a service...</option>
@@ -190,21 +181,20 @@ export function Contact() {
                       name="message"
                       required
                       rows={5}
-                      value={form.message}
-                      onChange={handleChange}
                       placeholder="What are you building? Timeline? Budget range?"
                       className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 resize-none"
                     />
+                    <ValidationError field="message" errors={state.errors} className="text-red-500 text-xs mt-1" />
                   </div>
 
                   <motion.button
                     type="submit"
-                    disabled={loading}
+                    disabled={state.submitting}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-purple-600 hover:bg-purple-500 disabled:opacity-60 text-white text-sm font-bold transition-colors duration-200 shadow-lg shadow-purple-600/25"
                   >
-                    {loading
+                    {state.submitting
                       ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       : <><Send size={16} /> Send Message</>
                     }
