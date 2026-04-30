@@ -80,10 +80,10 @@ export function Contact() {
               </FadeUp>
 
               {[
-                { icon: Mail,   label: 'Email',     value: 'hkcreativeweb@gmail.com' },
+                { icon: Mail,   label: 'Email',     value: 'hkcreativeweb@gmail.com', href: 'mailto:hkcreativeweb@gmail.com' },
                 { icon: MapPin, label: 'Based in',  value: 'United Kingdom' },
-                { icon: Clock,  label: 'Available', value: 'Mon to Fri · 9am to 6pm GMT' },
-              ].map(({ icon: Icon, label, value }, i) => (
+                { icon: Clock,  label: 'Available', value: 'Mon–Fri · 9am–5pm' },
+              ].map(({ icon: Icon, label, value, href }, i) => (
                 <FadeUp key={label} delay={0.15 + i * 0.08}>
                   <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/60 backdrop-blur-sm border border-neutral-200/60">
                     <div className="w-9 h-9 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
@@ -91,7 +91,10 @@ export function Contact() {
                     </div>
                     <div>
                       <div className="text-[11px] text-neutral-400 uppercase tracking-widest font-medium">{label}</div>
-                      <div className="text-sm text-neutral-800 font-medium mt-0.5">{value}</div>
+                      {href
+                        ? <a href={href} className="text-sm text-purple-600 font-medium mt-0.5 hover:underline">{value}</a>
+                        : <div className="text-sm text-neutral-800 font-medium mt-0.5">{value}</div>
+                      }
                     </div>
                   </div>
                 </FadeUp>
