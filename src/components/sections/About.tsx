@@ -7,12 +7,11 @@ import { Globe, Palette, Zap, RotateCcw, Smartphone, Play, Pause, Mic, ArrowRigh
 
 const VOICE_NOTE_URL = '/AUDIO-2026-04-26-15-45-58.m4a'
 
-// ── Update this with lines from the audio transcript ──────────────────────────
 const TRANSCRIPT_LINES = [
-  "Hey, I'm Hassan — founder of HK Creative Web.",
-  "We started this because local businesses deserve better than overpriced agencies.",
-  "We build websites, content systems, and automation that actually bring in customers.",
-  "If you're ready to grow, we'd love to work with you.",
+  "Welcome!",
+  "We build websites, create AI content,",
+  "and deliver smart digital solutions",
+  "that grow your business online.",
 ]
 // ─────────────────────────────────────────────────────────────────────────────
 

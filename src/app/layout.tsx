@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { ScrollHashHandler } from '@/components/ScrollHashHandler'
 
 const inter = Inter({
   variable: '--font-sans',
@@ -25,7 +26,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-black text-white" suppressHydrationWarning>{children}</body>
+      <body className="min-h-full flex flex-col bg-black text-white" suppressHydrationWarning>
+        <ScrollHashHandler />
+        {children}
+      </body>
     </html>
   )
 }

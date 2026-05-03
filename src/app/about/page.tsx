@@ -49,12 +49,12 @@ export default function AboutPage() {
                 <p className="text-neutral-400 leading-relaxed mb-8">
                   Most businesses struggle online not because they lack effort — but because they lack a system. We fix that by combining content, websites, and automation into one simple goal: more visibility, more trust, more customers.
                 </p>
-                <Link
+                <a
                   href="/#contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition-colors duration-200 shadow-lg shadow-purple-600/30"
                 >
                   Work with us <ArrowRight size={16} />
-                </Link>
+                </a>
               </div>
               <div className="relative">
                 <div className="absolute -inset-4 bg-purple-600/10 rounded-3xl blur-2xl" />
@@ -227,12 +227,12 @@ export default function AboutPage() {
               <div className="text-center lg:text-right">
                 <p className="text-5xl font-bold text-white mb-2">Limited</p>
                 <p className="text-purple-200 text-lg">client slots available each month</p>
-                <Link
+                <a
                   href="/#contact"
                   className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 rounded-full bg-white text-purple-700 font-bold text-sm hover:bg-purple-50 transition-colors duration-200 shadow-lg"
                 >
                   Claim your spot <ArrowRight size={16} />
-                </Link>
+                </a>
               </div>
             </div>
           </div>
@@ -248,12 +248,12 @@ export default function AboutPage() {
               Stop relying on inconsistent marketing. Start building predictable growth with a team that treats your business like their own.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <a
                 href="/#contact"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm transition-colors duration-200 shadow-lg shadow-purple-600/30"
               >
                 Get in touch <ArrowRight size={16} />
-              </Link>
+              </a>
               <Link
                 href="/pricing"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white hover:bg-white/10 font-semibold text-sm transition-colors duration-200"

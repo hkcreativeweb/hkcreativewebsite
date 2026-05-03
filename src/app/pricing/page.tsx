@@ -239,7 +239,7 @@ export default function PricingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link
+                  <a
                     href="/#contact"
                     className={`w-full text-center py-3 rounded-xl font-bold text-sm transition-colors duration-200 ${
                       plan.highlight
@@ -248,7 +248,7 @@ export default function PricingPage() {
                     }`}
                   >
                     {plan.cta}
-                  </Link>
+                  </a>
                 </div>
               ))}
             </div>
@@ -281,12 +281,12 @@ export default function PricingPage() {
                 <div className="lg:text-right shrink-0">
                   <div className="text-4xl font-bold text-white mb-1">£1,000–£1,500</div>
                   <div className="text-purple-300 text-sm mb-6">/month</div>
-                  <Link
+                  <a
                     href="/#contact"
                     className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm transition-colors duration-200 shadow-lg"
                   >
                     Apply now <ArrowRight size={16} />
-                  </Link>
+                  </a>
                 </div>
               </div>
             </div>
@@ -382,12 +382,12 @@ export default function PricingPage() {
             <p className="text-purple-100 leading-relaxed mb-8">
               We only work with a limited number of businesses each month. Once slots are filled, onboarding closes until the next cycle.
             </p>
-            <Link
+            <a
               href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-purple-700 font-bold text-sm hover:bg-purple-50 transition-colors duration-200 shadow-lg"
             >
               Get in touch <ArrowRight size={16} />
-            </Link>
+            </a>
           </div>
         </section>
 
