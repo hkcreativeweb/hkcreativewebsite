@@ -9,12 +9,11 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'HK Creative — Web Design & Development Studio',
-  description:
-    'HK Creative is a solo web design and development studio building high-end websites, digital design, and creative strategies for ambitious businesses.',
+  title: 'Affordable Web Design for Local Businesses | HK Creative Web',
+  description: 'Affordable websites, AI content & social media services for local businesses.',
   openGraph: {
-    title: 'HK Creative — Web Design & Development Studio',
-    description: 'Building brands that live online.',
+    title: 'Affordable Web Design for Local Businesses | HK Creative Web',
+    description: 'Affordable websites, AI content & social media services for local businesses.',
     type: 'website',
   },
 }

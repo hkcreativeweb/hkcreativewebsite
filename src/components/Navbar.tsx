@@ -1,14 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#work' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home',    href: '/' },
+  { label: 'About',   href: '/about' },
+  { label: 'Work',    href: '/#work' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 export function Navbar() {
@@ -57,26 +59,26 @@ export function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
-          <a href="#home" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-xl font-bold tracking-tight text-white">
               HK<span className="text-purple-500">.</span>
             </span>
             <span className="hidden sm:block text-xs text-neutral-400 font-medium uppercase tracking-widest">
               Creative
             </span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
                   className="relative text-sm text-neutral-400 hover:text-white transition-colors duration-200 group py-1"
                 >
                   {l.label}
                   <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-0 bg-purple-500 rounded-full transition-all duration-300 group-hover:w-full" />
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -94,13 +96,13 @@ export function Navbar() {
             </HoverBorderGradient>
 
             {/* Mobile compact CTA */}
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="md:hidden text-xs font-semibold px-3.5 py-2 rounded-full bg-purple-600 text-white shadow-md shadow-purple-600/20"
             >
               Let&apos;s Talk
-            </a>
+            </Link>
 
             <button
               className="md:hidden text-neutral-400 hover:text-white"
@@ -119,23 +121,23 @@ export function Navbar() {
           <ul className="flex flex-col gap-5 pt-5">
             {links.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
                   onClick={() => setOpen(false)}
                   className="text-neutral-300 hover:text-white text-base font-medium transition-colors duration-200"
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             onClick={() => setOpen(false)}
             className="mt-6 flex items-center justify-center text-sm font-semibold py-3.5 rounded-full bg-purple-600 text-white shadow-lg shadow-purple-600/20"
           >
             Let&apos;s Talk
-          </a>
+          </Link>
         </div>
       )}
     </div>

@@ -1,11 +1,20 @@
 'use client'
 
+import Link from 'next/link'
 import { useRef, useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Globe, Palette, Zap, RotateCcw, Smartphone, Play, Pause, Mic } from 'lucide-react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { Globe, Palette, Zap, RotateCcw, Smartphone, Play, Pause, Mic, ArrowRight } from 'lucide-react'
 
-// Replace with your hosted audio file URL when ready (e.g. '/ceo-message.mp3' or a CDN link)
 const VOICE_NOTE_URL = '/AUDIO-2026-04-26-15-45-58.m4a'
+
+// ── Update this with lines from the audio transcript ──────────────────────────
+const TRANSCRIPT_LINES = [
+  "Hey, I'm Hassan — founder of HK Creative Web.",
+  "We started this because local businesses deserve better than overpriced agencies.",
+  "We build websites, content systems, and automation that actually bring in customers.",
+  "If you're ready to grow, we'd love to work with you.",
+]
+// ─────────────────────────────────────────────────────────────────────────────
 
 const BAR_HEIGHTS = [
   0.3, 0.55, 0.8, 0.4, 0.95, 0.6, 0.75, 0.35, 0.7, 0.5,
@@ -20,6 +29,7 @@ function VoiceNotePlayer() {
   const [progress, setProgress] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [lineIndex, setLineIndex] = useState(0)
 
   const toggle = () => {
     const audio = audioRef.current
@@ -37,19 +47,29 @@ function VoiceNotePlayer() {
   const fmt = (s: number) => `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, '0')}`
   const hasAudio = Boolean(VOICE_NOTE_URL)
 
+  const handleTimeUpdate = () => {
+    const a = audioRef.current!
+    setCurrentTime(a.currentTime)
+    setProgress(a.currentTime / a.duration)
+    // Cycle through transcript lines evenly across the audio duration
+    if (a.duration) {
+      const idx = Math.min(
+        Math.floor((a.currentTime / a.duration) * TRANSCRIPT_LINES.length),
+        TRANSCRIPT_LINES.length - 1
+      )
+      setLineIndex(idx)
+    }
+  }
+
   return (
-    <div className="rounded-2xl bg-gradient-to-br from-[#120030] via-[#1e0050] to-[#0d0020] border border-purple-500/20 shadow-2xl shadow-purple-900/30 p-6 sm:p-8 flex flex-col gap-6">
+    <div className="rounded-2xl bg-gradient-to-br from-[#120030] via-[#1e0050] to-[#0d0020] border border-purple-500/20 shadow-2xl shadow-purple-900/30 p-6 sm:p-8 flex flex-col gap-5">
       {hasAudio && (
         <audio
           ref={audioRef}
           src={VOICE_NOTE_URL}
-          onTimeUpdate={() => {
-            const a = audioRef.current!
-            setCurrentTime(a.currentTime)
-            setProgress(a.currentTime / a.duration)
-          }}
+          onTimeUpdate={handleTimeUpdate}
           onLoadedMetadata={() => setDuration(audioRef.current!.duration)}
-          onEnded={() => { setPlaying(false); setProgress(0); setCurrentTime(0) }}
+          onEnded={() => { setPlaying(false); setProgress(0); setCurrentTime(0); setLineIndex(0) }}
         />
       )}
 
@@ -62,11 +82,6 @@ function VoiceNotePlayer() {
           <p className="text-white font-semibold text-sm leading-none">A message from our CEO</p>
           <p className="text-purple-300/60 text-xs mt-1">Hear it directly from us</p>
         </div>
-        {!hasAudio && (
-          <span className="ml-auto text-[10px] font-semibold uppercase tracking-widest text-purple-400/50 bg-purple-500/10 border border-purple-500/20 px-2.5 py-1 rounded-full">
-            Coming soon
-          </span>
-        )}
       </div>
 
       {/* Waveform + play button */}
@@ -82,7 +97,6 @@ function VoiceNotePlayer() {
             : <Play  size={20} className="text-white ml-0.5" />
           }
         </button>
-
         <div className="flex items-center gap-[2.5px] sm:gap-[3px] flex-1 h-14">
           {BAR_HEIGHTS.map((h, i) => (
             <motion.div
@@ -120,8 +134,24 @@ function VoiceNotePlayer() {
         </div>
         <div className="flex justify-between text-[10px] font-mono text-white/30">
           <span>{fmt(currentTime)}</span>
-          <span>{duration > 0 ? fmt(duration) : hasAudio ? '--:--' : 'Voice note coming soon'}</span>
+          <span>{duration > 0 ? fmt(duration) : '--:--'}</span>
         </div>
+      </div>
+
+      {/* Subtitles */}
+      <div className="min-h-[48px] rounded-xl bg-white/5 border border-white/10 px-4 py-3 flex items-center">
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={playing ? lineIndex : 'idle'}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.3 }}
+            className="text-xs text-purple-200/70 leading-relaxed italic"
+          >
+            {playing ? TRANSCRIPT_LINES[lineIndex] : 'Press play to hear from our CEO...'}
+          </motion.p>
+        </AnimatePresence>
       </div>
     </div>
   )
@@ -171,7 +201,6 @@ export function About() {
 
   return (
     <section ref={sectionRef} id="about" className="bg-white overflow-hidden relative">
-      {/* Parallax blob */}
       <motion.div
         style={{ y: bgY }}
         className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-purple-100/60 blur-[80px] pointer-events-none"
@@ -197,9 +226,15 @@ export function About() {
               <p className="text-neutral-600 leading-relaxed mb-4">
                 We are a UK based web and digital studio built for small businesses. Whether you need a new website, help with your social media, or someone to set up the right digital tools, we handle it all under one roof.
               </p>
-              <p className="text-neutral-600 leading-relaxed">
+              <p className="text-neutral-600 leading-relaxed mb-8">
                 No confusing agencies. No back and forth. Just straightforward work that gets your business seen, found, and remembered.
               </p>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 text-white text-sm font-semibold hover:bg-purple-700 transition-colors duration-200"
+              >
+                Our full story <ArrowRight size={15} />
+              </Link>
             </motion.div>
 
             {/* Right: voice note player */}
@@ -235,6 +270,7 @@ export function About() {
                     className="relative w-full h-full transition-transform duration-700"
                     style={{ transformStyle: 'preserve-3d', transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
                   >
+                    {/* Front */}
                     <div
                       className="absolute inset-0 rounded-2xl bg-neutral-50 border border-neutral-100 flex flex-col items-center justify-center gap-4 p-6"
                       style={{ backfaceVisibility: 'hidden' }}
@@ -250,11 +286,18 @@ export function About() {
                         <RotateCcw size={11} /> Tap to explore
                       </div>
                     </div>
+
+                    {/* Back */}
                     <div
                       className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.color} flex flex-col justify-between p-6`}
                       style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                     >
-                      <p className="text-white/90 text-sm leading-relaxed">{service.back}</p>
+                      <div>
+                        <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center mb-3">
+                          <Icon size={20} className="text-white" />
+                        </div>
+                        <p className="text-white/90 text-sm leading-relaxed">{service.back}</p>
+                      </div>
                       <div className="flex flex-wrap gap-1.5">
                         {service.tools.map((t) => (
                           <span key={t} className="px-2.5 py-1 text-[10px] font-medium rounded-full bg-white/20 text-white">{t}</span>
