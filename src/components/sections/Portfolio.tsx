@@ -312,6 +312,7 @@ interface SecondaryProject {
   isEmail: boolean
   liveUrl?: string
   description?: string
+  technologies?: string[]
 }
 
 const secondaryProjects: SecondaryProject[] = [
@@ -323,6 +324,7 @@ const secondaryProjects: SecondaryProject[] = [
     badge: null,
     liveUrl: renovationResolution.liveUrl,
     description: renovationResolution.description,
+    technologies: renovationResolution.technologies,
     content: (
       <BrowserChrome url="renovation-resolution1.vercel.app">
         <RRBrowserMockup />
@@ -489,6 +491,14 @@ export function Portfolio() {
                 <p className="text-slate text-xs mt-1">{p.type} · {p.meta}</p>
                 {p.description && (
                   <p className="text-slate text-xs leading-relaxed mt-2">{p.description}</p>
+                )}
+                {p.technologies && (
+                  <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
+                    <span className="text-[10px] text-slate/70">Built with:</span>
+                    {p.technologies.map((t) => (
+                      <span key={t} className="text-[10px] font-medium text-teal-dark">{t}</span>
+                    ))}
+                  </div>
                 )}
                 {p.liveUrl && (
                   <a
