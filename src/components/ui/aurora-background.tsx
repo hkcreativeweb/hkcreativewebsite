@@ -17,7 +17,7 @@ export const AuroraBackground = ({
   return (
     <div
       className={cn(
-        'relative flex flex-col items-center justify-center bg-zinc-50 text-slate-950 transition-bg',
+        'relative flex flex-col items-center justify-center bg-cream text-navy transition-bg',
         className
       )}
       {...props}
@@ -26,7 +26,7 @@ export const AuroraBackground = ({
         <div
           className={cn(
             `[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]
-            [--aurora:repeating-linear-gradient(100deg,var(--blue-500)_10%,var(--indigo-300)_15%,var(--blue-300)_20%,var(--violet-200)_25%,var(--blue-400)_30%)]
+            [--aurora:repeating-linear-gradient(100deg,var(--aurora-teal-500)_10%,var(--aurora-mint-300)_15%,var(--aurora-teal-300)_20%,var(--aurora-mint-200)_25%,var(--aurora-teal-400)_30%)]
             [background-image:var(--white-gradient),var(--aurora)]
             [background-size:300%,_200%]
             [background-position:50%_50%,50%_50%]

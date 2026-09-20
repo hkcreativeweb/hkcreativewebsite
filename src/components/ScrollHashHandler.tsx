@@ -17,7 +17,8 @@ export function ScrollHashHandler() {
       const el = document.querySelector(hash)
       if (!el) return
       const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
-      window.scrollTo({ top, behavior: 'smooth' })
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' })
     }, 80)
 
     return () => clearTimeout(id)

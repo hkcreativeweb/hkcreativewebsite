@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { Send, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 
@@ -26,8 +26,9 @@ function FadeUp({ children, delay = 0, className }: { children: React.ReactNode;
 export function Contact() {
   const sectionRef = useRef<HTMLElement>(null)
 
+  const prefersReducedMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] })
-  const auroraY = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
+  const auroraY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? ['0%', '0%'] : ['-8%', '8%'])
 
   return (
     <section ref={sectionRef} id="contact" className="relative overflow-hidden">
@@ -43,14 +44,14 @@ export function Contact() {
           {/* Header */}
           <div className="text-center mb-12">
             <FadeUp delay={0}>
-              <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 tracking-tight leading-tight">
+              <h2 className="text-5xl md:text-6xl font-bold text-navy tracking-tight leading-tight">
                 Let&apos;s build
                 <br />
-                <span className="text-purple-600">something.</span>
+                <span className="text-teal">something.</span>
               </h2>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <p className="mt-5 text-neutral-500 max-w-md mx-auto leading-relaxed">
+              <p className="mt-5 text-slate max-w-md mx-auto leading-relaxed">
                 Tell us a bit about your project and we&apos;ll get back to you within 24 hours. No hard sell. Just a chat.
               </p>
             </FadeUp>
@@ -85,15 +86,15 @@ export function Contact() {
                 { icon: Clock,  label: 'Available', value: 'Mon–Fri · 9am–5pm' },
               ].map(({ icon: Icon, label, value, href }, i) => (
                 <FadeUp key={label} delay={0.15 + i * 0.08}>
-                  <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/60 backdrop-blur-sm border border-neutral-200/60">
-                    <div className="w-9 h-9 rounded-xl bg-purple-100 flex items-center justify-center shrink-0">
-                      <Icon size={16} className="text-purple-600" />
+                  <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/70 backdrop-blur-sm border border-hairline">
+                    <div className="w-9 h-9 rounded-xl bg-mint flex items-center justify-center shrink-0">
+                      <Icon size={16} className="text-teal" />
                     </div>
                     <div>
-                      <div className="text-[11px] text-neutral-400 uppercase tracking-widest font-medium">{label}</div>
+                      <div className="text-[11px] text-slate uppercase tracking-widest font-medium">{label}</div>
                       {href
-                        ? <a href={href} className="text-sm text-purple-600 font-medium mt-0.5 hover:underline">{value}</a>
-                        : <div className="text-sm text-neutral-800 font-medium mt-0.5">{value}</div>
+                        ? <a href={href} className="text-sm text-teal-dark font-medium mt-0.5 hover:underline">{value}</a>
+                        : <div className="text-sm text-navy font-medium mt-0.5">{value}</div>
                       }
                     </div>
                   </div>
@@ -107,7 +108,7 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: 0.15 }}
-              className="lg:col-span-3 bg-white/70 backdrop-blur-xl border border-white/80 rounded-3xl p-8 shadow-xl shadow-neutral-200/50"
+              className="lg:col-span-3 bg-white/90 backdrop-blur-xl border border-hairline rounded-3xl p-8 shadow-xl shadow-navy/5"
             >
               <form
                 action="https://formspree.io/f/mgodeynl"
@@ -118,44 +119,48 @@ export function Contact() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                    <label htmlFor="contact-name" className="text-xs font-semibold text-slate mb-1.5 block uppercase tracking-wide">
                       Your Name
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       name="name"
                       required
                       placeholder="Jane Smith"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-hairline text-navy text-sm placeholder:text-slate/60 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/15 transition-all duration-200"
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                    <label htmlFor="contact-email" className="text-xs font-semibold text-slate mb-1.5 block uppercase tracking-wide">
                       Your Email
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       name="email"
                       required
                       placeholder="jane@company.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-hairline text-navy text-sm placeholder:text-slate/60 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/15 transition-all duration-200"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                  <label htmlFor="contact-service" className="text-xs font-semibold text-slate mb-1.5 block uppercase tracking-wide">
                     What do you need help with?
                   </label>
                   <select
+                    id="contact-service"
                     name="service"
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 appearance-none cursor-pointer"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-hairline text-navy text-sm focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/15 transition-all duration-200 appearance-none cursor-pointer"
                   >
                     <option value="">Select a service...</option>
-                    <option value="web">Website Design and Build</option>
-                    <option value="social">Social Media Management</option>
-                    <option value="ai">AI Tools and Automation</option>
-                    <option value="brand">Branding and Identity</option>
+                    <option value="web">Website Design & Development</option>
+                    <option value="social">Social Media & Promotional Content</option>
+                    <option value="ai">AI Tools & Digital Solutions</option>
+                    <option value="brand">Branding & Digital Creative</option>
+                    <option value="consultation">Digital &amp; Technology Consultation</option>
                     <option value="email">Email Marketing</option>
                     <option value="tiktok">TikTok and Content Creation</option>
                     <option value="other">Not sure yet, let&apos;s talk</option>
@@ -163,15 +168,16 @@ export function Contact() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold text-neutral-500 mb-1.5 block uppercase tracking-wide">
+                  <label htmlFor="contact-message" className="text-xs font-semibold text-slate mb-1.5 block uppercase tracking-wide">
                     Tell us about your business and what you&apos;re looking for
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows={5}
                     placeholder="What are you building? Timeline? Budget range?"
-                    className="w-full px-4 py-3 rounded-xl bg-white border border-neutral-200 text-neutral-900 text-sm placeholder:text-neutral-400 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-400/15 transition-all duration-200 resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-hairline text-navy text-sm placeholder:text-slate/60 focus:outline-none focus:border-teal focus:ring-2 focus:ring-teal/15 transition-all duration-200 resize-none"
                   />
                 </div>
 
@@ -179,7 +185,7 @@ export function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-sm font-bold transition-colors duration-200 shadow-lg shadow-purple-600/25"
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-teal hover:bg-teal-dark text-white text-sm font-bold transition-colors duration-200 shadow-lg shadow-teal/25"
                 >
                   <Send size={16} /> Send Message
                 </motion.button>

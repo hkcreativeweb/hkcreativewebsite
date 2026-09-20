@@ -17,9 +17,9 @@ const movingMap: Record<Direction, string> = {
   RIGHT: 'radial-gradient(16.2% 41.2% at 100% 50%, hsl(0, 0%, 100%) 0%, rgba(255, 255, 255, 0) 100%)',
 }
 
-// Purple highlight for our theme
+// Teal highlight sweep on hover
 const highlight =
-  'radial-gradient(75% 181.16% at 50% 50%, #7c3aed 0%, rgba(255, 255, 255, 0) 100%)'
+  'radial-gradient(75% 181.16% at 50% 50%, #159A9C 0%, rgba(255, 255, 255, 0) 100%)'
 
 export function HoverBorderGradient({
   children,
@@ -65,12 +65,12 @@ export function HoverBorderGradient({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(
-        'relative flex h-min w-fit flex-col flex-nowrap content-center items-center justify-center overflow-visible rounded-full border border-white/20 bg-black/40 p-px backdrop-blur-sm transition duration-500',
+        'relative flex h-min w-fit flex-col flex-nowrap content-center items-center justify-center overflow-visible rounded-full border border-navy/15 bg-navy/90 p-px backdrop-blur-sm transition duration-500',
         containerClassName
       )}
       {...props}
     >
-      <div className={cn('z-10 w-auto rounded-[inherit] bg-black px-5 py-2.5 text-white', className)}>
+      <div className={cn('z-10 w-auto rounded-[inherit] bg-navy px-5 py-2.5 text-white', className)}>
         {children}
       </div>
       <motion.div
@@ -82,7 +82,7 @@ export function HoverBorderGradient({
         }}
         transition={{ ease: 'linear', duration: duration ?? 1 }}
       />
-      <div className="absolute inset-0.5 z-[1] rounded-[100px] bg-black" />
+      <div className="absolute inset-0.5 z-[1] rounded-[100px] bg-navy" />
     </Element>
   )
 }

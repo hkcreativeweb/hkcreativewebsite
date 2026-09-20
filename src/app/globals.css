@@ -46,54 +46,65 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* HK Creative brand tokens — generates bg-cream, text-navy, bg-teal, etc. */
+  --color-cream: #FAFAF7;
+  --color-navy: #172033;
+  --color-navy-dark: #0E1626;
+  --color-slate: #5E6878;
+  --color-teal: #159A9C;
+  --color-teal-dark: #10797B;
+  --color-teal-light: #45B5B6;
+  --color-mint: #E5F5F3;
+  --color-hairline: #E6E8EB;
 }
 
-/* Dark-first: HK Creative palette */
+/* Light-first: HK Creative palette — warm white, deep navy, teal accent, mint highlight */
 :root {
-  --background: #000000;
-  --foreground: #f5f5f5;
-  --card: #0f0f0f;
-  --card-foreground: #f5f5f5;
-  --popover: #0f0f0f;
-  --popover-foreground: #f5f5f5;
-  --primary: #7c3aed;
-  --primary-foreground: #ffffff;
-  --secondary: #1a1a1a;
-  --secondary-foreground: #f5f5f5;
-  --muted: #1a1a1a;
-  --muted-foreground: #737373;
-  --accent: #7c3aed;
-  --accent-foreground: #ffffff;
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: rgba(255, 255, 255, 0.08);
-  --input: rgba(255, 255, 255, 0.08);
-  --ring: #7c3aed;
+  --background: #FAFAF7;
+  --foreground: #172033;
+  --card: #FFFFFF;
+  --card-foreground: #172033;
+  --popover: #FFFFFF;
+  --popover-foreground: #172033;
+  --primary: #159A9C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E5F5F3;
+  --secondary-foreground: #172033;
+  --muted: #EFF1EE;
+  --muted-foreground: #5E6878;
+  --accent: #E5F5F3;
+  --accent-foreground: #172033;
+  --destructive: #DC2626;
+  --border: #E6E8EB;
+  --input: #E6E8EB;
+  --ring: #159A9C;
   --radius: 0.75rem;
-  --sidebar: #0a0a0a;
-  --sidebar-foreground: #f5f5f5;
-  --sidebar-primary: #7c3aed;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1a1a1a;
-  --sidebar-accent-foreground: #f5f5f5;
-  --sidebar-border: rgba(255, 255, 255, 0.08);
-  --sidebar-ring: #7c3aed;
-  --chart-1: #7c3aed;
-  --chart-2: #8b5cf6;
-  --chart-3: #a78bfa;
-  --chart-4: #c4b5fd;
-  --chart-5: #ddd6fe;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #172033;
+  --sidebar-primary: #159A9C;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E5F5F3;
+  --sidebar-accent-foreground: #172033;
+  --sidebar-border: #E6E8EB;
+  --sidebar-ring: #159A9C;
+  --chart-1: #159A9C;
+  --chart-2: #2FB0B2;
+  --chart-3: #55C4C6;
+  --chart-4: #8DD9DA;
+  --chart-5: #C3ECEC;
 }
 
-/* Aurora — CSS color vars required by the component */
+/* Aurora — recoloured to a soft teal/mint wash (no blue/violet) */
 :root {
   --white: #ffffff;
   --black: #000000;
   --transparent: transparent;
-  --blue-300: #93c5fd;
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --indigo-300: #a5b4fc;
-  --violet-200: #ddd6fe;
+  --aurora-teal-500: #159A9C;
+  --aurora-teal-300: #6FC7C4;
+  --aurora-mint-300: #A9DED8;
+  --aurora-mint-200: #E5F5F3;
+  --aurora-teal-400: #3DB3AF;
 }
 
 /* Aurora animation */
@@ -142,29 +153,48 @@
   #work {
     scroll-margin-top: 80px;
   }
-  #free-website {
+  #affordable {
     scroll-margin-top: 80px;
   }
   body {
-    background-color: #000000;
-    color: #f5f5f5;
+    background-color: #FAFAF7;
+    color: #172033;
     font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
   }
   ::selection {
-    background: rgba(124, 58, 237, 0.3);
+    background: rgba(21, 154, 156, 0.22);
   }
   ::-webkit-scrollbar {
     width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #F1F2EF;
   }
   ::-webkit-scrollbar-thumb {
-    background: #2a2a2a;
+    background: #D7DBDD;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #3a3a3a;
+    background: #C3C9CC;
+  }
+}
+
+/* Unlayered on purpose: must always win over any focus:outline-none utility */
+:focus-visible {
+  outline: 2px solid #159A9C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

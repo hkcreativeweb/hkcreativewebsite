@@ -1,17 +1,18 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 const links = [
-  { label: 'Home',    href: '/' },
-  { label: 'About',   href: '/about' },
-  { label: 'Work',    href: '/#work' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Home',       href: '/' },
+  { label: 'Services',   href: '/#services' },
+  { label: 'Our Work',   href: '/#work' },
+  { label: 'Our Story',  href: '/our-story' },
+  { label: 'Contact',    href: '/#contact' },
 ]
 
 export function Navbar() {
@@ -44,23 +45,23 @@ export function Navbar() {
       <div
         className={`overflow-hidden transition-all duration-500 ${showBanner ? 'max-h-16' : 'max-h-0'}`}
       >
-        <div className="bg-gradient-to-r from-purple-900 via-purple-600 to-violet-800 text-white py-3 pl-4 pr-10 sm:pr-4 flex items-center justify-center gap-2 sm:gap-4 relative">
-          <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/20 text-[10px] font-bold uppercase tracking-widest shrink-0">
-            Limited Time Only
+        <div className="bg-navy text-white py-3 pl-4 pr-10 sm:pr-4 flex items-center justify-center gap-2 sm:gap-4 relative">
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-widest shrink-0">
+            Consultation
           </span>
-          <span className="text-white font-semibold text-center text-[11px] sm:text-sm">
-            We are building <span className="font-black text-white">FREE</span> business websites. <span className="underline underline-offset-2">Only a few slots left.</span>
+          <span className="text-white/90 font-semibold text-center text-[11px] sm:text-sm">
+            Not sure what your website needs? <span className="underline underline-offset-2 decoration-teal-light">Get advice before you commit.</span>
           </span>
           <a
-            href="#free-website"
-            className="shrink-0 font-bold text-xs sm:text-sm text-white bg-white/20 hover:bg-white/30 border border-white/30 px-3 py-1.5 rounded-full transition-colors"
+            href="#services"
+            className="shrink-0 font-bold text-xs sm:text-sm text-white bg-teal hover:bg-teal-dark px-3 py-1.5 rounded-full transition-colors"
           >
-            Claim Your Spot →
+            Find Out More →
           </a>
           <button
             onClick={() => setDismissed(true)}
             aria-label="Dismiss banner"
-            className="absolute right-3 sm:right-4 text-white/70 hover:text-white transition-colors"
+            className="absolute right-3 sm:right-4 text-white/60 hover:text-white transition-colors"
           >
             <X size={14} />
           </button>
@@ -70,16 +71,21 @@ export function Navbar() {
       {/* ── Main nav ── */}
       <nav
         className={`transition-all duration-300 ${
-          scrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
+          scrolled ? 'bg-cream/90 backdrop-blur-md border-b border-hairline shadow-[0_1px_16px_rgba(23,32,51,0.05)]' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight text-white">
-              HK<span className="text-purple-500">.</span>
-            </span>
-            <span className="hidden sm:block text-xs text-neutral-400 font-medium uppercase tracking-widest">
-              Creative
+          <Link href="/" className="flex items-center gap-2.5">
+            <Image
+              src="/images/logo-icon.png"
+              alt="HK Creative Web logo"
+              width={105}
+              height={36}
+              priority
+              className="h-8 w-auto"
+            />
+            <span className="hidden sm:block text-sm font-bold tracking-tight text-navy">
+              HK Creative Web
             </span>
           </Link>
 
@@ -89,10 +95,10 @@ export function Navbar() {
               <li key={l.href}>
                 <Link
                   href={resolveHref(l.href)}
-                  className="relative text-sm text-neutral-400 hover:text-white transition-colors duration-200 group py-1"
+                  className="relative text-sm text-slate hover:text-navy transition-colors duration-200 group py-1"
                 >
                   {l.label}
-                  <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-0 bg-purple-500 rounded-full transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-0.5 left-0 h-[1.5px] w-0 bg-teal rounded-full transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -107,20 +113,20 @@ export function Navbar() {
               containerClassName="hidden md:flex"
               duration={1.2}
             >
-              Let&apos;s Talk
+              Book a Consultation
             </HoverBorderGradient>
 
             {/* Mobile compact CTA */}
             <Link
               href={resolveHref('/#contact')}
               onClick={() => setOpen(false)}
-              className="md:hidden text-xs font-semibold px-3.5 py-2 rounded-full bg-purple-600 text-white shadow-md shadow-purple-600/20"
+              className="md:hidden text-xs font-semibold px-3.5 py-2 rounded-full bg-navy text-white shadow-sm"
             >
-              Let&apos;s Talk
+              Book a Consultation
             </Link>
 
             <button
-              className="md:hidden text-neutral-400 hover:text-white"
+              className="md:hidden text-slate hover:text-navy"
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
             >
@@ -132,14 +138,14 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-black/95 backdrop-blur-md border-b border-white/5 px-6 pb-6">
+        <div className="md:hidden bg-cream/98 backdrop-blur-md border-b border-hairline px-6 pb-6">
           <ul className="flex flex-col gap-5 pt-5">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
                   href={resolveHref(l.href)}
                   onClick={() => setOpen(false)}
-                  className="text-neutral-300 hover:text-white text-base font-medium transition-colors duration-200"
+                  className="text-navy/80 hover:text-teal-dark text-base font-medium transition-colors duration-200"
                 >
                   {l.label}
                 </Link>
@@ -149,9 +155,9 @@ export function Navbar() {
           <Link
             href={resolveHref('/#contact')}
             onClick={() => setOpen(false)}
-            className="mt-6 flex items-center justify-center text-sm font-semibold py-3.5 rounded-full bg-purple-600 text-white shadow-lg shadow-purple-600/20"
+            className="mt-6 flex items-center justify-center text-sm font-semibold py-3.5 rounded-full bg-navy text-white shadow-sm"
           >
-            Let&apos;s Talk
+            Book a Consultation
           </Link>
         </div>
       )}
