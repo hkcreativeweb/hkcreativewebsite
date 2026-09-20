@@ -11,6 +11,7 @@ export function Footer() {
               alt="HK Creative Web logo"
               width={105}
               height={36}
+              unoptimized
               className="h-6 w-auto"
             />
             <span className="text-sm font-bold text-white">HK Creative Web</span>
