@@ -47,6 +47,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
+                <Image src="/images/logo-icon.png" alt="HK Creative Web" width={52} height={52} className="h-10 w-auto mb-5 opacity-90" />
                 <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-6 px-3 py-1.5 rounded-full bg-mint border border-teal/20">
                   About HK Creative Web
                 </span>

@@ -1,18 +1,17 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 const links = [
-  { label: 'Home',       href: '/' },
-  { label: 'Services',   href: '/#services' },
-  { label: 'Our Work',   href: '/#work' },
-  { label: 'Our Story',  href: '/our-story' },
-  { label: 'Contact',    href: '/#contact' },
+  { label: 'Home',      href: '/' },
+  { label: 'Services',  href: '/#services' },
+  { label: 'Work',      href: '/#work' },
+  { label: 'About',     href: '/about' },
+  { label: 'Contact',   href: '/#contact' },
 ]
 
 export function Navbar() {
@@ -76,15 +75,7 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/images/logo-icon.png"
-              alt="HK Creative Web logo"
-              width={105}
-              height={36}
-              priority
-              className="h-8 w-auto"
-            />
-            <span className="hidden sm:block text-sm font-bold tracking-tight text-navy">
+            <span className="text-sm font-bold tracking-tight text-navy">
               HK Creative Web
             </span>
           </Link>

@@ -6,10 +6,10 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { ArrowRight, Search, PenTool, Code2, Rocket } from 'lucide-react'
 
 const process = [
-  { icon: Search,  title: 'Discover', desc: 'We learn your business, your customers, and what a website actually needs to do for you.' },
-  { icon: PenTool, title: 'Design',   desc: 'A clean, modern design tailored to your brand — not a recycled template.' },
-  { icon: Code2,   title: 'Build',    desc: 'Fast, responsive, and built properly on modern tools so it holds up long term.' },
-  { icon: Rocket,  title: 'Launch',   desc: 'We launch, test everything, and hand it over ready to bring in customers.' },
+  { icon: Search,  title: 'Discuss', desc: 'We talk through your idea, goals and budget.' },
+  { icon: PenTool, title: 'Build',   desc: 'I design and develop the website around your requirements.' },
+  { icon: Code2,   title: 'Refine',  desc: 'I test everything and make adjustments based on your feedback.' },
+  { icon: Rocket,  title: 'Launch',  desc: 'Your website goes live and I hand everything over to you.' },
 ]
 
 export function About() {
@@ -37,14 +37,10 @@ export function About() {
             transition={{ duration: 0.65 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold text-navy leading-tight tracking-tight mb-6">
-              One team.<br />
-              <span className="text-slate">Everything sorted.</span>
+              How I Work
             </h2>
-            <p className="text-slate leading-relaxed mb-4">
-              We are a UK based digital creative studio built for small businesses. Whether you need a new website, help with your social media, someone to set up the right digital tools, or simply a straight answer on what technology actually makes sense, we handle it all under one roof.
-            </p>
             <p className="text-slate leading-relaxed mb-8">
-              No confusing agencies. No back and forth. Just straightforward work that gets your business seen, found, and remembered.
+              Every project starts with a conversation. I understand what you need, plan the work, build it, test it and make sure you can actually use it.
             </p>
             <Link
               href="/our-story"

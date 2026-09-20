@@ -27,7 +27,27 @@ export interface PortfolioProject {
   isConcept?: boolean
 }
 
-// ─── Renovation Resolution — featured, real project ────────────────────────
+// ─── Fuel Crisis England — featured, real project ───────────────────────────
+const fuelCrisisEngland: PortfolioProject = {
+  id: 'fuel-crisis-england',
+  title: 'Fuel Crisis England',
+  client: 'Fuel Crisis England',
+  industry: 'Informative',
+  category: 'Web Design',
+  type: 'Informative Website',
+  description: 'An informative website providing accessible information and resources about fuel prices and fuel-related issues in England.',
+  services: [
+    'Live UK fuel price tracking',
+    'Interactive cost breakdown tool',
+    'Official government & ONS data',
+    'Weekly price updates',
+  ],
+  technologies: ['Next.js', 'React', 'Tailwind'],
+  liveUrl: 'https://www.fuelcrisisengland.co.uk/',
+  isConcept: false,
+}
+
+// ─── Renovation Resolution — real project ───────────────────────────────────
 const renovationResolution: PortfolioProject = {
   id: 'renovation-resolution',
   title: 'Renovation Resolution',
@@ -103,31 +123,6 @@ function RRBrowserMockup() {
       {/* Project strip */}
       <div className="shrink-0 grid grid-cols-3 gap-[1.5px] relative z-10" style={{ height: '26%' }}>
         {['/images/portfolio/rr-kitchen.jpg', '/images/portfolio/rr-bathroom.jpg', '/images/portfolio/rr-extension.jpg'].map((src) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img key={src} src={src} alt="Renovation Resolution completed project" className="w-full h-full object-cover" />
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function RRPhoneMockup() {
-  return (
-    <div className="w-full h-full flex flex-col overflow-hidden" style={{ background: 'linear-gradient(180deg, #0b2216 0%, #153f2a 100%)' }}>
-      <div className="shrink-0 flex items-center justify-between px-3 pt-4 pb-2">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/portfolio/rr-logo-light.svg" alt="Renovation Resolution" className="h-2.5" />
-      </div>
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-3">
-        <p className="font-black leading-tight" style={{ fontSize: '9px', color: '#fff' }}>
-          Building Quality,<br /><span style={{ color: '#a5c3a5' }}>Creating Trust</span>
-        </p>
-        <span className="mt-2.5 text-[4.5px] font-bold px-2.5 py-1 rounded" style={{ background: '#c3d7c3', color: '#0b2216' }}>
-          Request Your Free Quote
-        </span>
-      </div>
-      <div className="shrink-0 grid grid-cols-2 gap-[1px]" style={{ height: '30%' }}>
-        {['/images/portfolio/rr-kitchen.jpg', '/images/portfolio/rr-bathroom.jpg'].map((src) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img key={src} src={src} alt="Renovation Resolution completed project" className="w-full h-full object-cover" />
         ))}
@@ -321,17 +316,16 @@ interface SecondaryProject {
 
 const secondaryProjects: SecondaryProject[] = [
   {
-    title: 'Fuel Crisis England',
-    category: 'Web Design',
-    type: 'Information Website',
-    meta: 'Live project · 2026',
+    title: renovationResolution.title,
+    category: renovationResolution.category,
+    type: `${renovationResolution.industry} Website`,
+    meta: 'Live project',
     badge: null,
-    liveUrl: 'https://www.fuelcrisisengland.co.uk/',
-    description: 'A resource site giving visitors clear information on fuel prices and the wider fuel situation in England, helping people understand what is happening and make informed decisions.',
+    liveUrl: renovationResolution.liveUrl,
+    description: renovationResolution.description,
     content: (
-      <BrowserChrome url="fuelcrisisengland.co.uk">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/portfolio/fce-og.png" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
+      <BrowserChrome url="renovationresolution.com">
+        <RRBrowserMockup />
       </BrowserChrome>
     ),
     isEmail: false,
@@ -395,14 +389,14 @@ export function Portfolio() {
             Our Work
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-3 tracking-tight">
-            What we&apos;ve built
+            What I&apos;ve built
           </h2>
           <p className="text-slate max-w-md mx-auto text-sm leading-relaxed">
             Real projects, real results. This is the standard every client gets.
           </p>
         </motion.div>
 
-        {/* ── Featured project: Renovation Resolution ── */}
+        {/* ── Featured project: Fuel Crisis England ── */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -417,7 +411,7 @@ export function Portfolio() {
 
           <div className="rounded-3xl bg-white border border-hairline shadow-[0_4px_28px_rgba(23,32,51,0.06)] p-6 lg:p-10 grid lg:grid-cols-5 gap-10 items-center">
 
-            {/* Devices */}
+            {/* Device */}
             <div className="lg:col-span-3 relative">
               <motion.div
                 whileHover={{ scale: 1.015 }}
@@ -425,51 +419,39 @@ export function Portfolio() {
                 className="rounded-t-xl shadow-lg shadow-navy/10"
                 style={{ aspectRatio: '16/10' }}
               >
-                <BrowserChrome url="renovationresolution.com">
-                  <RRBrowserMockup />
+                <BrowserChrome url="fuelcrisisengland.co.uk">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/portfolio/fce-og.png" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
                 </BrowserChrome>
-              </motion.div>
-
-              {/* Layered phone mockup */}
-              <motion.div
-                initial={{ opacity: 0, x: 12, y: 12 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="hidden sm:block absolute -bottom-8 -right-6 w-[30%] rounded-[1.4rem] border-[3px] border-[#2c2c2e] shadow-xl shadow-navy/15 overflow-hidden bg-black"
-                style={{ aspectRatio: '9/19' }}
-              >
-                <RRPhoneMockup />
               </motion.div>
             </div>
 
             {/* Info */}
             <div className="lg:col-span-2 pt-10 sm:pt-0">
               <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-teal-dark bg-mint border border-teal/20 rounded-full px-3 py-1 mb-4">
-                {renovationResolution.industry} Website
+                {fuelCrisisEngland.industry} Website
               </span>
-              <h3 className="text-2xl lg:text-3xl font-bold text-navy mb-3 tracking-tight">{renovationResolution.title}</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-navy mb-3 tracking-tight">{fuelCrisisEngland.title}</h3>
               <p className="text-slate text-sm leading-relaxed mb-6">
-                {renovationResolution.description}
+                {fuelCrisisEngland.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                {renovationResolution.services.map((f) => (
+                {fuelCrisisEngland.services.map((f) => (
                   <span key={f} className="text-[11px] font-medium text-navy bg-[#F5F6F4] border border-hairline rounded-full px-3 py-1.5">
                     {f}
                   </span>
                 ))}
               </div>
-              {renovationResolution.technologies && (
+              {fuelCrisisEngland.technologies && (
                 <div className="flex flex-wrap items-center gap-2 mb-8">
                   <span className="text-[11px] text-slate">Built with:</span>
-                  {renovationResolution.technologies.map((t) => (
+                  {fuelCrisisEngland.technologies.map((t) => (
                     <span key={t} className="text-[11px] font-medium text-teal-dark">{t}</span>
                   ))}
                 </div>
               )}
               <a
-                href={renovationResolution.liveUrl}
+                href={fuelCrisisEngland.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"

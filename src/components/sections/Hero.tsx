@@ -2,11 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
 import { SplineScene } from '@/components/ui/splite'
-
-// Distance (px) from the robot's laptop spot within which it's considered "near"
-const PROXIMITY_RADIUS = 260
 
 // Three-part headline: static · rotating · static
 const ROTATING_PHRASES = [
@@ -19,30 +15,10 @@ const ROTATING_PHRASES = [
 export function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
-  const laptopSpotRef = useRef<HTMLDivElement>(null)
-  const [isNear, setIsNear] = useState(false)
 
   useEffect(() => {
     const id = setInterval(() => setPhraseIndex((i) => (i + 1) % ROTATING_PHRASES.length), 2500)
     return () => clearInterval(id)
-  }, [])
-
-  // Reveal the laptop once the cursor gets close to where the robot holds it —
-  // hover-capable devices only, since "getting near" has no touch equivalent.
-  useEffect(() => {
-    if (!window.matchMedia('(hover: hover)').matches) return
-
-    const handleMove = (e: MouseEvent) => {
-      const spot = laptopSpotRef.current
-      if (!spot) return
-      const rect = spot.getBoundingClientRect()
-      const dx = e.clientX - (rect.left + rect.width / 2)
-      const dy = e.clientY - (rect.top + rect.height / 2)
-      setIsNear(Math.hypot(dx, dy) < PROXIMITY_RADIUS)
-    }
-
-    window.addEventListener('mousemove', handleMove, { passive: true })
-    return () => window.removeEventListener('mousemove', handleMove)
   }, [])
 
   const prefersReducedMotion = useReducedMotion()
@@ -148,7 +124,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right: robot, website logo appears on his lap when you get close ── */}
+          {/* ── Right: robot ── */}
           <div className="flex-1 w-full h-[420px] sm:h-[500px] lg:h-[680px] relative">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
@@ -170,47 +146,6 @@ export function Hero() {
                 </div>
               }
             />
-
-            {/* HK Creative badge, floating above the robot's head */}
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: [0, -10, 0] }}
-              transition={{
-                opacity: { duration: 0.8, delay: 0.5 },
-                y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 0.9 },
-              }}
-              className="absolute top-2 left-1/2 -translate-x-1/2 sm:top-4 lg:top-6 pointer-events-none"
-              style={{ filter: 'drop-shadow(0 10px 16px rgba(23,32,51,0.14))' }}
-            >
-              <div className="flex items-center gap-2 bg-white/95 backdrop-blur-sm border border-hairline rounded-full pl-2 pr-4 py-1.5">
-                <Image src="/images/logo-icon.png" alt="" width={28} height={28} className="h-6 w-6 object-contain" />
-                <span className="text-sm font-bold text-navy tracking-tight">HK Creative</span>
-              </div>
-            </motion.div>
-
-            {/* Invisible anchor at roughly lap height — proximity is measured against this */}
-            <div
-              ref={laptopSpotRef}
-              className="absolute bottom-[18%] left-1/2 -translate-x-1/2 w-[160px] h-[110px] pointer-events-none"
-            />
-
-            <AnimatePresence>
-              {isNear && (
-                <motion.div
-                  key="logo-reveal"
-                  initial={{ opacity: 0, scale: 0.8, y: 14 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: 14 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="absolute bottom-[18%] left-1/2 -translate-x-1/2 pointer-events-none"
-                  style={{ filter: 'drop-shadow(0 14px 20px rgba(23,32,51,0.22))' }}
-                >
-                  <div className="w-[86px] sm:w-[96px] lg:w-[106px] aspect-square rounded-2xl bg-white/95 backdrop-blur-sm border border-hairline flex items-center justify-center p-3">
-                    <Image src="/images/logo-icon.png" alt="" width={80} height={80} className="w-full h-full object-contain" />
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
       </motion.div>
