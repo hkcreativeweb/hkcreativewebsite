@@ -71,8 +71,8 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-mint/80 rounded-3xl blur-2xl" />
                 <Image
-                  src="/about-us-img.jpeg"
-                  alt="HK Creative Web team"
+                  src="/about-us-img.webp"
+                  alt="HK Creative Web"
                   width={600}
                   height={500}
                   className="relative rounded-2xl object-cover w-full shadow-xl"
