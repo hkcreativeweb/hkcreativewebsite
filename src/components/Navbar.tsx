@@ -10,7 +10,7 @@ import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 const links = [
   { label: 'Home',      href: '/' },
   { label: 'Services',  href: '/#services' },
-  { label: 'Work',      href: '/#work' },
+  { label: 'Work',      href: '/portfolio' },
   { label: 'About',     href: '/about' },
   { label: 'Contact',   href: '/#contact' },
 ]

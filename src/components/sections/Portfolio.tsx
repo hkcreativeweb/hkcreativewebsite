@@ -531,7 +531,7 @@ export function Portfolio() {
         <div className="text-center mt-16">
           <p className="text-slate text-sm mb-5">Want us to do this for your business?</p>
           <motion.a
-            href="#contact"
+            href="/#contact"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-navy text-white text-sm font-semibold hover:bg-navy-dark shadow-lg shadow-navy/15 transition-colors duration-200"

@@ -116,7 +116,7 @@ export function Hero() {
                 Book a Consultation
               </a>
               <a
-                href="#work"
+                href="/portfolio"
                 className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-hairline text-navy text-sm font-medium hover:border-teal/40 hover:bg-mint transition-all duration-200"
               >
                 View Our Work

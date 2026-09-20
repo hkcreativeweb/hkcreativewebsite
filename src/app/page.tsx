@@ -1,7 +1,6 @@
 import { Navbar } from '@/components/Navbar'
 import { Hero } from '@/components/sections/Hero'
 import { PersonalIntro } from '@/components/sections/PersonalIntro'
-import { Portfolio } from '@/components/sections/Portfolio'
 import { TechStack } from '@/components/sections/TechStack'
 import { Services } from '@/components/sections/Services'
 import { SkillsSection } from '@/components/sections/SkillsSection'
@@ -17,7 +16,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <PersonalIntro />
-      <Portfolio />
       <TechStack />
       <Services />
       <SkillsSection />

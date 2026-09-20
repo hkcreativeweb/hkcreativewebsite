@@ -129,7 +129,7 @@ export function AffordableSection() {
                 Book a Consultation <ArrowRight size={15} />
               </motion.a>
               <a
-                href="#work"
+                href="/portfolio"
                 className="flex items-center justify-center gap-2 py-3.5 rounded-xl border border-hairline bg-white text-navy text-sm font-medium hover:border-teal/40 transition-colors duration-200"
               >
                 View Our Work

@@ -16,7 +16,7 @@ export function TechStack() {
           What I Used to Build Them
         </h2>
         <p className="text-slate text-sm text-center max-w-lg mx-auto mb-10">
-          The broader technologies, tools and areas I have experience with as a developer. Individual projects above list their own specific stack.
+          The broader technologies, tools and areas I have experience with as a developer. Individual projects on the portfolio page list their own specific stack.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {stack.map((item) => (
