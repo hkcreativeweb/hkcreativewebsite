@@ -67,7 +67,7 @@ const renovationResolution: PortfolioProject = {
   challenge: 'A growing renovation and construction business needed a professional website that could showcase completed work, explain services clearly, and turn visitors into enquiries.',
   solution: 'A custom-built site with dedicated project galleries, clear service pages and prominent calls-to-action, built for speed and easy updates.',
   technologies: ['Next.js', 'React', 'Tailwind'],
-  liveUrl: 'https://renovationresolution.com',
+  liveUrl: 'https://renovation-resolution1.vercel.app/',
   isConcept: false,
 }
 
@@ -324,7 +324,7 @@ const secondaryProjects: SecondaryProject[] = [
     liveUrl: renovationResolution.liveUrl,
     description: renovationResolution.description,
     content: (
-      <BrowserChrome url="renovationresolution.com">
+      <BrowserChrome url="renovation-resolution1.vercel.app">
         <RRBrowserMockup />
       </BrowserChrome>
     ),
