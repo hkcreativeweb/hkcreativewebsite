@@ -55,7 +55,7 @@ const renovationResolution: PortfolioProject = {
   industry: 'Construction & Home Renovation',
   category: 'Web Design',
   type: 'Full website design & build',
-  description: 'A professional UK based renovation and construction website built to showcase services, completed projects, and the company itself — with clear calls-to-action that turn visitors into enquiries.',
+  description: 'A professional UK based renovation and construction website built to showcase services, completed projects, and the company itself, with clear calls-to-action that turn visitors into enquiries.',
   services: [
     'Modern responsive design',
     'Service-focused structure',

@@ -203,7 +203,7 @@ export default function PricingPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-navy text-lg">Content Production</h3>
-                    <p className="text-slate text-sm mt-1">Per Asset — minimum 5</p>
+                    <p className="text-slate text-sm mt-1">Per asset, minimum 5</p>
                   </div>
                   <div className="text-right">
                     <span className="text-2xl font-bold text-teal-dark">£25–£40</span>
@@ -259,7 +259,7 @@ export default function PricingPage() {
                     'Full filming and editing',
                     'Captions included',
                     'Posting guidance provided',
-                    'Platform optimisation — choose 2 platforms',
+                    'Platform optimisation, choose 2 platforms',
                   ].map((f) => (
                     <li key={f} className="flex items-start gap-2.5 text-sm text-navy">
                       <CheckCircle size={15} className="text-teal mt-0.5 shrink-0" />
@@ -339,13 +339,13 @@ export default function PricingPage() {
                     <span className="text-xs font-bold uppercase tracking-widest text-teal-dark">Ongoing Partnership</span>
                   </div>
                   <h3 className="text-2xl font-bold text-navy mb-2">Full Growth Partnership</h3>
-                  <p className="text-slate text-sm mb-5">Your outsourced marketing system — done for you, end to end.</p>
+                  <p className="text-slate text-sm mb-5">Your outsourced marketing system, done for you from start to finish.</p>
                   <ul className="grid sm:grid-cols-2 gap-2">
                     {[
                       'Done-for-you content production (high-volume short-form video)',
                       'Full strategy and content direction',
                       'Website optimisation and conversion improvements',
-                      'AI automation — DMs, replies, lead capture systems',
+                      'AI automation: DMs, replies, lead capture systems',
                       'Continuous optimisation based on performance',
                     ].map((f) => (
                       <li key={f} className="flex items-start gap-2.5 text-sm text-navy">
@@ -397,12 +397,12 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 text-sm text-slate italic">Pricing quoted based on scope — get in touch to discuss your needs.</p>
+                <p className="mt-6 text-sm text-slate italic">Pricing quoted based on scope. Get in touch to discuss your needs.</p>
               </div>
               <div className="rounded-2xl bg-navy p-8 text-white">
                 <Zap size={32} className="text-teal-light mb-4" />
                 <p className="text-xl font-bold mb-3">Your business runs even when you&apos;re not online.</p>
-                <p className="text-white/70 text-sm leading-relaxed">Stop missing enquiries. Our automation systems capture, respond, and convert leads around the clock — without you lifting a finger.</p>
+                <p className="text-white/70 text-sm leading-relaxed">Stop missing enquiries. Our automation systems capture, respond, and convert leads around the clock, without you lifting a finger.</p>
               </div>
             </div>
           </div>

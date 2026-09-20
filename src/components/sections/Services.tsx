@@ -9,7 +9,7 @@ const services = [
     icon: Globe,
     title: 'Website Design & Development',
     subtitle: 'New builds · Redesigns · Responsive',
-    back: 'Fast, modern websites — new builds or redesigns — built around what your business actually needs and how your customers actually use it.',
+    back: 'Fast, modern websites: new builds or redesigns, built around what your business actually needs and how your customers actually use it.',
     tools: ['Next.js', 'React', 'Tailwind', 'Shopify'],
   },
   {
@@ -30,7 +30,7 @@ const services = [
     icon: Zap,
     title: 'AI Tools & Digital Solutions',
     subtitle: 'Smart tools · Automation · Workflows',
-    back: 'Practical digital tools and automation that save you time — automated replies, simple workflows, and systems that run in the background while you focus on your business.',
+    back: 'Practical digital tools and automation that save you time: automated replies, simple workflows, and systems that run in the background while you focus on your business.',
     tools: ['Zapier', 'Make', 'OpenAI', 'n8n'],
   },
   {
@@ -59,7 +59,7 @@ export function Services() {
             What we do
           </h2>
           <p className="text-slate max-w-lg mx-auto leading-relaxed">
-            A broad range of digital, creative and technology capabilities under one roof — so you&apos;re not piecing it together yourself.
+            A broad range of digital, creative and technology capabilities under one roof, so you&apos;re not piecing it together yourself.
           </p>
         </motion.div>
 
@@ -168,7 +168,7 @@ export function Services() {
               Get professional advice before committing to a full project. A 30-minute call to talk through your business, your current setup and where you want to get to, so you know what&apos;s actually worth investing in.
             </p>
             <p className="text-slate leading-relaxed">
-              From choosing the right website approach to making sense of platforms, tools and systems, we&apos;ll help you make an informed decision — before you spend money on the wrong one.
+              From choosing the right website approach to making sense of platforms, tools and systems, we&apos;ll help you make an informed decision before you spend money on the wrong one.
             </p>
           </div>
           <div className="flex justify-center lg:justify-end">

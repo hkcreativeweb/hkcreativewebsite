@@ -19,7 +19,7 @@ const storyBeats = [
   {
     icon: Users,
     title: 'Different paths, one idea',
-    text: 'HK Creative was founded by a small group of developers and digital creatives who came together from different sectors and different career backgrounds — not a shared career path, but a shared interest in building something of their own.',
+    text: 'HK Creative was founded by a small group of developers and digital creatives who came together from different sectors and different career backgrounds, not a shared career path, but a shared interest in building something of their own.',
   },
   {
     icon: Puzzle,
@@ -29,12 +29,12 @@ const storyBeats = [
   {
     icon: Layers,
     title: 'A simpler way forward',
-    text: 'Some of us had been through changes in the job market or shifts in our own professional circumstances. Rather than letting that hold us back, we wanted to put our skills, creativity and technical knowledge to use — and build something more connected than what was already out there.',
+    text: 'Some of us had been through changes in the job market or shifts in our own professional circumstances. Rather than letting that hold us back, we wanted to put our skills, creativity and technical knowledge to use, and build something more connected than what was already out there.',
   },
   {
     icon: Sprout,
     title: 'What we\'re building today',
-    text: 'HK Creative exists to bring those capabilities together under one roof — websites, content, branding, digital tools and honest technology guidance. The goal was never to build a website and disappear. It\'s to help businesses build a stronger digital foundation, gradually and properly.',
+    text: 'HK Creative exists to bring those capabilities together under one roof: websites, content, branding, digital tools and honest technology guidance. The goal was never to build a website and disappear. It\'s to help businesses build a stronger digital foundation, gradually and properly.',
   },
 ]
 
@@ -108,7 +108,7 @@ export default function OurStoryPage() {
             <div className="mt-10 bg-mint rounded-3xl p-7 lg:p-10">
               <h2 className="text-xl font-bold text-navy mb-3">Building the foundations for organic growth</h2>
               <p className="text-slate leading-relaxed max-w-2xl mb-7">
-                We can&apos;t promise guaranteed growth or guaranteed sales — nobody honestly can. What we can do is help you build the foundations a stronger online presence is made of:
+                We can&apos;t promise guaranteed growth or guaranteed sales. Nobody honestly can. What we can do is help you build the foundations a stronger online presence is made of:
               </p>
               <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl">
                 {foundations.map((f) => (

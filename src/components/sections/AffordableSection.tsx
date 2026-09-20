@@ -67,7 +67,7 @@ export function AffordableSection() {
           >
             <div className="space-y-4 text-slate leading-relaxed">
               <p>
-                We believe every small business deserves a website that looks professional — without paying traditional agency prices.
+                We believe every small business deserves a website that looks professional, without paying traditional agency prices.
               </p>
               <p>
                 Our process keeps costs down without cutting corners: no bloated overhead, no unnecessary mark-ups, just straightforward, professional web design.
@@ -138,7 +138,7 @@ export function AffordableSection() {
 
             {/* Small print */}
             <p className="text-center text-[11px] text-slate/70 leading-relaxed">
-              No specific pricing shown here — every project is quoted based on what your business actually needs.
+              No specific pricing shown here. Every project is quoted based on what your business actually needs.
             </p>
           </motion.div>
         </div>

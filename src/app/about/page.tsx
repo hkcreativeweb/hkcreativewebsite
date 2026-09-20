@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 }
 
 const capabilities = [
-  { icon: Globe,      title: 'Website Design & Development', desc: 'New builds and redesigns — responsive, accessible and built around your users, not just built to look good.' },
+  { icon: Globe,      title: 'Website Design & Development', desc: 'New builds and redesigns. Responsive, accessible and built around your users, not just built to look good.' },
   { icon: Smartphone, title: 'Social Media & Promotional Content', desc: 'Content, promotional graphics and day-to-day management across the platforms that matter to your business.' },
   { icon: Palette,    title: 'Branding & Digital Creative', desc: 'Visual identity, graphics and creative assets that keep your business looking consistent everywhere.' },
   { icon: Zap,        title: 'AI & Digital Solutions', desc: 'Practical tools and automation that save you time, without adding technology you don\'t actually need.' },
@@ -52,8 +52,8 @@ export default function AboutPage() {
                   About HK Creative Web
                 </span>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight tracking-tight mb-6">
-                  A digital creative partner —{' '}
-                  <span className="text-teal">not just a website builder.</span>
+                  A digital creative partner.{' '}
+                  <span className="text-teal">Not just a website builder.</span>
                 </h1>
                 <p className="text-slate text-lg leading-relaxed mb-4">
                   Websites · Social · Branding · Digital Guidance
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 More than a website studio.
               </h2>
               <p className="text-slate leading-relaxed">
-                HK Creative is a digital creative studio helping UK businesses build and manage their online presence. We work across websites, social content, branding, digital tools and technology guidance — so you&apos;re not left finding a different provider for every part of it.
+                HK Creative is a digital creative studio helping UK businesses build and manage their online presence. We work across websites, social content, branding, digital tools and technology guidance, so you&apos;re not left finding a different provider for every part of it.
               </p>
             </div>
 
@@ -158,7 +158,7 @@ export default function AboutPage() {
                   We work with a limited number of clients each month.
                 </h2>
                 <p className="text-slate leading-relaxed mb-4">
-                  Not because we&apos;re small — but because every system we build is hands-on, strategic, and performance-focused.
+                  Not because we&apos;re small, but because every system we build is hands-on, strategic, and performance-focused.
                 </p>
                 <p className="text-slate leading-relaxed">
                   This ensures quality stays high and results stay consistent. Once slots are filled, onboarding closes until the next cycle.
