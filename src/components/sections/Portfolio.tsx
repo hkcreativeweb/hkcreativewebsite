@@ -71,6 +71,76 @@ const renovationResolution: PortfolioProject = {
   isConcept: false,
 }
 
+// ─── Eid Website 2026 — real project ────────────────────────────────────────
+const eidWebsite2026: PortfolioProject = {
+  id: 'eid-website-2026',
+  title: 'Eid Website 2026',
+  client: 'Eid Website 2026',
+  industry: 'Cultural & E-commerce',
+  category: 'Web Design',
+  type: 'Cultural website & e-commerce store',
+  description: 'A digital Eid experience designed to commemorate Eid, inform and educate visitors about its significance, traditions, and cultural practices, with an integrated e-commerce store for browsing and purchasing Eid-related goods.',
+  services: [
+    'Bilingual & multi-language pages',
+    'Interactive quizzes & games',
+    'Integrated e-commerce shop & cart',
+    'Mobile-first responsive design',
+  ],
+  technologies: ['Next.js', 'React', 'Tailwind'],
+  liveUrl: 'https://eid-website-2026.vercel.app/',
+  isConcept: false,
+}
+
+function EidBrowserMockup() {
+  return (
+    <div
+      className="w-full h-full flex flex-col overflow-hidden relative"
+      style={{ background: 'radial-gradient(ellipse at 70% 20%, #1a4731 0%, #0a1a0f 65%)' }}
+    >
+      <div className="absolute top-2 right-6 w-14 h-14 rounded-full" style={{ background: '#d4af37', opacity: 0.9, boxShadow: '0 0 20px rgba(212,175,55,0.35)' }} />
+
+      {/* Nav */}
+      <div className="shrink-0 flex items-center justify-between px-4 py-2.5 relative z-10" style={{ borderBottom: '1px solid rgba(212,175,55,0.15)' }}>
+        <span className="text-[7px] font-black tracking-wide" style={{ color: '#d4af37' }}>
+          Eid <span style={{ color: '#fff' }}>2026</span>
+        </span>
+        <div className="hidden sm:flex gap-2.5 text-[5px] font-semibold tracking-[0.1em] uppercase" style={{ color: 'rgba(255,255,255,0.5)' }}>
+          <span>Story</span><span>Guide</span><span>Quiz</span>
+        </div>
+        <span
+          className="text-[5.5px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
+          style={{ background: '#d4af37', color: '#0a1a0f' }}
+        >
+          Shop
+        </span>
+      </div>
+
+      {/* Hero */}
+      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 relative z-10">
+        <p className="font-black leading-tight" style={{ fontSize: '15px', color: '#fff' }}>
+          Eid <span style={{ color: '#d4af37' }}>Mubarak</span>
+        </p>
+        <p className="mt-1.5 text-[5px] max-w-[200px]" style={{ color: 'rgba(255,255,255,0.55)' }}>
+          Facts, dates, traditions & an Eid gift shop for Muslims worldwide.
+        </p>
+      </div>
+
+      {/* Shop strip */}
+      <div className="shrink-0 grid grid-cols-3 gap-[1.5px] relative z-10" style={{ height: '26%' }}>
+        {[
+          { emoji: '🕌', bg: 'linear-gradient(135deg,#1a4731,#0a1a0f)' },
+          { emoji: '🎁', bg: 'linear-gradient(135deg,#2a5741,#123320)' },
+          { emoji: '📿', bg: 'linear-gradient(135deg,#0a1a0f,#1a4731)' },
+        ].map((s, i) => (
+          <div key={i} className="w-full h-full flex items-center justify-center text-[16px]" style={{ background: s.bg }}>
+            {s.emoji}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function RRBrowserMockup() {
   return (
     <div
@@ -328,6 +398,22 @@ const secondaryProjects: SecondaryProject[] = [
     content: (
       <BrowserChrome url="renovation-resolution1.vercel.app">
         <RRBrowserMockup />
+      </BrowserChrome>
+    ),
+    isEmail: false,
+  },
+  {
+    title: eidWebsite2026.title,
+    category: eidWebsite2026.category,
+    type: eidWebsite2026.type,
+    meta: 'Live project',
+    badge: null,
+    liveUrl: eidWebsite2026.liveUrl,
+    description: eidWebsite2026.description,
+    technologies: eidWebsite2026.technologies,
+    content: (
+      <BrowserChrome url="eid-website-2026.vercel.app">
+        <EidBrowserMockup />
       </BrowserChrome>
     ),
     isEmail: false,
