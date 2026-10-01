@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { preconnect, preload } from 'react-dom'
 import { SplineScene } from '@/components/ui/splite'
 
 const ROBOT_SCENE = 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode'
@@ -28,11 +29,15 @@ function RobotFallback() {
 }
 
 export function Hero() {
+  // Start the network work for the 3D scene as early as possible (during HTML parse), at low priority so text and images win
+  preconnect('https://prod.spline.design', { crossOrigin: 'anonymous' })
+  preload(ROBOT_SCENE, { as: 'fetch', crossOrigin: 'anonymous', fetchPriority: 'low' })
+
   const reduce = useReducedMotion()
   // Defer the heavy 3D runtime until after first paint so text and CTAs load first
   const [ready, setReady] = useState(false)
   useEffect(() => {
-    const id = window.setTimeout(() => setReady(true), 600)
+    const id = window.setTimeout(() => setReady(true), 50)
     return () => window.clearTimeout(id)
   }, [])
 
