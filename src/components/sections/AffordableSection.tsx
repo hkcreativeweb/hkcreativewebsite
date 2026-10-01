@@ -36,16 +36,16 @@ export function AffordableSection() {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-teal/25 text-teal-dark text-[11px] font-bold uppercase tracking-widest mb-5">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white border border-teal/25 text-teal-dark text-[11px] font-bold uppercase tracking-widest mb-5">
             <Tag size={11} /> Transparent Pricing
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-navy leading-tight tracking-tight mb-4">
             Professional web design.<br />
             <span className="text-teal">Without agency-level prices.</span>
           </h2>
@@ -78,7 +78,7 @@ export function AffordableSection() {
             </div>
 
             {/* What's included */}
-            <div className="bg-white border border-hairline rounded-2xl p-6 mt-8 shadow-[0_2px_16px_rgba(23,32,51,0.05)]">
+            <div className="bg-white border border-hairline rounded-lg p-6 mt-8">
               <h3 className="text-navy font-semibold text-sm uppercase tracking-widest mb-5 text-slate">
                 What&apos;s included
               </h3>
@@ -104,7 +104,7 @@ export function AffordableSection() {
             transition={{ duration: 0.65, delay: 0.1 }}
             className="lg:col-span-2 flex flex-col gap-5"
           >
-            <div className="bg-white border border-hairline rounded-2xl p-6 shadow-[0_2px_16px_rgba(23,32,51,0.05)]">
+            <div className="bg-white border border-hairline rounded-lg p-6">
               <p className="text-[10px] text-teal-dark uppercase tracking-[0.2em] font-semibold mb-4">
                 How we keep costs down
               </p>
@@ -124,7 +124,7 @@ export function AffordableSection() {
                 href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center justify-center gap-2 py-4 rounded-xl bg-navy text-white text-sm font-bold shadow-lg shadow-navy/15 hover:bg-navy-dark transition-colors duration-200"
+                className="flex items-center justify-center gap-2 py-4 rounded-xl bg-navy text-white text-sm font-bold hover:bg-navy-dark transition-colors duration-200"
               >
                 Book a Consultation <ArrowRight size={15} />
               </motion.a>

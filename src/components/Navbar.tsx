@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 const links = [
   { label: 'Home',      href: '/' },
@@ -38,6 +37,14 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Escape closes the mobile menu
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
 
@@ -46,7 +53,7 @@ export function Navbar() {
         className={`overflow-hidden transition-all duration-500 ${showBanner ? 'max-h-16' : 'max-h-0'}`}
       >
         <div className="bg-navy text-white py-3 pl-4 pr-10 sm:pr-4 flex items-center justify-center gap-2 sm:gap-4 relative">
-          <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold uppercase tracking-widest shrink-0">
+          <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/10 text-[10px] font-bold uppercase tracking-widest shrink-0">
             Consultation
           </span>
           <span className="text-white/90 font-semibold text-center text-[11px] sm:text-sm">
@@ -54,14 +61,14 @@ export function Navbar() {
           </span>
           <a
             href="#services"
-            className="shrink-0 font-bold text-xs sm:text-sm text-white bg-teal hover:bg-teal-dark px-3 py-1.5 rounded-full transition-colors"
+            className="shrink-0 font-bold text-xs sm:text-sm text-white bg-teal hover:bg-teal-dark px-3 py-1.5 rounded-md transition-colors"
           >
             Find Out More →
           </a>
           <button
             onClick={() => setDismissed(true)}
             aria-label="Dismiss banner"
-            className="absolute right-3 sm:right-4 text-white/60 hover:text-white transition-colors"
+            className="absolute right-1 sm:right-3 p-2 text-white/60 hover:text-white transition-colors"
           >
             <X size={14} />
           </button>
@@ -71,7 +78,7 @@ export function Navbar() {
       {/* ── Main nav ── */}
       <nav
         className={`transition-all duration-300 ${
-          scrolled ? 'bg-cream/90 backdrop-blur-md border-b border-hairline shadow-[0_1px_16px_rgba(23,32,51,0.05)]' : 'bg-transparent'
+          scrolled ? 'bg-cream/90 backdrop-blur-md border-b border-hairline' : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
@@ -85,7 +92,7 @@ export function Navbar() {
               unoptimized
               className="h-7 sm:h-8 w-auto shrink-0"
             />
-            <span className="hidden sm:flex flex-col leading-tight min-w-0">
+            <span className="hidden lg:flex flex-col leading-tight min-w-0">
               <span className="text-sm font-bold tracking-tight text-navy whitespace-nowrap">
                 HK Creative Web
               </span>
@@ -96,7 +103,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
@@ -111,30 +118,27 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-3">
-            {/* Desktop CTA — HoverBorderGradient */}
-            <HoverBorderGradient
-              as="a"
+            <Link
               href={resolveHref('/#contact')}
-              className="hidden md:flex text-sm font-semibold text-white"
-              containerClassName="hidden md:flex"
-              duration={1.2}
+              className="hidden md:inline-flex items-center h-10 px-5 whitespace-nowrap shrink-0 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
             >
               Book a Consultation
-            </HoverBorderGradient>
+            </Link>
 
             {/* Mobile compact CTA */}
             <Link
               href={resolveHref('/#contact')}
               onClick={() => setOpen(false)}
-              className="md:hidden text-xs font-semibold px-3 py-2 rounded-full bg-navy text-white shadow-sm whitespace-nowrap shrink-0"
+              className="md:hidden inline-flex items-center h-10 text-xs font-semibold px-3 rounded-md bg-navy text-white shadow-sm whitespace-nowrap shrink-0"
             >
               Book a Consultation
             </Link>
 
             <button
-              className="md:hidden text-slate hover:text-navy"
+              className="md:hidden p-2 -mr-2 text-slate hover:text-navy"
               onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -161,7 +165,7 @@ export function Navbar() {
           <Link
             href={resolveHref('/#contact')}
             onClick={() => setOpen(false)}
-            className="mt-6 flex items-center justify-center text-sm font-semibold py-3.5 rounded-full bg-navy text-white shadow-sm"
+            className="mt-6 flex items-center justify-center text-sm font-semibold h-12 rounded-md bg-navy text-white shadow-sm"
           >
             Book a Consultation
           </Link>

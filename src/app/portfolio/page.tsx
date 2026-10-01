@@ -4,7 +4,7 @@ import { Portfolio } from '@/components/sections/Portfolio'
 import { Footer } from '@/components/Footer'
 
 const title = 'Portfolio | HK Creative Web'
-const description = 'Real projects built by HK Creative Web, including Fuel Crisis England and Renovation Resolution.'
+const description = 'Real projects built by HK Creative Web, including Fuel Crisis England, Renovation Resolution, Sterling Transfers and more.'
 
 export const metadata: Metadata = {
   title,

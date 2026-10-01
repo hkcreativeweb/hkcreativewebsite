@@ -58,13 +58,12 @@ export default function OurStoryPage() {
 
         {/* ══════════════════ OUR STORY — editorial timeline ══════════════════ */}
         <section className="bg-cream pt-16 pb-20 lg:pt-24 lg:pb-28 relative overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-[450px] h-[450px] rounded-full bg-mint/70 blur-[120px] pointer-events-none" />
           <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="max-w-2xl mb-14">
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-5 px-3 py-1.5 rounded-full bg-mint border border-teal/20">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-5 px-3 py-1.5 rounded-md bg-mint border border-teal/20">
                 Our Story
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-navy mb-6 tracking-tight leading-tight">
+              <h1 className="text-3xl md:text-4xl font-bold text-navy mb-6 tracking-tight leading-tight">
                 Built by people who&apos;d seen the industry from the other side.
               </h1>
               <p className="text-slate leading-relaxed">
@@ -73,7 +72,7 @@ export default function OurStoryPage() {
             </div>
 
             {/* Timeline card */}
-            <div className="bg-white rounded-3xl border border-hairline shadow-[0_4px_28px_rgba(23,32,51,0.06)] p-7 lg:p-12">
+            <div className="bg-white rounded-lg border border-hairline p-7 lg:p-12">
               <div className="space-y-10">
                 {storyBeats.map((beat, i) => {
                   const Icon = beat.icon
@@ -105,7 +104,7 @@ export default function OurStoryPage() {
             </div>
 
             {/* Organic growth foundations — soft mint accent box */}
-            <div className="mt-10 bg-mint rounded-3xl p-7 lg:p-10">
+            <div className="mt-10 bg-mint rounded-lg p-7 lg:p-10">
               <h2 className="text-xl font-bold text-navy mb-3">Building the foundations for organic growth</h2>
               <p className="text-slate leading-relaxed max-w-2xl mb-7">
                 We can&apos;t promise guaranteed growth or guaranteed sales. Nobody honestly can. What we can do is help you build the foundations a stronger online presence is made of:
@@ -134,13 +133,13 @@ export default function OurStoryPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-navy hover:bg-navy-dark text-white font-bold text-sm transition-colors duration-200 shadow-lg shadow-navy/15"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-navy hover:bg-navy-dark text-white font-bold text-sm transition-colors duration-200"
               >
                 Book a Consultation <ArrowRight size={16} />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-hairline bg-cream text-navy hover:border-teal/40 font-semibold text-sm transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md border border-hairline bg-cream text-navy hover:border-teal/40 font-semibold text-sm transition-colors duration-200"
               >
                 About Us
               </Link>

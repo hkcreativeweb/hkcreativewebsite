@@ -69,12 +69,11 @@ export default function PricingPage() {
 
         {/* ── Hero ── */}
         <section className="relative overflow-hidden bg-cream pt-16 pb-20 lg:pt-24 lg:pb-24 text-center">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-mint/70 blur-[120px] pointer-events-none" />
           <div className="max-w-3xl mx-auto px-6 relative z-10">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-6 px-3 py-1.5 rounded-full bg-mint border border-teal/20">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-6 px-3 py-1.5 rounded-md bg-mint border border-teal/20">
               Pricing
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy tracking-tight mb-5">
+            <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-navy tracking-tight mb-5">
               Simple, honest pricing.
             </h1>
             <p className="text-slate text-lg leading-relaxed mb-3">
@@ -89,9 +88,9 @@ export default function PricingPage() {
         {/* ── Digital & Technology Consultation — the starting point for everything below ── */}
         <section className="bg-white py-20 lg:py-24">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="rounded-3xl border border-teal/20 bg-mint p-8 lg:p-10 grid lg:grid-cols-5 gap-8 items-center">
+            <div className="rounded-lg border border-teal/20 bg-mint p-8 lg:p-10 grid lg:grid-cols-5 gap-8 items-center">
               <div className="lg:col-span-3">
-                <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-teal-dark bg-white px-3 py-1.5 rounded-full mb-4">
+                <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-teal-dark bg-white px-3 py-1.5 rounded-md mb-4">
                   <Compass size={12} /> Start Here
                 </span>
                 <h2 className="text-2xl md:text-3xl font-bold text-navy tracking-tight mb-3">
@@ -107,7 +106,7 @@ export default function PricingPage() {
               <div className="lg:col-span-2 flex justify-center lg:justify-end">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200 shadow-lg shadow-navy/15"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
                 >
                   Book a Consultation <ArrowRight size={15} />
                 </Link>
@@ -126,7 +125,7 @@ export default function PricingPage() {
               <h2 className="text-2xl md:text-3xl font-bold text-navy tracking-tight">Website Design &amp; Development</h2>
             </div>
             <div className="max-w-2xl">
-              <div className="rounded-2xl border border-hairline p-7 bg-white">
+              <div className="rounded-lg border border-hairline p-7 bg-white">
                 <h3 className="font-bold text-navy text-lg mb-1">Quoted individually, every time</h3>
                 <p className="text-slate text-sm mt-1 mb-5">No fixed packages, no hidden extras</p>
                 <p className="text-slate text-sm leading-relaxed mb-5">
@@ -147,7 +146,7 @@ export default function PricingPage() {
                 </ul>
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-navy hover:bg-navy-dark text-white font-semibold text-sm transition-colors duration-200"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-navy hover:bg-navy-dark text-white font-semibold text-sm transition-colors duration-200"
                 >
                   Get a Quote <ArrowRight size={15} />
                 </Link>
@@ -170,7 +169,7 @@ export default function PricingPage() {
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               {/* Shoot session */}
-              <div className="rounded-2xl border border-hairline p-7 bg-[#F5F6F4]">
+              <div className="rounded-lg border border-hairline p-7 bg-[#F5F6F4]">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-navy text-lg">Content Shoot Session</h3>
@@ -199,7 +198,7 @@ export default function PricingPage() {
               </div>
 
               {/* Per asset */}
-              <div className="rounded-2xl border border-hairline p-7 bg-[#F5F6F4]">
+              <div className="rounded-lg border border-hairline p-7 bg-[#F5F6F4]">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-navy text-lg">Content Production</h3>
@@ -240,7 +239,7 @@ export default function PricingPage() {
               <h2 className="text-2xl md:text-3xl font-bold text-navy tracking-tight">Visibility and Growth Systems</h2>
             </div>
             <div className="max-w-2xl">
-              <div className="rounded-2xl border border-hairline p-7 bg-white">
+              <div className="rounded-lg border border-hairline p-7 bg-white">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-navy text-lg">Business Growth System</h3>
@@ -291,12 +290,12 @@ export default function PricingPage() {
               {monthlyPlans.map((plan) => (
                 <div
                   key={plan.name}
-                  className={`relative rounded-2xl p-7 flex flex-col bg-white ${
+                  className={`relative rounded-lg p-7 flex flex-col bg-white ${
                     plan.highlight ? 'border-2 border-teal shadow-2xl shadow-teal/20 scale-[1.02]' : 'border border-hairline'
                   }`}
                 >
                   {plan.badge && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-teal text-white text-xs font-bold uppercase tracking-wide shadow-lg">
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-md bg-teal text-white text-xs font-bold uppercase tracking-wide shadow-lg">
                       {plan.badge}
                     </span>
                   )}
@@ -331,7 +330,7 @@ export default function PricingPage() {
             </div>
 
             {/* Full Growth Partnership */}
-            <div className="mt-8 rounded-2xl border border-hairline bg-white p-8">
+            <div className="mt-8 rounded-lg border border-hairline bg-white p-8">
               <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
@@ -360,7 +359,7 @@ export default function PricingPage() {
                   <div className="text-slate text-sm mb-6">/month</div>
                   <Link
                     href="/#contact"
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-teal hover:bg-teal-dark text-white font-bold text-sm transition-colors duration-200 shadow-lg shadow-teal/20"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-teal hover:bg-teal-dark text-white font-bold text-sm transition-colors duration-200 shadow-lg shadow-teal/20"
                   >
                     Apply now <ArrowRight size={16} />
                   </Link>
@@ -399,7 +398,7 @@ export default function PricingPage() {
                 </ul>
                 <p className="mt-6 text-sm text-slate italic">Pricing quoted based on scope. Get in touch to discuss your needs.</p>
               </div>
-              <div className="rounded-2xl bg-navy p-8 text-white">
+              <div className="rounded-lg bg-navy p-8 text-white">
                 <Zap size={32} className="text-teal-light mb-4" />
                 <p className="text-xl font-bold mb-3">Your business runs even when you&apos;re not online.</p>
                 <p className="text-white/70 text-sm leading-relaxed">Stop missing enquiries. Our automation systems capture, respond, and convert leads around the clock, without you lifting a finger.</p>
@@ -418,7 +417,7 @@ export default function PricingPage() {
               <h2 className="text-2xl md:text-3xl font-bold text-navy tracking-tight">Website Intelligence Audit</h2>
             </div>
             <div className="max-w-2xl">
-              <div className="rounded-2xl border border-hairline p-7 bg-white">
+              <div className="rounded-lg border border-hairline p-7 bg-white">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <h3 className="font-bold text-navy text-lg">Website Growth Report</h3>
@@ -461,7 +460,7 @@ export default function PricingPage() {
             </p>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-navy hover:bg-navy-dark text-white font-bold text-sm transition-colors duration-200 shadow-lg shadow-navy/15"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-md bg-navy hover:bg-navy-dark text-white font-bold text-sm transition-colors duration-200"
             >
               Book a Consultation <ArrowRight size={16} />
             </Link>

@@ -1,142 +1,30 @@
 'use client'
 
-import { useEffect, useState, type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Heart, Bookmark, Share2, MessageCircle, Sparkles, Palette } from 'lucide-react'
+import Link from 'next/link'
+import { featuredProject, getProject, tiktokCampaign, eidProject, templateProject } from '@/data/projects'
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const
 
 // ─── Portfolio data model — typed so future real projects drop straight in ──
 export type PortfolioCategory = 'Web Design' | 'Branding' | 'Promotional Graphics' | 'Social Media Design' | 'Digital Design'
 
-export interface PortfolioProject {
-  id: string
-  title: string
-  client?: string
-  industry?: string
-  category: PortfolioCategory
-  type: string
-  description: string
-  services: string[]
-  challenge?: string
-  solution?: string
-  /** Only ever set this when a genuine, verifiable result exists. */
-  result?: string
-  technologies?: string[]
-  liveUrl?: string
-  isConcept?: boolean
-}
-
-// ─── Fuel Crisis England — featured, real project ───────────────────────────
-const fuelCrisisEngland: PortfolioProject = {
-  id: 'fuel-crisis-england',
-  title: 'Fuel Crisis England',
-  client: 'Fuel Crisis England',
-  industry: 'Informative',
-  category: 'Web Design',
-  type: 'Informative Website',
-  description: 'An informative website providing accessible information and resources about fuel prices and fuel-related issues in England.',
-  services: [
-    'Live UK fuel price tracking',
-    'Interactive cost breakdown tool',
-    'Official government & ONS data',
-    'Weekly price updates',
-  ],
-  technologies: ['Next.js', 'React', 'Tailwind'],
-  liveUrl: 'https://www.fuelcrisisengland.co.uk/',
-  isConcept: false,
-}
-
-// ─── Renovation Resolution — real project ───────────────────────────────────
-const renovationResolution: PortfolioProject = {
-  id: 'renovation-resolution',
-  title: 'Renovation Resolution',
-  client: 'Renovation Resolution',
-  industry: 'Construction & Home Renovation',
-  category: 'Web Design',
-  type: 'Full website design & build',
-  description: 'A professional UK based renovation and construction website built to showcase services, completed projects, and the company itself, with clear calls-to-action that turn visitors into enquiries.',
-  services: [
-    'Modern responsive design',
-    'Service-focused structure',
-    'Project portfolio presentation',
-    'Mobile-friendly design',
-    'Professional branding',
-    'Contact & enquiry forms',
-  ],
-  challenge: 'A growing renovation and construction business needed a professional website that could showcase completed work, explain services clearly, and turn visitors into enquiries.',
-  solution: 'A custom-built site with dedicated project galleries, clear service pages and prominent calls-to-action, built for speed and easy updates.',
-  technologies: ['Next.js', 'React', 'Tailwind'],
-  liveUrl: 'https://renovation-resolution1.vercel.app/',
-  isConcept: false,
-}
-
-function RRBrowserMockup() {
-  return (
-    <div
-      className="w-full h-full flex flex-col overflow-hidden relative"
-      style={{ background: 'linear-gradient(160deg, #0b2216 0%, #153f2a 55%, #0b2216 100%)' }}
-    >
-      <div className="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-[#7fa32a]/20 blur-[50px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-48 h-48 rounded-full bg-[#a5c3a5]/10 blur-[60px] pointer-events-none" />
-
-      {/* Nav */}
-      <div className="shrink-0 flex items-center justify-between px-4 py-2.5 relative z-10" style={{ borderBottom: '1px solid rgba(197,215,195,0.15)' }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/portfolio/rr-logo-light.svg" alt="Renovation Resolution" className="h-3" />
-        <div className="hidden sm:flex gap-3 text-[5.5px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#a5c3a5' }}>
-          <span>Services</span><span>Projects</span><span>About</span><span>Contact</span>
-        </div>
-        <span
-          className="text-[5.5px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
-          style={{ background: '#c3d7c3', color: '#0b2216' }}
-        >
-          Get a Quote
-        </span>
-      </div>
-
-      {/* Hero */}
-      <div className="flex-1 flex flex-col items-center justify-center text-center px-6 relative z-10">
-        <span
-          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-2.5 text-[5px] font-semibold"
-          style={{ border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(255,255,255,0.08)', color: '#fff' }}
-        >
-          Residential &amp; Commercial Specialists
-        </span>
-        <p className="font-black leading-tight" style={{ fontSize: '13px', color: '#fff' }}>
-          Building Quality,<br />
-          <span style={{ color: '#a5c3a5' }}>Creating Trust</span>
-        </p>
-        <p className="mt-2 text-[5px] max-w-[220px]" style={{ color: 'rgba(255,255,255,0.65)' }}>
-          Premium renovations, extensions and building work delivered on time, on budget, built to last.
-        </p>
-        <div className="flex items-center gap-2 mt-3">
-          <span className="text-[5px] font-bold px-3 py-1.5 rounded-md" style={{ background: '#c3d7c3', color: '#0b2216' }}>
-            Request Your Free Quote
-          </span>
-          <span className="text-[5px] font-semibold px-3 py-1.5 rounded-md" style={{ border: '1px solid rgba(255,255,255,0.25)', color: '#fff' }}>
-            Speak With Our Team
-          </span>
-        </div>
-      </div>
-
-      {/* Project strip */}
-      <div className="shrink-0 grid grid-cols-3 gap-[1.5px] relative z-10" style={{ height: '26%' }}>
-        {['/images/portfolio/rr-kitchen.jpg', '/images/portfolio/rr-bathroom.jpg', '/images/portfolio/rr-extension.jpg'].map((src) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img key={src} src={src} alt="Renovation Resolution completed project" className="w-full h-full object-cover" />
-        ))}
-      </div>
-    </div>
-  )
-}
+// Project details live in @/data/projects (single source of truth); this file only handles presentation.
+const fuelCrisisEngland = featuredProject
 
 // ─── Social media — real client work ───────────────────────────────────────
-const socialVideos = [
-  { img: '/images/social-pathaans.jpeg', name: "Pathaan's", sub: 'Afghan & Pakistani Cuisine', likes: '3,627', comments: '130', saves: '970', shares: '1,885', views: '100k+' },
-  { img: '/images/social-adore.jpeg', name: 'Adore Kitchen', sub: 'British Asian Kitchen, Harrow', likes: '2,607', comments: '102', saves: '833', shares: '1,944', views: '70k+' },
-  { img: '/images/social-cookiejar.jpeg', name: 'Cookie Jar London', sub: 'Artisan Cookies, Slough', likes: '2,961', comments: '35', saves: '628', shares: '1,520', views: '85k+' },
-]
+const metric = (r: { metrics: { label: string; value: string }[] }, l: string) => r.metrics.find((m) => m.label === l)?.value ?? ''
+const socialVideos = (tiktokCampaign.results ?? []).map((r, i) => ({
+  img: tiktokCampaign.gallery?.[i]?.src ?? '',
+  name: r.name,
+  views: metric(r, 'Views'),
+  likes: metric(r, 'Likes'),
+  comments: metric(r, 'Comments'),
+  saves: metric(r, 'Saves'),
+  shares: metric(r, 'Shares'),
+}))
 
 function SocialFrame() {
   return (
@@ -145,7 +33,7 @@ function SocialFrame() {
         <div key={v.name} className="flex flex-col items-center gap-1.5" style={{ width: '31%' }}>
           <div className="relative w-full rounded-xl border-[2px] border-[#3a3a3c] bg-black overflow-hidden" style={{ aspectRatio: '9/17' }}>
             <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-5 h-1.5 bg-black rounded-full z-20" />
-            <div className="absolute top-3 left-1 z-20 bg-black/70 rounded-full px-1.5 py-0.5 flex items-center gap-0.5">
+            <div className="absolute top-3 left-1 z-20 bg-black/70 rounded-md px-1.5 py-0.5 flex items-center gap-0.5">
               <span className="text-[5px] font-black text-white">{v.views}</span>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -313,31 +201,52 @@ interface SecondaryProject {
   liveUrl?: string
   description?: string
   technologies?: string[]
+  caseStudy?: string
+  caseLabel?: string
+}
+
+const sterling = getProject('sterling-transfers')!
+const hotFoodHouse = getProject('hot-food-house')!
+const renovation = getProject('renovation-resolution')!
+
+function ProjectShot({ p }: { p: { title: string; url?: string; image?: string; alt?: string } }) {
+  return (
+    <BrowserChrome url={p.url ? new URL(p.url).host : p.title}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={p.image} alt={p.alt ?? p.title} loading="lazy" className="w-full h-full object-cover object-top" />
+    </BrowserChrome>
+  )
 }
 
 const secondaryProjects: SecondaryProject[] = [
-  {
-    title: renovationResolution.title,
-    category: renovationResolution.category,
-    type: `${renovationResolution.industry} Website`,
-    meta: 'Live project',
-    badge: null,
-    liveUrl: renovationResolution.liveUrl,
-    description: renovationResolution.description,
-    technologies: renovationResolution.technologies,
-    content: (
-      <BrowserChrome url="renovation-resolution1.vercel.app">
-        <RRBrowserMockup />
-      </BrowserChrome>
-    ),
+  ...[
+    { p: renovation, meta: 'Live project', badge: null },
+    { p: eidProject, meta: 'Live project', badge: null },
+    { p: sterling, meta: 'Live project', badge: null },
+    { p: hotFoodHouse, meta: 'Demo build', badge: 'Demo' },
+    { p: templateProject, meta: 'Template demo', badge: 'Template' },
+  ].map(({ p, meta, badge }): SecondaryProject => ({
+    title: p.title,
+    category: 'Web Design',
+    type: p.type,
+    meta,
+    badge,
+    liveUrl: p.url,
+    description: p.description,
+    technologies: p.technologies,
+    caseStudy: 'slug' in p ? p.slug : undefined,
+    content: <ProjectShot p={p} />,
     isEmail: false,
-  },
+  })),
   {
     title: 'Local Restaurant TikToks',
     category: 'Social Media Design',
     type: 'Social Media Management',
     meta: '70k–100k+ views · 2025',
     badge: null,
+    description: tiktokCampaign.description,
+    caseStudy: tiktokCampaign.slug,
+    caseLabel: 'View Documented Results',
     content: <SocialFrame />,
     isEmail: false,
   },
@@ -371,36 +280,31 @@ const secondaryProjects: SecondaryProject[] = [
 ]
 
 export function Portfolio() {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-  if (!mounted) return null
-
   return (
     <section id="work" className="bg-cream py-20 lg:py-28 relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-mint/60 blur-[130px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-teal/25 bg-mint text-teal-dark text-[11px] font-semibold uppercase tracking-widest mb-5">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-teal/25 bg-mint text-teal-dark text-[11px] font-semibold uppercase tracking-widest mb-5">
             Our Work
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-navy mb-3 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 tracking-tight">
             What I&apos;ve built
           </h2>
           <p className="text-slate max-w-md mx-auto text-sm leading-relaxed">
-            Real projects, real results. This is the standard every client gets.
+            Websites and digital projects built by HK Creative.
           </p>
         </motion.div>
 
         {/* ── Featured project: Fuel Crisis England ── */}
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease }}
@@ -411,35 +315,35 @@ export function Portfolio() {
             <span className="text-[11px] font-bold uppercase tracking-widest text-teal-dark">Featured Project</span>
           </div>
 
-          <div className="rounded-3xl bg-white border border-hairline shadow-[0_4px_28px_rgba(23,32,51,0.06)] p-6 lg:p-10 grid lg:grid-cols-5 gap-10 items-center">
+          <div className="rounded-lg bg-white border border-hairline p-6 lg:p-10 grid lg:grid-cols-5 gap-10 items-center">
 
             {/* Device */}
             <div className="lg:col-span-3 relative">
               <motion.div
                 whileHover={{ scale: 1.015 }}
                 transition={{ duration: 0.4, ease }}
-                className="rounded-t-xl shadow-lg shadow-navy/10"
-                style={{ aspectRatio: '16/10' }}
+                className="rounded-t-xl"
+                style={{ aspectRatio: '5 / 3' }}
               >
                 <BrowserChrome url="fuelcrisisengland.co.uk">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/portfolio/fce-og.png" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
+                  <img src="/images/portfolio/fce-home.png" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
                 </BrowserChrome>
               </motion.div>
             </div>
 
             {/* Info */}
             <div className="lg:col-span-2 pt-10 sm:pt-0">
-              <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-teal-dark bg-mint border border-teal/20 rounded-full px-3 py-1 mb-4">
-                {fuelCrisisEngland.industry} Website
+              <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-teal-dark bg-mint border border-teal/20 rounded-md px-3 py-1 mb-4">
+                {fuelCrisisEngland.type}
               </span>
               <h3 className="text-2xl lg:text-3xl font-bold text-navy mb-3 tracking-tight">{fuelCrisisEngland.title}</h3>
               <p className="text-slate text-sm leading-relaxed mb-6">
                 {fuelCrisisEngland.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                {fuelCrisisEngland.services.map((f) => (
-                  <span key={f} className="text-[11px] font-medium text-navy bg-[#F5F6F4] border border-hairline rounded-full px-3 py-1.5">
+                {fuelCrisisEngland.features.map((f) => (
+                  <span key={f} className="text-[11px] font-medium text-navy bg-[#F5F6F4] border border-hairline rounded-md px-3 py-1.5">
                     {f}
                   </span>
                 ))}
@@ -452,11 +356,14 @@ export function Portfolio() {
                   ))}
                 </div>
               )}
+              <Link href={`/work/${fuelCrisisEngland.slug}`} className="inline-flex items-center gap-2 mr-6 py-3.5 text-sm font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
+                View Case Study <ArrowRight size={15} aria-hidden="true" />
+              </Link>
               <a
-                href={fuelCrisisEngland.liveUrl}
+                href={fuelCrisisEngland.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
               >
                 Visit Website <ArrowUpRight size={15} aria-hidden="true" />
               </a>
@@ -465,23 +372,23 @@ export function Portfolio() {
         </motion.div>
 
         {/* ── Secondary work grid ── */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {secondaryProjects.map((p, i) => (
             <motion.div
               key={p.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.55, delay: i * 0.08, ease }}
               whileHover={{ y: -4 }}
-              className="rounded-2xl bg-white border border-hairline overflow-hidden group shadow-[0_2px_12px_rgba(23,32,51,0.04)] hover:border-teal/25 transition-colors duration-300"
+              className="rounded-lg bg-white border border-hairline overflow-hidden group hover:border-teal/25 transition-colors duration-300"
             >
               <div className={`relative overflow-hidden ${p.isEmail ? 'bg-white' : ''}`} style={{ aspectRatio: p.title.includes('TikTok') ? '4/5' : '16/11' }}>
                 <div className="w-full h-full transition-transform duration-500 group-hover:scale-[1.04]">
                   {p.content}
                 </div>
                 {p.badge && (
-                  <span className="absolute top-2.5 right-2.5 text-[9px] font-bold uppercase tracking-wide bg-navy/85 backdrop-blur-sm text-white rounded-full px-2 py-1">
+                  <span className="absolute top-2.5 right-2.5 text-[9px] font-bold uppercase tracking-wide bg-navy/85 backdrop-blur-sm text-white rounded-md px-2 py-1">
                     {p.badge}
                   </span>
                 )}
@@ -500,6 +407,11 @@ export function Portfolio() {
                     ))}
                   </div>
                 )}
+                {p.caseStudy && (
+                  <Link href={`/work/${p.caseStudy}`} className="inline-flex items-center gap-1.5 mt-3 mr-5 text-xs font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
+                    {p.caseLabel ?? 'View Case Study'} <ArrowRight size={13} aria-hidden="true" />
+                  </Link>
+                )}
                 {p.liveUrl && (
                   <a
                     href={p.liveUrl}
@@ -516,14 +428,14 @@ export function Portfolio() {
 
           {/* Branding & promotional graphics — honest placeholder, not fake work */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: secondaryProjects.length * 0.08, ease }}
-            className="rounded-2xl bg-white border border-dashed border-hairline overflow-hidden flex flex-col"
+            className="rounded-lg bg-white border border-dashed border-hairline overflow-hidden flex flex-col"
           >
             <div className="flex-1 flex flex-col items-center justify-center text-center gap-3 p-6" style={{ aspectRatio: '16/11' }}>
-              <div className="w-12 h-12 rounded-2xl bg-mint flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-mint flex items-center justify-center">
                 <Palette size={22} className="text-teal" aria-hidden="true" />
               </div>
               <p className="text-navy font-semibold text-sm">Branding &amp; Promotional Graphics</p>
@@ -544,7 +456,7 @@ export function Portfolio() {
             href="/#contact"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-navy text-white text-sm font-semibold hover:bg-navy-dark shadow-lg shadow-navy/15 transition-colors duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
           >
             Book a Consultation <ArrowRight size={15} />
           </motion.a>

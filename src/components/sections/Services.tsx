@@ -2,43 +2,36 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Globe, Palette, Zap, RotateCcw, Smartphone, Compass, ArrowRight, X } from 'lucide-react'
+import { Globe, ShoppingBag, Zap, RotateCcw, Smartphone, Compass, ArrowRight, X } from 'lucide-react'
 
 const services = [
   {
     icon: Globe,
-    title: 'Website Design & Development',
-    subtitle: 'New builds · Redesigns · Responsive',
-    back: 'Fast, modern websites: new builds or redesigns, built around what your business actually needs and how your customers actually use it.',
-    tools: ['Next.js', 'React', 'Tailwind', 'Shopify'],
+    title: 'Websites',
+    subtitle: 'Business sites · Redesigns · Responsive',
+    back: 'Responsive business websites designed and developed around your business, so customers can find what they need and get in touch.',
+    tools: ['Next.js', 'React', 'Tailwind'],
+  },
+  {
+    icon: ShoppingBag,
+    title: 'E-commerce',
+    subtitle: 'Online stores · Ordering',
+    back: 'Online stores and ordering experiences, so customers can browse your products or menu and buy without friction.',
+    tools: ['Shopify'],
   },
   {
     icon: Smartphone,
-    title: 'Social Media & Promotional Content',
-    subtitle: 'Content · Promotional graphics · Growth',
-    back: 'Social content, promotional graphics and day-to-day management across TikTok, Instagram and LinkedIn, built to support your wider brand.',
+    title: 'Content & Social',
+    subtitle: 'Social content · Campaign support',
+    back: 'Digital content, social assets and campaign support that keep your business visible across TikTok, Instagram and LinkedIn.',
     tools: ['TikTok', 'Instagram', 'LinkedIn'],
   },
   {
-    icon: Palette,
-    title: 'Branding & Digital Creative',
-    subtitle: 'Identity · Graphics · Digital creative',
-    back: 'Logos, colours, typography and the wider visual identity your business needs, plus the digital creative assets to back it up, consistent everywhere.',
-    tools: ['Illustrator', 'Photoshop', 'Figma'],
-  },
-  {
     icon: Zap,
-    title: 'AI Tools & Digital Solutions',
-    subtitle: 'Smart tools · Automation · Workflows',
-    back: 'Practical digital tools and automation that save you time: automated replies, simple workflows, and systems that run in the background while you focus on your business.',
+    title: 'AI Automation',
+    subtitle: 'Workflows · Automated replies',
+    back: 'Practical automation for repetitive business processes, such as automated replies and simple workflows, so routine tasks take less of your time.',
     tools: ['Zapier', 'Make', 'OpenAI', 'n8n'],
-  },
-  {
-    icon: Compass,
-    title: 'Digital & Technology Consultation',
-    subtitle: 'Practical, honest guidance',
-    back: 'Talk through your business, your current setup and your goals. We help you work out what digital solutions actually make sense before you spend money on the wrong one.',
-    cta: 'Book Consultation',
   },
 ]
 
@@ -49,13 +42,13 @@ export function Services() {
     <section id="services" className="bg-white py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-navy tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-tight mb-4">
             What we do
           </h2>
           <p className="text-slate max-w-lg mx-auto leading-relaxed">
@@ -63,7 +56,7 @@ export function Services() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, i) => {
             const Icon = service.icon
             const isFlipped = flipped === i
@@ -71,7 +64,7 @@ export function Services() {
             return (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
@@ -90,10 +83,10 @@ export function Services() {
                     aria-controls={backId}
                     aria-hidden={isFlipped}
                     tabIndex={isFlipped ? -1 : 0}
-                    className="absolute inset-0 w-full h-full rounded-2xl bg-white border border-hairline flex flex-col items-center justify-center gap-4 p-6 text-left cursor-pointer"
+                    className="absolute inset-0 w-full h-full rounded-lg bg-white border border-hairline flex flex-col items-center justify-center gap-4 p-6 text-left cursor-pointer"
                     style={{ backfaceVisibility: 'hidden' }}
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-mint flex items-center justify-center">
+                    <div className="w-14 h-14 rounded-lg bg-mint flex items-center justify-center">
                       <Icon size={26} className="text-teal" aria-hidden="true" />
                     </div>
                     <div className="text-center">
@@ -109,7 +102,7 @@ export function Services() {
                   <div
                     id={backId}
                     aria-hidden={!isFlipped}
-                    className="absolute inset-0 rounded-2xl bg-navy flex flex-col justify-between p-6"
+                    className="absolute inset-0 rounded-lg bg-navy flex flex-col justify-between p-6"
                     style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
                   >
                     <button
@@ -127,21 +120,11 @@ export function Services() {
                       </div>
                       <p className="text-white/85 text-sm leading-relaxed">{service.back}</p>
                     </div>
-                    {service.tools ? (
-                      <div className="flex flex-wrap gap-1.5">
-                        {service.tools.map((t) => (
-                          <span key={t} className="px-2.5 py-1 text-[10px] font-medium rounded-full bg-white/10 text-white">{t}</span>
-                        ))}
-                      </div>
-                    ) : (
-                      <a
-                        href="#contact"
-                        tabIndex={isFlipped ? 0 : -1}
-                        className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold bg-teal hover:bg-teal-dark text-white px-3.5 py-2 rounded-full transition-colors duration-200 self-start"
-                      >
-                        {service.cta} <ArrowRight size={12} aria-hidden="true" />
-                      </a>
-                    )}
+                    <div className="flex flex-wrap gap-1.5">
+                      {service.tools.map((t) => (
+                        <span key={t} className="px-2.5 py-1 text-[10px] font-medium rounded-md bg-white/10 text-white">{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -151,14 +134,14 @@ export function Services() {
 
         {/* ── Consultation spotlight ── */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-8 rounded-2xl bg-mint border border-teal/15 p-8 lg:p-10 grid lg:grid-cols-3 gap-8 items-center"
+          className="mt-8 rounded-lg bg-mint border border-teal/15 p-8 lg:p-10 grid lg:grid-cols-3 gap-8 items-center"
         >
           <div className="lg:col-span-2">
-            <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-teal-dark bg-white px-3 py-1.5 rounded-full mb-4">
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-teal-dark bg-white px-3 py-1.5 rounded-md mb-4">
               <Compass size={12} aria-hidden="true" /> Digital &amp; Technology Consultation
             </span>
             <h3 className="text-2xl md:text-3xl font-bold text-navy tracking-tight mb-3">
@@ -174,7 +157,7 @@ export function Services() {
           <div className="flex justify-center lg:justify-end">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200 shadow-lg shadow-navy/15"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
             >
               Book a Consultation <ArrowRight size={15} aria-hidden="true" />
             </a>

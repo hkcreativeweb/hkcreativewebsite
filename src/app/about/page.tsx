@@ -43,39 +43,37 @@ export default function AboutPage() {
 
         {/* ── Hero ── */}
         <section className="relative overflow-hidden bg-cream pt-16 pb-20 lg:pt-24 lg:pb-28">
-          <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-mint/70 blur-[120px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
                 <Image src="/images/logo-icon.png" alt="HK Creative Web" width={52} height={52} unoptimized className="h-10 w-auto mb-5 opacity-90" />
-                <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-6 px-3 py-1.5 rounded-full bg-mint border border-teal/20">
+                <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-6 px-3 py-1.5 rounded-md bg-mint border border-teal/20">
                   About HK Creative Web
                 </span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight tracking-tight mb-6">
-                  A digital creative partner.{' '}
-                  <span className="text-teal">Not just a website builder.</span>
+                <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold text-navy leading-tight tracking-tight mb-6">
+                  Websites built by someone{' '}
+                  <span className="text-teal">who actually builds them.</span>
                 </h1>
                 <p className="text-slate text-lg leading-relaxed mb-4">
                   Websites · Social · Branding · Digital Guidance
                 </p>
                 <p className="text-slate leading-relaxed mb-8">
-                  Most businesses end up with a different provider for every part of their digital presence. We built HK Creative to bring those capabilities together in one place, with honest guidance along the way.
+                  HK Creative is the freelance web development and creative practice of Hamza. The websites, content and digital systems shown in our work are designed and built directly, from the first conversation through to launch.
                 </p>
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-navy hover:bg-navy-dark text-white font-semibold text-sm transition-colors duration-200 shadow-lg shadow-navy/15"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-navy hover:bg-navy-dark text-white font-semibold text-sm transition-colors duration-200"
                 >
                   Work with us <ArrowRight size={16} />
                 </Link>
               </div>
               <div className="relative">
-                <div className="absolute -inset-4 bg-mint/80 rounded-3xl blur-2xl" />
                 <Image
                   src="/about-us-img.webp"
                   alt="HK Creative Web"
                   width={600}
                   height={500}
-                  className="relative rounded-2xl object-cover w-full shadow-xl"
+                  className="relative rounded-lg object-cover w-full shadow-xl"
                   priority
                 />
               </div>
@@ -87,7 +85,7 @@ export default function AboutPage() {
         <section id="about-us" className="bg-white py-20 lg:py-28">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-2xl mb-14">
-              <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-5 px-3 py-1.5 rounded-full bg-mint border border-teal/20">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-5 px-3 py-1.5 rounded-md bg-mint border border-teal/20">
                 About Us
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 tracking-tight">
@@ -100,8 +98,8 @@ export default function AboutPage() {
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {capabilities.map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="bg-[#F5F6F4] rounded-2xl p-6 border border-hairline">
-                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center mb-4">
+                <div key={title} className="bg-[#F5F6F4] rounded-lg p-6 border border-hairline">
+                  <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-4">
                     <Icon size={22} className="text-teal" />
                   </div>
                   <h3 className="font-semibold text-navy text-sm mb-2 leading-snug">{title}</h3>
@@ -116,7 +114,7 @@ export default function AboutPage() {
               </p>
               <Link
                 href="/our-story"
-                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-full border border-hairline bg-[#F5F6F4] text-navy text-sm font-semibold hover:border-teal/40 transition-colors duration-200"
+                className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-md border border-hairline bg-[#F5F6F4] text-navy text-sm font-semibold hover:border-teal/40 transition-colors duration-200"
               >
                 Read our story <ArrowRight size={15} />
               </Link>
@@ -138,7 +136,7 @@ export default function AboutPage() {
             <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {whyUs.map(({ icon: Icon, title, desc }) => (
                 <div key={title} className="text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-teal flex items-center justify-center mx-auto mb-4 shadow-lg shadow-teal/25">
+                  <div className="w-14 h-14 rounded-lg bg-teal flex items-center justify-center mx-auto mb-4 shadow-lg shadow-teal/25">
                     <Icon size={24} className="text-white" />
                   </div>
                   <h3 className="font-bold text-navy mb-2">{title}</h3>
@@ -164,12 +162,12 @@ export default function AboutPage() {
                   This ensures quality stays high and results stay consistent. Once slots are filled, onboarding closes until the next cycle.
                 </p>
               </div>
-              <div className="bg-navy rounded-3xl p-10 text-center lg:text-right">
+              <div className="bg-navy rounded-lg p-10 text-center lg:text-right">
                 <p className="text-5xl font-bold text-white mb-2">Limited</p>
                 <p className="text-white/60 text-lg">client slots available each month</p>
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 rounded-full bg-teal text-white font-bold text-sm hover:bg-teal-dark transition-colors duration-200 shadow-lg"
+                  className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 rounded-md bg-teal text-white font-bold text-sm hover:bg-teal-dark transition-colors duration-200 shadow-lg"
                 >
                   Claim your spot <ArrowRight size={16} />
                 </Link>
@@ -190,13 +188,13 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/#contact"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-navy hover:bg-navy-dark text-white font-bold text-sm transition-colors duration-200 shadow-lg shadow-navy/15"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md bg-navy hover:bg-navy-dark text-white font-bold text-sm transition-colors duration-200"
               >
                 Book a Consultation <ArrowRight size={16} />
               </Link>
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-hairline bg-white text-navy hover:border-teal/40 font-semibold text-sm transition-colors duration-200"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md border border-hairline bg-white text-navy hover:border-teal/40 font-semibold text-sm transition-colors duration-200"
               >
                 View pricing
               </Link>
