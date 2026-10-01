@@ -11,7 +11,7 @@ const inter = Inter({
 })
 
 const title = 'HK Creative Web | Website Design & Digital Creative Studio, UK'
-const description = 'HK Creative Web is a UK digital creative studio bringing website design, social media content, branding and technology guidance together in one place. See our work, including Renovation Resolution.'
+const description = 'HK Creative Web is a UK digital studio: content, websites and digital marketing, built by someone who actually builds them. See our work, including Renovation Resolution.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://hkcreativeweb.com'),
@@ -54,7 +54,7 @@ const jsonLd = {
   url: 'https://hkcreativeweb.com',
   email: 'hkcreativeweb@gmail.com',
   areaServed: 'United Kingdom',
-  serviceType: ['Website Design', 'Web Development', 'Social Media Management', 'Branding', 'Digital Technology Consultation'],
+  serviceType: ['Website Design', 'Web Development', 'Content Creation', 'Social Media Management', 'Digital Marketing', 'Digital Technology Consultation'],
 }
 
 export default function RootLayout({

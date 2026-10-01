@@ -43,7 +43,7 @@ export function Hero() {
           <p
             className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.22em] text-teal-dark mb-5"
           >
-            Content <span aria-hidden="true">•</span> Websites <span aria-hidden="true">•</span> AI Automation
+            Content <span aria-hidden="true">•</span> Websites <span aria-hidden="true">•</span> Digital Marketing
           </p>
 
           <h1
@@ -56,7 +56,7 @@ export function Hero() {
           <p
             className="mt-5 text-base lg:text-lg text-slate max-w-md mx-auto lg:mx-0 leading-relaxed"
           >
-            HK Creative builds fast, clear websites, social content and practical automation for UK businesses that want to look credible and get enquiries.
+            We build useful websites. We create digital content. We help businesses market themselves online.
           </p>
 
           <div

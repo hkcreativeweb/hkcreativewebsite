@@ -19,7 +19,7 @@ export function Footer() {
               <Image src="/images/logo-icon.png" alt="HK Creative Web logo" width={105} height={36} unoptimized className="h-6 w-auto" />
               <span className="text-sm font-bold text-white">HK Creative Web</span>
             </div>
-            <p className="text-xs text-white/60">Websites. Social. Digital. Done properly.</p>
+            <p className="text-xs text-white/60">Content • Websites • Digital Marketing</p>
           </div>
 
           <nav aria-label="Footer" className="flex flex-wrap justify-center md:justify-end gap-x-7 gap-y-3">
@@ -38,7 +38,7 @@ export function Footer() {
         </div>
 
         <p className="mt-10 pt-6 border-t border-white/10 text-xs text-white/50 text-center md:text-left">
-          © {new Date().getFullYear()} HK Creative Web. All rights reserved.
+          © {new Date().getFullYear()} HK Creative Web. All rights reserved. Created by HK Creative.
         </p>
       </div>
     </footer>

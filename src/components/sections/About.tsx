@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 const principles = [
   { title: 'Built around your business', desc: 'No unnecessary features or bloated templates.' },
   { title: 'Designed to be used', desc: 'Responsive, practical websites that work across devices.' },
-  { title: 'Clear from the start', desc: 'Straightforward communication and practical solutions.' },
+  { title: 'Clear from the start', desc: 'Straightforward communication and practical advice.' },
   { title: 'More than just a website', desc: 'Web, content and digital systems working together.' },
 ]
 
@@ -15,10 +15,10 @@ export function About() {
         <div className="lg:col-span-7">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal-dark mb-3">About</p>
           <h2 id="about-heading" className="text-2xl md:text-3xl font-bold text-navy tracking-tight max-w-xl">
-            Good websites aren&apos;t just about looking good.
+            Websites built by someone who actually builds them.
           </h2>
           <p className="mt-5 text-slate leading-relaxed max-w-xl">
-            They need to be easy to use, fast, maintainable and built around the business behind them.
+            Good websites should be easy to use, fast and built around the business behind them.
           </p>
         </div>
         <div className="lg:col-span-5 text-sm text-slate leading-relaxed space-y-4">
