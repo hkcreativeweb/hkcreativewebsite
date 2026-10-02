@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ScrollHashHandler } from '@/components/ScrollHashHandler'
 import { MotionProvider } from '@/components/MotionProvider'
+import { phone } from '@/data/contact'
 
 const inter = Inter({
   variable: '--font-sans',
@@ -53,6 +54,7 @@ const jsonLd = {
   description,
   url: 'https://hkcreativeweb.com',
   email: 'hkcreativeweb@gmail.com',
+  telephone: phone.tel,
   areaServed: 'United Kingdom',
   serviceType: ['Website Design', 'Web Development', 'Content Creation', 'Social Media Management', 'Digital Marketing', 'Digital Technology Consultation'],
 }

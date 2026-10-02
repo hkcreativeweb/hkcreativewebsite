@@ -2,10 +2,11 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { Send, MessageCircle, Mail, MapPin, Clock } from 'lucide-react'
+import { Send, MessageCircle, Mail, MapPin, Clock, Phone } from 'lucide-react'
 import { AuroraBackground } from '@/components/ui/aurora-background'
+import { phone } from '@/data/contact'
 
-const WHATSAPP_NUMBER = '447404197864'
+const WHATSAPP_NUMBER = phone.whatsapp
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -82,6 +83,7 @@ export function Contact() {
 
               {[
                 { icon: Mail,   label: 'Email',     value: 'hkcreativeweb@gmail.com', href: 'mailto:hkcreativeweb@gmail.com' },
+                { icon: Phone,  label: 'Phone',     value: phone.display, href: phone.href },
                 { icon: MapPin, label: 'Based in',  value: 'United Kingdom' },
                 { icon: Clock,  label: 'Available', value: 'Mon–Fri · 9am–5pm' },
               ].map(({ icon: Icon, label, value, href }, i) => (

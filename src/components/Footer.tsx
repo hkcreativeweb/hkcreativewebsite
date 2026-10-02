@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { phone } from '@/data/contact'
 
 const links = [
   { label: 'Services', href: '/#services' },
@@ -57,6 +58,13 @@ export function Footer() {
               className="inline-block py-1 text-sm font-medium text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors duration-200"
             >
               hkcreativeweb@gmail.com
+            </a>
+            <br />
+            <a
+              href={phone.href}
+              className="inline-block py-1 text-sm font-medium text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors duration-200"
+            >
+              {phone.display}
             </a>
             <div className="mt-5">
               <Link
