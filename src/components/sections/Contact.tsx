@@ -5,6 +5,8 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { Send, MessageCircle, Mail, MapPin, Clock, Phone } from 'lucide-react'
 import { AuroraBackground } from '@/components/ui/aurora-background'
 import { phone } from '@/data/contact'
+import { instagram } from '@/data/instagram'
+import { InstagramIcon } from '@/components/InstagramIcon'
 
 const WHATSAPP_NUMBER = phone.whatsapp
 
@@ -84,6 +86,7 @@ export function Contact() {
               {[
                 { icon: Mail,   label: 'Email',     value: 'hkcreativeweb@gmail.com', href: 'mailto:hkcreativeweb@gmail.com' },
                 { icon: Phone,  label: 'Phone',     value: phone.display, href: phone.href },
+                { icon: InstagramIcon, label: 'Instagram', value: `@${instagram.handle}`, href: instagram.profileUrl },
                 { icon: MapPin, label: 'Based in',  value: 'United Kingdom' },
                 { icon: Clock,  label: 'Available', value: 'Mon–Fri · 9am–5pm' },
               ].map(({ icon: Icon, label, value, href }, i) => (
@@ -95,7 +98,7 @@ export function Contact() {
                     <div>
                       <div className="text-[11px] text-slate uppercase tracking-widest font-medium">{label}</div>
                       {href
-                        ? <a href={href} className="text-sm text-teal-dark font-medium mt-0.5 hover:underline">{value}</a>
+                        ? <a href={href} {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="text-sm text-teal-dark font-medium mt-0.5 hover:underline">{value}</a>
                         : <div className="text-sm text-navy font-medium mt-0.5">{value}</div>
                       }
                     </div>

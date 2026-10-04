@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import { InstagramIcon } from '@/components/InstagramIcon'
+import { instagram } from '@/data/instagram'
 
 const links = [
   { label: 'Home',      href: '/' },
@@ -115,6 +117,18 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <a
+                  href={instagram.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-slate hover:text-navy transition-colors duration-200 p-2 -m-1"
+                >
+                  <InstagramIcon size={16} /> <span className="hidden lg:inline">Instagram</span>
+                  <span className="sr-only lg:hidden">Instagram</span>
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+            </li>
           </ul>
 
           <div className="flex items-center gap-3">
@@ -161,6 +175,17 @@ export function Navbar() {
                 </Link>
               </li>
             ))}
+            <li>
+              <a
+                  href={instagram.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-navy/80 hover:text-teal-dark text-base font-medium transition-colors duration-200"
+                >
+                  <InstagramIcon size={15} /> Instagram
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+            </li>
           </ul>
           <Link
             href={resolveHref('/#contact')}

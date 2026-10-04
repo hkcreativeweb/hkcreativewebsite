@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { phone } from '@/data/contact'
+import { instagram } from '@/data/instagram'
+import { InstagramIcon } from '@/components/InstagramIcon'
 
 const links = [
   { label: 'Services', href: '/#services' },
@@ -65,6 +67,16 @@ export function Footer() {
               className="inline-block py-1 text-sm font-medium text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors duration-200"
             >
               {phone.display}
+            </a>
+            <br />
+            <a
+              href={instagram.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 py-1 text-sm font-medium text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors duration-200"
+            >
+              <InstagramIcon size={15} /> @{instagram.handle}
+              <span className="sr-only"> (opens in a new tab)</span>
             </a>
             <div className="mt-5">
               <Link

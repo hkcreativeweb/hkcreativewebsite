@@ -6,6 +6,7 @@ import { Process } from '@/components/sections/Process'
 import { Quality } from '@/components/sections/Quality'
 import { AffordableSection } from '@/components/sections/AffordableSection'
 import { About } from '@/components/sections/About'
+import { InstagramFeed } from '@/components/sections/InstagramFeed'
 import { Contact } from '@/components/sections/Contact'
 import { Footer } from '@/components/Footer'
 
@@ -20,6 +21,7 @@ export default function Home() {
       <Quality />
       <AffordableSection />
       <About />
+      <InstagramFeed />
       <Contact />
       <Footer />
     </main>
