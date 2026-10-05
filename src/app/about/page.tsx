@@ -3,21 +3,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { JsonLd } from '@/components/JsonLd'
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo'
 import {
   ArrowRight, Globe, Smartphone, Zap, Palette, Compass, LifeBuoy,
   Users, Target, Zap as ZapIcon,
 } from 'lucide-react'
 
-const title = 'About Us | HK Creative Web'
-const description = 'HK Creative is a digital creative studio helping UK businesses bring their website, social content, branding and technology together in one place.'
+const title = 'About HK Creative Web | Web Developer in Surrey, UK'
+const description = 'HK Creative is the web development and digital services business of Hamza, based in Surrey, UK and working with clients across the UK and internationally.'
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/about' },
-  openGraph: { title, description, url: '/about', type: 'website' },
-  twitter: { card: 'summary_large_image', title, description },
-}
+export const metadata: Metadata = pageMetadata({ title, description, path: '/about' })
 
 const capabilities = [
   { icon: Globe,      title: 'Website Design & Development', desc: 'New builds and redesigns. Responsive, accessible and built around your users, not just built to look good.' },
@@ -25,18 +21,19 @@ const capabilities = [
   { icon: Palette,    title: 'Branding & Digital Creative', desc: 'Visual identity, graphics and creative assets that keep your business looking consistent everywhere.' },
   { icon: Zap,        title: 'AI & Digital Solutions', desc: 'Practical tools and automation that save you time, without adding technology you don\'t actually need.' },
   { icon: Compass,    title: 'Technology & Website Consultations', desc: 'Honest guidance on platforms, tools and systems, so you know what\'s worth investing in.' },
-  { icon: LifeBuoy,   title: 'Ongoing Digital Support', desc: 'We don\'t build something and disappear. We\'re here for the improvements that come after launch.' },
+  { icon: LifeBuoy,   title: 'Ongoing Digital Support', desc: 'I don\'t build something and disappear. I\'m here for the improvements that come after launch.' },
 ]
 
 const whyUs = [
-  { icon: Target,  title: 'Clarity over complexity',  desc: 'We cut through the noise and focus on what actually moves the needle for your business.' },
-  { icon: ZapIcon, title: 'Guidance over guesswork',   desc: 'We\'d rather tell you what you don\'t need than sell you something you won\'t use.' },
-  { icon: Users,   title: 'Results over activity',     desc: 'We measure success by what it does for your business, not how much we produce.' },
+  { icon: Target,  title: 'Clarity over complexity',  desc: 'I focus on what your business actually needs, not on what\'s easiest to sell.' },
+  { icon: ZapIcon, title: 'Guidance over guesswork',   desc: 'I\'d rather tell you what you don\'t need than sell you something you won\'t use.' },
+  { icon: Users,   title: 'Built to be useful',     desc: 'I judge a website by whether it works for your business, not by how much I can add to it.' },
 ]
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-cream flex flex-col">
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }])} />
       <Navbar />
 
       <main className="flex-1 pt-20">
@@ -58,13 +55,13 @@ export default function AboutPage() {
                   Websites · Social · Branding · Digital Guidance
                 </p>
                 <p className="text-slate leading-relaxed mb-8">
-                  HK Creative is the freelance web development and creative practice of Hamza. The websites, content and digital systems shown in our work are designed and built directly, from the first conversation through to launch.
+                  I&apos;m Hamza, the web developer behind HK Creative. I build modern, professional websites for businesses, individuals and organisations, combining web development, design and digital content to create websites that look good, work properly and help businesses build a stronger online presence. Based in Surrey, UK, I work with businesses and clients across the UK and internationally.
                 </p>
                 <Link
                   href="/#contact"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md bg-navy hover:bg-navy-dark text-white font-semibold text-sm transition-colors duration-200"
                 >
-                  Work with us <ArrowRight size={16} />
+                  Work with me <ArrowRight size={16} />
                 </Link>
               </div>
               <div className="relative">
@@ -86,13 +83,13 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-2xl mb-14">
               <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-5 px-3 py-1.5 rounded-md bg-mint border border-teal/20">
-                About Us
+                About
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 tracking-tight">
-                More than a website studio.
+                More than just a website.
               </h2>
               <p className="text-slate leading-relaxed">
-                HK Creative is a digital creative studio helping UK businesses build and manage their online presence. We work across websites, social content, branding, digital tools and technology guidance, so you&apos;re not left finding a different provider for every part of it.
+                HK Creative is my web development and digital services business. I work across websites, social content, branding, digital tools and technology guidance, so you&apos;re not left finding a different provider for every part of it. See the <Link href="/services" className="font-semibold text-navy underline underline-offset-4 hover:text-teal-dark">services I offer</Link> and the <Link href="/portfolio" className="font-semibold text-navy underline underline-offset-4 hover:text-teal-dark">websites I&apos;ve built</Link>.
               </p>
             </div>
 
@@ -116,7 +113,7 @@ export default function AboutPage() {
                 href="/our-story"
                 className="shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-md border border-hairline bg-[#F5F6F4] text-navy text-sm font-semibold hover:border-teal/40 transition-colors duration-200"
               >
-                Read our story <ArrowRight size={15} />
+                Read my story <ArrowRight size={15} />
               </Link>
             </div>
           </div>
@@ -127,10 +124,10 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="mb-14 text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 tracking-tight">
-                Why Businesses Work With Us
+                Why Businesses Work With Me
               </h2>
               <p className="text-slate max-w-lg mx-auto">
-                Most agencies sell one service and move on. We build a connected digital presence.
+                Most providers sell one service and move on. I look after the website and the digital work around it, so it all fits together.
               </p>
             </div>
             <div className="grid sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -153,23 +150,23 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 tracking-tight">
-                  We work with a limited number of clients each month.
+                  I work directly with every client.
                 </h2>
                 <p className="text-slate leading-relaxed mb-4">
-                  Not because we&apos;re small, but because every system we build is hands-on, strategic, and performance-focused.
+                  I personally handle the work on every project, so I only take on a limited number of projects at a time. That means I can give each one the attention it deserves.
                 </p>
                 <p className="text-slate leading-relaxed">
-                  This ensures quality stays high and results stay consistent. Once slots are filled, onboarding closes until the next cycle.
+                  There are no hand-offs and no account managers. You talk to me from the first conversation to launch, and after.
                 </p>
               </div>
               <div className="bg-navy rounded-lg p-10 text-center lg:text-right">
                 <p className="text-5xl font-bold text-white mb-2">Limited</p>
-                <p className="text-white/60 text-lg">client slots available each month</p>
+                <p className="text-white/60 text-lg">projects at a time, so each one gets my full attention</p>
                 <Link
                   href="/#contact"
                   className="inline-flex items-center gap-2 mt-8 px-7 py-3.5 rounded-md bg-teal text-white font-bold text-sm hover:bg-teal-dark transition-colors duration-200 shadow-lg"
                 >
-                  Claim your spot <ArrowRight size={16} />
+                  Book a Consultation <ArrowRight size={16} />
                 </Link>
               </div>
             </div>
@@ -180,10 +177,10 @@ export default function AboutPage() {
         <section className="bg-cream py-20 lg:py-28 text-center">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5 tracking-tight">
-              Ready to build a system that works?
+              Ready to talk about your website?
             </h2>
             <p className="text-slate leading-relaxed mb-8">
-              Stop relying on inconsistent marketing. Start building predictable growth with a team that treats your business like their own.
+              Tell me what you need. I&apos;ll give you honest advice and a straightforward quote.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

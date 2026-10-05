@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 // Only list what HK Creative genuinely offers (see /pricing).
@@ -57,10 +58,16 @@ export function Services() {
           <div className="lg:col-span-2">
             <h3 className="text-xl md:text-2xl font-bold text-navy tracking-tight">Not sure what your website needs?</h3>
             <p className="mt-3 text-slate leading-relaxed max-w-2xl">
-              Book a 30-minute consultation. We&apos;ll talk through your business, your current setup and what&apos;s actually worth investing in, before you spend anything.
+              Book a 30-minute consultation. I&apos;ll talk through your business, your current setup and what&apos;s actually worth investing in, before you spend anything.
             </p>
           </div>
           <div className="lg:text-right">
+            <Link href="/services" className="mr-6 inline-block py-2 text-sm font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
+              Explore my services
+            </Link>
+            <Link href="/pricing" className="mr-6 inline-block py-2 text-sm font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
+              How pricing works
+            </Link>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 h-12 px-7 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"

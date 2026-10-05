@@ -14,6 +14,10 @@ export interface WebsiteProject {
   type: string
   description: string
   overview: string
+  /** Search/social description, when the overview is too long for a snippet */
+  metaDescription?: string
+  /** What I did on the project (shown on the case study and used in structured data) */
+  services?: string[]
   challenge?: string
   /** What was actually built / done */
   built?: string
@@ -43,8 +47,9 @@ export const featuredProject: WebsiteProject = {
     'Weekly price updates',
   ],
   url: 'https://www.fuelcrisisengland.co.uk/',
-  image: '/images/portfolio/fce-home.png',
+  image: '/images/portfolio/fce-home.webp',
   alt: 'Fuel Crisis England website homepage',
+  services: ['Website design', 'Web development'],
   technologies: ['Next.js', 'React', 'Tailwind'],
 }
 
@@ -62,8 +67,10 @@ const sterlingTransfers: WebsiteProject = {
     'Clear pre-payment terms shown throughout',
   ],
   url: 'https://sterling-transfers.vercel.app/',
-  image: '/images/portfolio/sterling-transfers.png',
+  image: '/images/portfolio/sterling-transfers.webp',
   alt: 'Sterling Transfers website homepage',
+  metaDescription: 'A website for a Surrey-based pre-booked airport and private transfer business, built around a clear quote request and straightforward booking terms.',
+  services: ['Website design', 'Web development'],
   technologies: ['Next.js', 'Tailwind'],
 }
 
@@ -84,6 +91,7 @@ const renovationResolutionProject: WebsiteProject = {
   url: 'https://renovation-resolution1.vercel.app/',
   image: '/images/portfolio/renovation-resolution.jpg',
   alt: 'Renovation Resolution website homepage',
+  services: ['Website design', 'Web development'],
   technologies: ['Next.js', 'React', 'Tailwind'],
 }
 
@@ -101,8 +109,10 @@ const hotFoodHouse: WebsiteProject = {
     'Features stay hidden until the business details exist',
   ],
   url: 'https://hot-food-house.vercel.app/',
-  image: '/images/portfolio/hot-food-house.png',
+  image: '/images/portfolio/hot-food-house.webp',
   alt: 'Hot Food House website homepage',
+  metaDescription: 'A demo website for a halal takeaway with a full menu, deals and a basket preview. Online ordering stays switched off until a provider is connected.',
+  services: ['Website design', 'Web development'],
   technologies: ['Next.js', 'Plain CSS'],
 }
 
@@ -116,6 +126,7 @@ export const tiktokCampaign: WebsiteProject = {
   description: 'Short-form TikTok videos for local food businesses, published in March 2025.',
   overview: 'TikTok videos featuring three local food businesses, published in March 2025. The engagement figures below are taken from the screenshots shown.',
   features: [],
+  services: ['Short-form social video', 'Social content'],
   technologies: [],
   resultsNote: 'Likes, comments, saves and shares are taken directly from the screenshots shown. View counts are as recorded by HK Creative and are not visible in the screenshots.',
   results: [
@@ -157,7 +168,7 @@ export const eidProject: ListedProject = {
   type: 'Informative Website',
   description: 'An informative site covering the dates, history, traditions and facts of Eid al-Fitr and Eid al-Adha 2026, with a quiz and games.',
   url: 'https://eid-website-2026.vercel.app/',
-  image: '/images/portfolio/eid-2026.png',
+  image: '/images/portfolio/eid-2026.webp',
   alt: 'Eid 2026 website preview',
   technologies: ['Next.js', 'React'],
 }
@@ -167,7 +178,7 @@ export const templateProject: ListedProject = {
   type: 'Reusable Website Template',
   description: 'A lightweight, config-driven website template that can be customised for any local business without touching components.',
   url: 'https://premium-business-template-phi.vercel.app/',
-  image: '/images/portfolio/template.png',
+  image: '/images/portfolio/template.webp',
   alt: 'Premium Business Template demo preview',
   technologies: ['Next.js', 'TypeScript'],
 }

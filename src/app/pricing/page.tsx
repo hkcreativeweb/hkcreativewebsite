@@ -2,18 +2,14 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { JsonLd } from '@/components/JsonLd'
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo'
 import { ArrowRight, Camera, Video, TrendingUp, Star, Zap, Globe, CheckCircle, Compass } from 'lucide-react'
 
-const title = 'Pricing | HK Creative Web'
-const description = 'Transparent pricing from HK Creative Web: a consultation to scope your project honestly, quote-based website design, and optional content and automation services.'
+const title = 'Website Design Pricing & Consultation | HK Creative Web'
+const description = "How pricing works for website design and development with HK Creative Web: a consultation first, then a clear quote based on what your business needs."
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/pricing' },
-  openGraph: { title, description, url: '/pricing', type: 'website' },
-  twitter: { card: 'summary_large_image', title, description },
-}
+export const metadata: Metadata = pageMetadata({ title, description, path: '/pricing' })
 
 const monthlyPlans = [
   {
@@ -63,6 +59,7 @@ const monthlyPlans = [
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-cream flex flex-col">
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'Pricing', path: '/pricing' }])} />
       <Navbar />
 
       <main className="flex-1 pt-20">
@@ -80,7 +77,7 @@ export default function PricingPage() {
               Websites · Content · Digital Systems
             </p>
             <p className="text-slate leading-relaxed">
-              Most projects don&apos;t fit a fixed package, so we don&apos;t force one on you. Everything here starts with an honest conversation, from a consultation to scope a website properly, through to ongoing content support for businesses that want it.
+              Most projects don&apos;t fit a fixed package, so I don&apos;t force one on you. Everything here starts with an honest conversation, from a consultation to scope a website properly, through to ongoing content support for businesses that want it. You can see everything I offer on the <Link href="/services" className="font-semibold text-navy underline underline-offset-4 hover:text-teal-dark">services page</Link>.
             </p>
           </div>
         </section>
@@ -100,7 +97,7 @@ export default function PricingPage() {
                   Get professional advice before committing to a full project. A chance to talk through your business, your current setup and your goals, so you know what&apos;s actually worth investing in.
                 </p>
                 <p className="text-slate leading-relaxed">
-                  Every website below is quoted individually once we understand what you need. This consultation is how we get there.
+                  Every website below is quoted individually once I understand what you need. This consultation is how we get there.
                 </p>
               </div>
               <div className="lg:col-span-2 flex justify-center lg:justify-end">
@@ -129,7 +126,7 @@ export default function PricingPage() {
                 <h3 className="font-bold text-navy text-lg mb-1">Quoted individually, every time</h3>
                 <p className="text-slate text-sm mt-1 mb-5">No fixed packages, no hidden extras</p>
                 <p className="text-slate text-sm leading-relaxed mb-5">
-                  Every business needs something different from a website, so we don&apos;t sell a one-size-fits-all package. We start with a consultation to understand what you actually need, then give you a straightforward, honest quote for the build, whether that&apos;s a new site or a redesign.
+                  Every business needs something different from a website, so I don&apos;t sell a one-size-fits-all package. I start with a consultation to understand what you actually need, then give you a straightforward, honest quote for the build, tailored to your requirements and budget, whether that&apos;s a new site or a redesign.
                 </p>
                 <ul className="space-y-2 mb-6">
                   {[
@@ -381,7 +378,7 @@ export default function PricingPage() {
                   <h2 className="text-2xl md:text-3xl font-bold text-navy tracking-tight">AI and Automation Systems</h2>
                 </div>
                 <p className="text-slate leading-relaxed mb-6">
-                  We build systems that help businesses capture and convert leads automatically. Turn your business into a system that responds and converts 24/7.
+                  I build systems that help businesses capture and respond to leads automatically. Turn your business into a system that responds and converts 24/7.
                 </p>
                 <ul className="space-y-3">
                   {[
@@ -401,7 +398,7 @@ export default function PricingPage() {
               <div className="rounded-lg bg-navy p-8 text-white">
                 <Zap size={32} className="text-teal-light mb-4" />
                 <p className="text-xl font-bold mb-3">Your business runs even when you&apos;re not online.</p>
-                <p className="text-white/70 text-sm leading-relaxed">Stop missing enquiries. Our automation systems capture, respond, and convert leads around the clock, without you lifting a finger.</p>
+                <p className="text-white/70 text-sm leading-relaxed">Stop missing enquiries. The automation I set up can capture and respond to enquiries around the clock, without you lifting a finger.</p>
               </div>
             </div>
           </div>
@@ -456,7 +453,7 @@ export default function PricingPage() {
               Ready to get started?
             </h2>
             <p className="text-slate leading-relaxed mb-8">
-              We only work with a limited number of businesses each month. Once slots are filled, onboarding closes until the next cycle.
+              I work directly with each client and handle the work myself, so I only take on a limited number of businesses each month. That way every project gets the attention it deserves. Once slots are filled, onboarding closes until the next cycle.
             </p>
             <Link
               href="/#contact"

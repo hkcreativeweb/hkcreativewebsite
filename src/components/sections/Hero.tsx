@@ -59,9 +59,9 @@ export function Hero() {
           </h1>
 
           <p
-            className="mt-5 text-base lg:text-lg text-slate max-w-md mx-auto lg:mx-0 leading-relaxed"
+            className="mt-5 text-base lg:text-lg text-slate max-w-lg mx-auto lg:mx-0 leading-relaxed"
           >
-            We build useful websites. We create digital content. We help businesses market themselves online.
+            I&apos;m Hamza, a web developer based in Surrey, UK. I build useful websites, create digital content and help businesses market themselves online, across the UK and internationally.
           </p>
 
           <div

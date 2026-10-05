@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
@@ -20,10 +21,20 @@ export function About() {
           <p className="mt-5 text-slate leading-relaxed max-w-xl">
             Good websites should be easy to use, fast and built around the business behind them.
           </p>
+          <div className="mt-10 max-w-md overflow-hidden rounded-lg border border-hairline">
+            <Image
+              src="/images/workspace-tablet.webp"
+              alt="A notebook, fountain pen and tablet showing a website design tool on a wooden desk"
+              width={500}
+              height={467}
+              sizes="(min-width: 1024px) 448px, 100vw"
+              className="w-full h-auto"
+            />
+          </div>
         </div>
         <div className="lg:col-span-5 text-sm text-slate leading-relaxed space-y-4">
           <p>
-            I&apos;m Hamza. HK Creative is my freelance web development and creative practice. I work directly with individuals and small businesses, from the first conversation through structure, design, development and launch.
+            I&apos;m Hamza. HK Creative is my freelance web development and creative practice. I work directly with individuals and small businesses, from the first conversation through structure, design, development and launch. Based in Surrey, UK, I work with businesses and clients across the UK and internationally.
           </p>
           <p>You deal with the person building your website, not an account manager.</p>
           <dl className="pt-4 space-y-3 border-t border-hairline">
@@ -35,7 +46,7 @@ export function About() {
             ))}
           </dl>
           <Link href="/our-story" className="inline-flex items-center gap-2 font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
-            Our story <ArrowRight size={14} aria-hidden="true" />
+            My story <ArrowRight size={14} aria-hidden="true" />
           </Link>
         </div>
       </div>

@@ -1,40 +1,42 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { ArrowRight, Users, Puzzle, Layers, Sprout, CheckCircle2 } from 'lucide-react'
+import { JsonLd } from '@/components/JsonLd'
+import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo'
+import { ArrowRight, Users, Puzzle, Layers, Sprout, Briefcase, CheckCircle2 } from 'lucide-react'
 
-const title = 'Our Story | HK Creative Web'
-const description = 'Why HK Creative was created, and the thinking behind bringing website, social, branding and technology guidance together under one roof.'
+const title = 'My Story: Hamza, Web Developer | HK Creative Web'
+const description = "Why I started HK Creative Web, my background in financial services and web development, and how I work with small businesses across the UK."
 
-export const metadata: Metadata = {
-  title,
-  description,
-  alternates: { canonical: '/our-story' },
-  openGraph: { title, description, url: '/our-story', type: 'website' },
-  twitter: { card: 'summary_large_image', title, description },
-}
+export const metadata: Metadata = pageMetadata({ title, description, path: '/our-story' })
 
 const storyBeats = [
   {
-    icon: Users,
-    title: 'Different paths, one idea',
-    text: 'HK Creative was founded by a small group of developers and digital creatives who came together from different sectors and different career backgrounds, not a shared career path, but a shared interest in building something of their own.',
+    icon: Puzzle,
+    title: 'Why I started HK Creative',
+    text: 'I kept seeing the same pattern. One company builds the website. Another handles social media. Someone else creates the graphics, and the technology gets asked about almost as an afterthought. Businesses were left to piece it all together themselves.',
   },
   {
-    icon: Puzzle,
-    title: 'A shared frustration',
-    text: 'Between us, we\'d seen the same pattern play out again and again. One company builds the website. Another handles social media. Someone else creates the graphics. Another person gets asked about the technology, almost as an afterthought. Businesses were left to piece it all together themselves.',
+    icon: Briefcase,
+    title: 'My background',
+    text: 'My background combines professional business experience with web development. I have worked in regulated financial services, across customer service, compliance and operations, while building my technical skills in Ruby on Rails, JavaScript, HTML and CSS, SQL and PostgreSQL, Git and GitHub, WordPress and Shopify. That helps me see both sides of a project: how a website needs to work technically, and what a business actually needs from it.',
   },
   {
     icon: Layers,
-    title: 'A simpler way forward',
-    text: 'Some of us had been through changes in the job market or shifts in our own professional circumstances. Rather than letting that hold us back, we wanted to put our skills, creativity and technical knowledge to use, and build something more connected than what was already out there.',
+    title: 'What I do',
+    text: 'I design and develop websites, and I help with the digital side around them: social content, branding, practical digital tools and honest technology advice. It is all in one place, so it fits together.',
+  },
+  {
+    icon: Users,
+    title: 'Working with me',
+    text: 'You deal directly with me, from the first conversation through design, development and launch. No account managers and no hand-offs. I will tell you what you need and what you do not, before you spend any money. Based in Surrey, UK, I work with businesses and clients across the UK and internationally.',
   },
   {
     icon: Sprout,
-    title: 'What we\'re building today',
-    text: 'HK Creative exists to bring those capabilities together under one roof: websites, content, branding, digital tools and honest technology guidance. The goal was never to build a website and disappear. It\'s to help businesses build a stronger digital foundation, gradually and properly.',
+    title: 'Why you can trust me with your website',
+    text: 'Look at the work. Every project in my portfolio is a real website I designed and built, and you can visit each one. I do not build a website and disappear. I am here for the improvements that come after launch.',
   },
 ]
 
@@ -52,6 +54,7 @@ const foundations = [
 export default function OurStoryPage() {
   return (
     <div className="min-h-screen bg-cream flex flex-col">
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Home', path: '/' }, { name: 'My story', path: '/our-story' }])} />
       <Navbar />
 
       <main className="flex-1 pt-20">
@@ -61,14 +64,25 @@ export default function OurStoryPage() {
           <div className="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="max-w-2xl mb-14">
               <span className="inline-block text-xs font-bold uppercase tracking-widest text-teal-dark mb-5 px-3 py-1.5 rounded-md bg-mint border border-teal/20">
-                Our Story
+                My Story
               </span>
               <h1 className="text-3xl md:text-4xl font-bold text-navy mb-6 tracking-tight leading-tight">
-                Built by people who&apos;d seen the industry from the other side.
+                I&apos;m Hamza, the web developer behind HK Creative.
               </h1>
               <p className="text-slate leading-relaxed">
-                We&apos;re a group of developers and digital creatives, not one single founder story. Here&apos;s roughly how HK Creative came together.
+                I build modern, professional websites for businesses, individuals and organisations, combining web development, design and digital content to create websites that look good, work properly and help businesses build a stronger online presence.
               </p>
+            </div>
+
+            <div className="mb-10 overflow-hidden rounded-lg border border-hairline">
+              <Image
+                src="/images/workspace.webp"
+                alt="A web developer's desk with a laptop and monitor showing a website and code"
+                width={1024}
+                height={557}
+                sizes="(min-width: 1024px) 960px, 100vw"
+                className="w-full h-auto"
+              />
             </div>
 
             {/* Timeline card */}
@@ -98,7 +112,7 @@ export default function OurStoryPage() {
               {/* Pull quote */}
               <div className="mt-12 border-l-2 border-teal pl-6 max-w-2xl">
                 <p className="text-navy text-lg md:text-xl font-medium leading-relaxed italic">
-                  We believe businesses shouldn&apos;t have to piece together lots of disconnected digital services just to have a presence they&apos;re proud of.
+                  I believe businesses shouldn&apos;t have to piece together lots of disconnected digital services just to have a presence they&apos;re proud of.
                 </p>
               </div>
             </div>
@@ -107,7 +121,7 @@ export default function OurStoryPage() {
             <div className="mt-10 bg-mint rounded-lg p-7 lg:p-10">
               <h2 className="text-xl font-bold text-navy mb-3">Building the foundations for organic growth</h2>
               <p className="text-slate leading-relaxed max-w-2xl mb-7">
-                We can&apos;t promise guaranteed growth or guaranteed sales. Nobody honestly can. What we can do is help you build the foundations a stronger online presence is made of:
+                I can&apos;t promise guaranteed growth or guaranteed sales. Nobody honestly can. What I can do is help you build the foundations a stronger online presence is made of:
               </p>
               <div className="grid sm:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl">
                 {foundations.map((f) => (
@@ -125,10 +139,10 @@ export default function OurStoryPage() {
         <section className="bg-white py-20 lg:py-28 text-center">
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5 tracking-tight">
-              Want to know what we can actually do for you?
+              Want to know what I can actually do for you?
             </h2>
             <p className="text-slate leading-relaxed mb-8">
-              See what HK Creative is today and the range of digital and creative support we offer.
+              See the <Link href="/services" className="font-semibold text-navy underline underline-offset-4 hover:text-teal-dark">services I offer</Link> and the <Link href="/portfolio" className="font-semibold text-navy underline underline-offset-4 hover:text-teal-dark">websites I&apos;ve built</Link>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -141,7 +155,7 @@ export default function OurStoryPage() {
                 href="/about"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md border border-hairline bg-cream text-navy hover:border-teal/40 font-semibold text-sm transition-colors duration-200"
               >
-                About Us
+                About Me
               </Link>
             </div>
           </div>

@@ -5,7 +5,7 @@ import { instagram } from '@/data/instagram'
 import { InstagramIcon } from '@/components/InstagramIcon'
 
 const links = [
-  { label: 'Services', href: '/#services' },
+  { label: 'Services', href: '/services' },
   { label: 'Work', href: '/portfolio' },
   { label: 'About', href: '/about' },
   { label: 'Pricing', href: '/pricing' },
@@ -36,6 +36,7 @@ export function Footer() {
             </Link>
             <p className="mt-5 text-lg font-bold">HK Creative Web</p>
             <p className="mt-1 text-sm text-white/70">Content • Websites • Digital Marketing</p>
+            <p className="mt-1 text-xs text-white/60">Based in Surrey, UK · Available to clients worldwide</p>
           </div>
 
           {/* Navigation */}

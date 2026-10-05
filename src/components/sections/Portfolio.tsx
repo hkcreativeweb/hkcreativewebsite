@@ -292,11 +292,11 @@ export function Portfolio() {
           className="text-center mb-14"
         >
           <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-teal/25 bg-mint text-teal-dark text-[11px] font-semibold uppercase tracking-widest mb-5">
-            Our Work
+            My Work
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-navy mb-3 tracking-tight">
             What I&apos;ve built
-          </h2>
+          </h1>
           <p className="text-slate max-w-md mx-auto text-sm leading-relaxed">
             Websites and digital projects built by HK Creative.
           </p>
@@ -327,7 +327,7 @@ export function Portfolio() {
               >
                 <BrowserChrome url="fuelcrisisengland.co.uk">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/portfolio/fce-home.png" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
+                  <img src="/images/portfolio/fce-home.webp" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
                 </BrowserChrome>
               </motion.div>
             </div>
@@ -337,7 +337,7 @@ export function Portfolio() {
               <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-teal-dark bg-mint border border-teal/20 rounded-md px-3 py-1 mb-4">
                 {fuelCrisisEngland.type}
               </span>
-              <h3 className="text-2xl lg:text-3xl font-bold text-navy mb-3 tracking-tight">{fuelCrisisEngland.title}</h3>
+              <h2 className="text-2xl lg:text-3xl font-bold text-navy mb-3 tracking-tight">{fuelCrisisEngland.title}</h2>
               <p className="text-slate text-sm leading-relaxed mb-6">
                 {fuelCrisisEngland.description}
               </p>
@@ -394,7 +394,7 @@ export function Portfolio() {
                 )}
               </div>
               <div className="p-4">
-                <h4 className="text-navy font-semibold text-sm">{p.title}</h4>
+                <h3 className="text-navy font-semibold text-sm">{p.title}</h3>
                 <p className="text-slate text-xs mt-1">{p.type} · {p.meta}</p>
                 {p.description && (
                   <p className="text-slate text-xs leading-relaxed mt-2">{p.description}</p>
@@ -444,14 +444,14 @@ export function Portfolio() {
               </p>
             </div>
             <div className="p-4 border-t border-hairline">
-              <h4 className="text-navy font-semibold text-sm">Coming soon</h4>
+              <h3 className="text-navy font-semibold text-sm">Coming soon</h3>
               <p className="text-slate text-xs mt-1">Branding · Promotional Graphics</p>
             </div>
           </motion.div>
         </div>
 
         <div className="text-center mt-16">
-          <p className="text-slate text-sm mb-5">Want us to do this for your business?</p>
+          <p className="text-slate text-sm mb-5">Want me to do this for your business? See the <Link href="/services" className="font-semibold text-navy underline underline-offset-4 hover:text-teal-dark">services I offer</Link>, or get in touch.</p>
           <motion.a
             href="/#contact"
             whileHover={{ scale: 1.04 }}

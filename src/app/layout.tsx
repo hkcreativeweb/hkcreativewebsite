@@ -4,6 +4,9 @@ import './globals.css'
 import { ScrollHashHandler } from '@/components/ScrollHashHandler'
 import { MotionProvider } from '@/components/MotionProvider'
 import { phone } from '@/data/contact'
+import { instagram } from '@/data/instagram'
+import { JsonLd } from '@/components/JsonLd'
+import { BUSINESS_ID, PERSON_ID, SITE_URL, WEBSITE_ID } from '@/lib/seo'
 
 const inter = Inter({
   variable: '--font-sans',
@@ -11,14 +14,13 @@ const inter = Inter({
   display: 'swap',
 })
 
-const title = 'HK Creative Web | Website Design & Digital Creative Studio, UK'
-const description = 'HK Creative Web is a UK digital studio: content, websites and digital marketing, built by someone who actually builds them. See our work, including Renovation Resolution.'
+const title = 'HK Creative Web | Web Developer & Website Design, Surrey UK'
+const description = "I'm Hamza, a freelance web developer in Surrey, UK. I build and redesign business websites and create digital content for clients across the UK and worldwide."
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hkcreativeweb.com'),
+  metadataBase: new URL('https://www.hkcreativeweb.com'),
   title,
   description,
-  keywords: ['web design UK', 'website design agency', 'small business website', 'social media management', 'web development studio', 'digital creative studio', 'technology consultation'],
   alternates: { canonical: '/' },
   icons: {
     icon: [
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     title,
     description,
     type: 'website',
-    url: 'https://hkcreativeweb.com',
+    url: SITE_URL,
     siteName: 'HK Creative Web',
     locale: 'en_GB',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'HK Creative Web: websites built for real businesses' }],
@@ -47,16 +49,46 @@ export const metadata: Metadata = {
   },
 }
 
+// Entities on every page share stable @ids. Everything here matches what the site visibly says.
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'HK Creative Web',
-  description,
-  url: 'https://hkcreativeweb.com',
-  email: 'hkcreativeweb@gmail.com',
-  telephone: phone.tel,
-  areaServed: 'United Kingdom',
-  serviceType: ['Website Design', 'Web Development', 'Content Creation', 'Social Media Management', 'Digital Marketing', 'Digital Technology Consultation'],
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': BUSINESS_ID,
+      name: 'HK Creative Web',
+      description,
+      url: SITE_URL,
+      logo: `${SITE_URL}/apple-touch-icon.png`,
+      image: `${SITE_URL}/og-image.png`,
+      sameAs: [instagram.profileUrl],
+      email: 'hkcreativeweb@gmail.com',
+      telephone: phone.tel,
+      address: { '@type': 'PostalAddress', addressRegion: 'Surrey', addressCountry: 'GB' },
+      areaServed: ['United Kingdom', 'Worldwide'],
+      founder: { '@id': PERSON_ID },
+      serviceType: ['Web Development', 'Website Design', 'Website Redesign', 'Content Creation', 'Digital Marketing'],
+    },
+    {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      name: 'Hamza',
+      jobTitle: 'Web Developer',
+      url: `${SITE_URL}/our-story`,
+      worksFor: { '@id': BUSINESS_ID },
+      homeLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressRegion: 'Surrey', addressCountry: 'GB' } },
+      knowsAbout: ['Web development', 'Website design', 'Ruby on Rails', 'JavaScript', 'HTML and CSS', 'SQL and PostgreSQL', 'Git and GitHub', 'WordPress', 'Shopify'],
+      sameAs: [instagram.profileUrl],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': WEBSITE_ID,
+      url: SITE_URL,
+      name: 'HK Creative Web',
+      inLanguage: 'en-GB',
+      publisher: { '@id': BUSINESS_ID },
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -65,12 +97,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en-GB" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-cream text-navy" suppressHydrationWarning>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
         <ScrollHashHandler />
         <MotionProvider>{children}</MotionProvider>
       </body>

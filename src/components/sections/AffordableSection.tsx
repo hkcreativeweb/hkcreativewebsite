@@ -67,10 +67,10 @@ export function AffordableSection() {
           >
             <div className="space-y-4 text-slate leading-relaxed">
               <p>
-                We believe every small business deserves a website that looks professional, without paying traditional agency prices.
+                I believe every small business deserves a website that looks professional, without paying traditional agency prices.
               </p>
               <p>
-                Our process keeps costs down without cutting corners: no bloated overhead, no unnecessary mark-ups, just straightforward, professional web design.
+                My process keeps costs down without cutting corners: no bloated overhead, no unnecessary mark-ups, just straightforward, professional web design.
               </p>
               <p className="font-medium text-navy">
                 Straightforward pricing for growing businesses.
@@ -106,7 +106,7 @@ export function AffordableSection() {
           >
             <div className="bg-white border border-hairline rounded-lg p-6">
               <p className="text-[10px] text-teal-dark uppercase tracking-[0.2em] font-semibold mb-4">
-                How we keep costs down
+                How I keep costs down
               </p>
               <ul className="space-y-3">
                 {whyAffordable.map((item) => (
@@ -132,7 +132,7 @@ export function AffordableSection() {
                 href="/portfolio"
                 className="flex items-center justify-center gap-2 py-3.5 rounded-xl border border-hairline bg-white text-navy text-sm font-medium hover:border-teal/40 transition-colors duration-200"
               >
-                View Our Work
+                View My Work
               </a>
             </div>
 

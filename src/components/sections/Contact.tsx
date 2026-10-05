@@ -55,7 +55,7 @@ export function Contact() {
             </FadeUp>
             <FadeUp delay={0.1}>
               <p className="mt-5 text-slate max-w-md mx-auto leading-relaxed">
-                Tell us a bit about your project and we&apos;ll get back to you within 24 hours. No hard sell. Just a chat.
+                Tell me a bit about your project and I&apos;ll get back to you within 24 hours. No hard sell. Just a chat.
               </p>
             </FadeUp>
           </div>
@@ -78,7 +78,7 @@ export function Contact() {
                   </div>
                   <div>
                     <div className="font-bold text-base">Chat on WhatsApp</div>
-                    <div className="text-white/80 text-sm mt-0.5">Prefer to just talk? Message us now.</div>
+                    <div className="text-white/80 text-sm mt-0.5">Prefer to just talk? Message me now.</div>
                   </div>
                 </motion.a>
               </FadeUp>
@@ -87,7 +87,7 @@ export function Contact() {
                 { icon: Mail,   label: 'Email',     value: 'hkcreativeweb@gmail.com', href: 'mailto:hkcreativeweb@gmail.com' },
                 { icon: Phone,  label: 'Phone',     value: phone.display, href: phone.href },
                 { icon: InstagramIcon, label: 'Instagram', value: `@${instagram.handle}`, href: instagram.profileUrl },
-                { icon: MapPin, label: 'Based in',  value: 'United Kingdom' },
+                { icon: MapPin, label: 'Based in',  value: 'Surrey, UK · working worldwide' },
                 { icon: Clock,  label: 'Available', value: 'Mon–Fri · 9am–5pm' },
               ].map(({ icon: Icon, label, value, href }, i) => (
                 <FadeUp key={label} delay={0.15 + i * 0.08}>
@@ -174,7 +174,7 @@ export function Contact() {
 
                 <div>
                   <label htmlFor="contact-message" className="text-xs font-semibold text-slate mb-1.5 block uppercase tracking-wide">
-                    Tell us about your business and what you&apos;re looking for
+                    Tell me about your business and what you&apos;re looking for
                   </label>
                   <textarea
                     id="contact-message"

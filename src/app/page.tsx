@@ -7,6 +7,7 @@ import { Quality } from '@/components/sections/Quality'
 import { AffordableSection } from '@/components/sections/AffordableSection'
 import { About } from '@/components/sections/About'
 import { InstagramFeed } from '@/components/sections/InstagramFeed'
+import { FAQ } from '@/components/sections/FAQ'
 import { Contact } from '@/components/sections/Contact'
 import { Footer } from '@/components/Footer'
 
@@ -22,6 +23,7 @@ export default function Home() {
       <AffordableSection />
       <About />
       <InstagramFeed />
+      <FAQ />
       <Contact />
       <Footer />
     </main>
