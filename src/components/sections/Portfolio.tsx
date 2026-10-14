@@ -66,41 +66,6 @@ function SocialFrame() {
 }
 
 // ─── Concept website mockups (clearly labelled) ────────────────────────────
-const PakoraMockup = (
-  <div className="w-full h-full flex flex-col overflow-hidden" style={{ background: 'linear-gradient(to bottom, #060401, #0a0704)' }}>
-    <div className="shrink-0 flex items-center justify-between px-4 py-2.5" style={{ borderBottom: '1px solid rgba(180,140,60,0.15)' }}>
-      <div className="flex gap-3 text-[5.5px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#8a6a30' }}>
-        <span>Menu</span><span>About</span>
-      </div>
-      <p className="font-black tracking-[0.3em]" style={{ fontSize: '11px', color: '#d4a84a', fontFamily: 'Georgia, serif' }}>PAKORA</p>
-      <div className="flex gap-3 text-[5.5px] font-semibold tracking-[0.15em] uppercase" style={{ color: '#8a6a30' }}>
-        <span>Reserve</span><span>Events</span>
-      </div>
-    </div>
-    <div className="shrink-0 relative overflow-hidden" style={{ height: '46%' }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/portfolio/concepts/pakora-hero.webp" alt="Pakora restaurant concept design" className="w-full h-full object-cover" style={{ objectPosition: 'center 30%' }} />
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(6,4,1,1) 0%, rgba(6,4,1,0.4) 55%, rgba(6,4,1,0.1) 100%)' }} />
-      <div className="absolute bottom-3 left-0 right-0 text-center">
-        <p className="font-black text-white leading-tight" style={{ fontSize: '15px', fontFamily: 'Georgia, serif' }}>A Feast for<br />the Senses</p>
-      </div>
-    </div>
-    <div className="flex-1 overflow-hidden px-4 py-2.5">
-      <p className="text-center text-[5.5px] tracking-[0.4em] font-bold uppercase mb-2.5" style={{ color: '#8a6a30' }}>Signature Dishes</p>
-      {[
-        { name: 'Lamb Karahi', price: '£16.95' },
-        { name: 'Nihari', price: '£17.95' },
-        { name: 'Mixed Grill Platter', price: '£24.95' },
-      ].map(d => (
-        <div key={d.name} className="flex items-center justify-between py-1.5" style={{ borderBottom: '1px solid rgba(180,140,60,0.1)' }}>
-          <p className="text-[7px] font-bold" style={{ color: '#e8d5a8', fontFamily: 'Georgia, serif' }}>{d.name}</p>
-          <span className="text-[7.5px] font-black" style={{ color: '#d4a84a' }}>{d.price}</span>
-        </div>
-      ))}
-    </div>
-  </div>
-)
-
 const ModestLuxeMockup = (
   <div className="w-full h-full overflow-hidden flex flex-col" style={{ background: '#fdf9f5' }}>
     <div className="shrink-0 flex items-center justify-between px-4 py-2.5" style={{ borderBottom: '1px solid #ede8e0' }}>
@@ -191,6 +156,7 @@ interface SecondaryProject {
 const sterling = getProject('sterling-transfers')!
 const hotFoodHouse = getProject('hot-food-house')!
 const noorAndCo = getProject('noor-and-co')!
+const pakora = getProject('pakora-restaurant')!
 const addiesdive = getProject('addiesdive-catalogue')!
 const renovation = getProject('renovation-resolution')!
 
@@ -218,6 +184,7 @@ const secondaryProjects: SecondaryProject[] = [
     { p: addiesdive, meta: 'Demo build', badge: 'Demo' },
     { p: hotFoodHouse, meta: 'Demo build', badge: 'Demo' },
     { p: templateProject, meta: 'Template demo', badge: 'Template' },
+    { p: pakora, meta: 'Concept Design · 2025', badge: 'Concept' },
   ].map(({ p, meta, badge }): SecondaryProject => ({
     title: p.title,
     category: 'Web Design',
@@ -241,15 +208,6 @@ const secondaryProjects: SecondaryProject[] = [
     caseStudy: tiktokCampaign.slug,
     caseLabel: 'View Documented Results',
     content: <SocialFrame />,
-    isEmail: false,
-  },
-  {
-    title: 'Pakora Restaurant',
-    category: 'Web Design',
-    type: 'Restaurant Website',
-    meta: 'Concept design · 2025',
-    badge: 'Concept',
-    content: <BrowserFrame url="pakorarestaurant.co.uk">{PakoraMockup}</BrowserFrame>,
     isEmail: false,
   },
   {

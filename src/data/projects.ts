@@ -164,6 +164,33 @@ const addiesdiveCatalogue: WebsiteProject = {
   technologies: ['React', 'TypeScript', 'Vite'],
 }
 
+const pakoraRestaurant: WebsiteProject = {
+  slug: 'pakora-restaurant',
+  title: 'Pakora Restaurant',
+  type: 'Restaurant Website',
+  description: 'A restaurant website concept demonstrating menu presentation, online ordering UI, reservation flows and responsive design.',
+  overview: 'A restaurant website concept for a fictional South Asian kitchen and grill, designed to be adapted for real restaurant clients. Pakora is not a real business: its address, contact details, menu, prices, allergens and reviews are clearly labelled sample content.',
+  built: 'A complete Next.js restaurant site with a home page, a filterable and searchable menu, a takeaway ordering interface, a reservation request form, About and Visit Us pages. The basket, quantity controls, running total and form validation all work; checkout, bookings and the contact form show clearly labelled demo states until a real ordering platform, booking provider or form service is connected. Business details, opening hours, menu, theme colours and integrations are centralised in two data files so the design can be reused for different clients.',
+  features: [
+    'Menu with category, vegetarian and vegan filters, search, prices and allergen notes',
+    'Takeaway ordering UI with quantity controls, item removal, running total and demo checkout',
+    'Reservation form validated against opening hours, with a demo confirmation',
+    'Contact form with validation and honest success, error and demo states',
+    'Configurable business details, hours, theme colours and integrations for reuse',
+    'Responsive, keyboard-accessible layouts with local SEO metadata and a social sharing image',
+  ],
+  url: 'https://pakora-restaurant.vercel.app/',
+  image: '/images/portfolio/pakora-restaurant-desktop-1600.webp',
+  alt: 'Pakora Restaurant homepage hero with crisp onion pakoras',
+  gallery: [
+    { src: '/images/portfolio/pakora-restaurant-order-1440.webp', alt: 'Pakora ordering page with menu sections, add buttons and a basket showing quantities, subtotal and a demo checkout' },
+    { src: '/images/portfolio/pakora-restaurant-menu-1440.webp', alt: 'Pakora menu page with search, category and dietary filters, prices and allergen notes' },
+  ],
+  metaDescription: 'Pakora Restaurant: a restaurant website concept with menu filters, an online ordering UI, reservation flows and responsive design, built by HK Creative Web.',
+  services: ['Website design', 'Web development'],
+  technologies: ['Next.js', 'React', 'TypeScript'],
+}
+
 /** Homepage "Selected work": one featured project plus supporting projects. */
 export const supportingProjects: WebsiteProject[] = [sterlingTransfers, renovationResolutionProject]
 
@@ -196,7 +223,7 @@ export const tiktokCampaign: WebsiteProject = {
 }
 
 /** Every project that has a /work/[slug] case study page. */
-export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, noorAndCo, addiesdiveCatalogue, tiktokCampaign]
+export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, noorAndCo, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
 
 export const getProject = (slug: string) => allProjects.find((p) => p.slug === slug)
 

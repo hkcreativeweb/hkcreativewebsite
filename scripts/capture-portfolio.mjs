@@ -22,6 +22,7 @@ export const SITES = {
   "hot-food-house": "https://hot-food-house.vercel.app/",
   "noor-and-co": "https://noor-and-co-inky.vercel.app/",
   "addiesdive-catalogue": "https://addiesdive-catalogue.vercel.app/",
+  "pakora-restaurant": "https://pakora-restaurant.vercel.app/",
   "premium-business-template": "https://premium-business-template-phi.vercel.app/",
 };
 
