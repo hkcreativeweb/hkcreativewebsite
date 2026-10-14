@@ -319,14 +319,17 @@ export function Portfolio() {
                 transition={{ duration: 0.4, ease }}
                 style={{ aspectRatio: '1600 / 1032' }}
               >
-                <BrowserFrame url={new URL(fuelCrisisEngland.url!).host}>
-                  <PreviewImage
-                    src={fuelCrisisEngland.image!}
-                    alt={`${fuelCrisisEngland.title} website, desktop homepage`}
-                    sizes="(min-width: 1024px) 640px, 90vw"
-                    priority
-                  />
-                </BrowserFrame>
+                {/* Mouse shortcut to the live site; the "Visit Website" button below is the accessible link. */}
+                <a href={fuelCrisisEngland.url} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true" className="block w-full h-full cursor-pointer">
+                  <BrowserFrame url={new URL(fuelCrisisEngland.url!).host}>
+                    <PreviewImage
+                      src={fuelCrisisEngland.image!}
+                      alt={`${fuelCrisisEngland.title} website, desktop homepage`}
+                      sizes="(min-width: 1024px) 640px, 90vw"
+                      priority
+                    />
+                  </BrowserFrame>
+                </a>
               </motion.div>
               {mobileFor(fuelCrisisEngland.image) && (
                 <PhoneFrame
@@ -393,7 +396,14 @@ export function Portfolio() {
                 className={`relative overflow-hidden ${p.isEmail || p.title.includes('TikTok') ? 'bg-white' : 'bg-[#F5F6F4] px-4 pt-4'}`}
                 style={{ aspectRatio: p.title.includes('TikTok') ? '4/5' : '16/11' }}
               >
-                <div className="w-full h-full">{p.content}</div>
+                {p.liveUrl ? (
+                  // Mouse shortcut to the live site; keyboard and screen-reader users have the "Visit Website" link below.
+                  <a href={p.liveUrl} target="_blank" rel="noopener noreferrer" tabIndex={-1} aria-hidden="true" className="block w-full h-full cursor-pointer">
+                    {p.content}
+                  </a>
+                ) : (
+                  <div className="w-full h-full">{p.content}</div>
+                )}
                 {p.badge && (
                   <span className="absolute top-2.5 right-2.5 text-[9px] font-bold uppercase tracking-wide bg-navy/85 backdrop-blur-sm text-white rounded-md px-2 py-1">
                     {p.badge}
