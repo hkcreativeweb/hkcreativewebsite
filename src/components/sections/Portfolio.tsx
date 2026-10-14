@@ -1,10 +1,11 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { motion } from 'framer-motion'
+import { MotionConfig, motion } from 'framer-motion'
 import { ArrowRight, ArrowUpRight, Heart, Bookmark, Share2, MessageCircle, Sparkles, Palette } from 'lucide-react'
 import Link from 'next/link'
 import { featuredProject, getProject, tiktokCampaign, eidProject, templateProject } from '@/data/projects'
+import { BrowserFrame, PhoneFrame, PreviewImage, mobileFor } from '@/components/ProjectPreview'
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -78,7 +79,7 @@ const PakoraMockup = (
     </div>
     <div className="shrink-0 relative overflow-hidden" style={{ height: '46%' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=800&q=90" alt="Pakora restaurant concept design" className="w-full h-full object-cover" style={{ objectPosition: 'center 30%' }} />
+      <img src="/images/portfolio/concepts/pakora-hero.webp" alt="Pakora restaurant concept design" className="w-full h-full object-cover" style={{ objectPosition: 'center 30%' }} />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(6,4,1,1) 0%, rgba(6,4,1,0.4) 55%, rgba(6,4,1,0.1) 100%)' }} />
       <div className="absolute bottom-3 left-0 right-0 text-center">
         <p className="font-black text-white leading-tight" style={{ fontSize: '15px', fontFamily: 'Georgia, serif' }}>A Feast for<br />the Senses</p>
@@ -113,7 +114,7 @@ const ModestLuxeMockup = (
     </div>
     <div className="shrink-0 relative overflow-hidden" style={{ height: '46%' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=90" alt="Modest Luxe fashion concept design" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
+      <img src="/images/portfolio/concepts/modest-luxe-hero.webp" alt="Modest Luxe fashion concept design" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(20,16,10,0.85) 0%, rgba(20,16,10,0.15) 60%, transparent 100%)' }} />
       <div className="absolute bottom-3 left-4">
         <p className="font-black text-white leading-tight" style={{ fontSize: '13px', fontFamily: 'Georgia, serif' }}>Effortlessly Modest.<br />Unapologetically Luxe.</p>
@@ -122,9 +123,9 @@ const ModestLuxeMockup = (
     <div className="flex-1 overflow-hidden px-3 py-2.5">
       <div className="grid grid-cols-3 gap-2">
         {[
-          { name: 'Evening Abaya', price: '£129', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&q=80' },
-          { name: 'Floral Kaftan', price: '£98', img: 'https://images.unsplash.com/photo-1605763240000-7e93b172d754?w=300&q=80' },
-          { name: 'Lace Dress', price: '£112', img: 'https://images.unsplash.com/photo-1551803091-e20673f15770?w=300&q=80' },
+          { name: 'Evening Abaya', price: '£129', img: '/images/portfolio/concepts/modest-luxe-abaya.webp' },
+          { name: 'Floral Kaftan', price: '£98', img: '/images/portfolio/concepts/modest-luxe-kaftan.webp' },
+          { name: 'Lace Dress', price: '£112', img: '/images/portfolio/concepts/modest-luxe-dress.webp' },
         ].map(p => (
           <div key={p.name} className="flex flex-col">
             <div className="w-full rounded-sm mb-1.5 overflow-hidden" style={{ aspectRatio: '2/3', background: '#f0ebe4' }}>
@@ -146,7 +147,7 @@ const HorizonEmailMockup = (
     </div>
     <div className="shrink-0 relative overflow-hidden" style={{ height: '38%' }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=85" alt="Horizon Travel email concept design" className="w-full h-full object-cover" />
+      <img src="/images/portfolio/concepts/horizon-hero.webp" alt="Horizon Travel email concept design" className="w-full h-full object-cover" />
       <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #08122a 0%, transparent 65%)' }} />
       <div className="absolute bottom-2 left-4">
         <p className="text-[13px] font-black text-white leading-tight" style={{ fontFamily: 'Georgia, serif' }}>Escape to<br />Paradise</p>
@@ -155,8 +156,8 @@ const HorizonEmailMockup = (
     <div className="flex-1 px-4 py-3 overflow-hidden">
       <div className="grid grid-cols-2 gap-2">
         {[
-          { dest: 'Maldives', price: 'From £1,299', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&q=75' },
-          { dest: 'Santorini', price: 'From £899', img: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=300&q=75' },
+          { dest: 'Maldives', price: 'From £1,299', img: '/images/portfolio/concepts/horizon-maldives.webp' },
+          { dest: 'Santorini', price: 'From £899', img: '/images/portfolio/concepts/horizon-santorini.webp' },
         ].map(d => (
           <div key={d.dest} className="relative rounded-lg overflow-hidden" style={{ aspectRatio: '4/3' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -171,24 +172,6 @@ const HorizonEmailMockup = (
     </div>
   </div>
 )
-
-function BrowserChrome({ url, children }: { url: string; children: React.ReactNode }) {
-  return (
-    <div className="w-full h-full rounded-t-xl overflow-hidden bg-white border border-hairline flex flex-col">
-      <div className="shrink-0 flex items-center gap-1.5 px-3 py-2.5 bg-[#F5F6F4] border-b border-hairline">
-        <div className="flex gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-        </div>
-        <div className="flex-1 mx-3 bg-white rounded-md h-5 text-[10px] text-slate flex items-center px-2.5 truncate border border-hairline">
-          {url}
-        </div>
-      </div>
-      <div className="flex-1 overflow-hidden">{children}</div>
-    </div>
-  )
-}
 
 interface SecondaryProject {
   title: string
@@ -212,10 +195,16 @@ const renovation = getProject('renovation-resolution')!
 
 function ProjectShot({ p }: { p: { title: string; url?: string; image?: string; alt?: string } }) {
   return (
-    <BrowserChrome url={p.url ? new URL(p.url).host : p.title}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={p.image} alt={p.alt ?? p.title} loading="lazy" className="w-full h-full object-cover object-top" />
-    </BrowserChrome>
+    <BrowserFrame url={p.url ? new URL(p.url).host : p.title}>
+      {p.image && (
+        <PreviewImage
+          src={p.image}
+          alt={p.alt ?? `${p.title} website preview`}
+          sizes="(min-width: 1024px) 380px, (min-width: 640px) 46vw, 92vw"
+          className="transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]"
+        />
+      )}
+    </BrowserFrame>
   )
 }
 
@@ -258,7 +247,7 @@ const secondaryProjects: SecondaryProject[] = [
     type: 'Restaurant Website',
     meta: 'Concept design · 2025',
     badge: 'Concept',
-    content: <BrowserChrome url="pakorarestaurant.co.uk">{PakoraMockup}</BrowserChrome>,
+    content: <BrowserFrame url="pakorarestaurant.co.uk">{PakoraMockup}</BrowserFrame>,
     isEmail: false,
   },
   {
@@ -267,7 +256,7 @@ const secondaryProjects: SecondaryProject[] = [
     type: 'E-commerce · Fashion',
     meta: 'Concept design · 2025',
     badge: 'Concept',
-    content: <BrowserChrome url="modestluxe.co.uk">{ModestLuxeMockup}</BrowserChrome>,
+    content: <BrowserFrame url="modestluxe.co.uk">{ModestLuxeMockup}</BrowserFrame>,
     isEmail: false,
   },
   {
@@ -283,6 +272,8 @@ const secondaryProjects: SecondaryProject[] = [
 
 export function Portfolio() {
   return (
+    // reducedMotion="user": entrance and hover animations are skipped for visitors who prefer reduced motion.
+    <MotionConfig reducedMotion="user">
     <section id="work" className="bg-cream py-20 lg:py-28 relative overflow-hidden">
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -320,18 +311,28 @@ export function Portfolio() {
           <div className="rounded-lg bg-white border border-hairline p-6 lg:p-10 grid lg:grid-cols-5 gap-10 items-center">
 
             {/* Device */}
-            <div className="lg:col-span-3 relative">
+            <div className="lg:col-span-3 relative sm:pr-[12%] sm:pb-8">
               <motion.div
-                whileHover={{ scale: 1.015 }}
+                whileHover={{ y: -3 }}
                 transition={{ duration: 0.4, ease }}
-                className="rounded-t-xl"
-                style={{ aspectRatio: '5 / 3' }}
+                style={{ aspectRatio: '1600 / 1032' }}
               >
-                <BrowserChrome url="fuelcrisisengland.co.uk">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/portfolio/fce-home.webp" alt="Fuel Crisis England website preview" className="w-full h-full object-cover" />
-                </BrowserChrome>
+                <BrowserFrame url={new URL(fuelCrisisEngland.url!).host}>
+                  <PreviewImage
+                    src={fuelCrisisEngland.image!}
+                    alt={`${fuelCrisisEngland.title} website, desktop homepage`}
+                    sizes="(min-width: 1024px) 640px, 90vw"
+                    priority
+                  />
+                </BrowserFrame>
               </motion.div>
+              {mobileFor(fuelCrisisEngland.image) && (
+                <PhoneFrame
+                  base={mobileFor(fuelCrisisEngland.image)!}
+                  alt={`${fuelCrisisEngland.title} website on a phone`}
+                  className="hidden sm:block absolute right-0 bottom-0 w-[24%] max-w-[150px]"
+                />
+              )}
             </div>
 
             {/* Info */}
@@ -368,6 +369,7 @@ export function Portfolio() {
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-md bg-navy text-white text-sm font-semibold hover:bg-navy-dark transition-colors duration-200"
               >
                 Visit Website <ArrowUpRight size={15} aria-hidden="true" />
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </div>
           </div>
@@ -385,10 +387,11 @@ export function Portfolio() {
               whileHover={{ y: -4 }}
               className="rounded-lg bg-white border border-hairline overflow-hidden group hover:border-teal/25 transition-colors duration-300"
             >
-              <div className={`relative overflow-hidden ${p.isEmail ? 'bg-white' : ''}`} style={{ aspectRatio: p.title.includes('TikTok') ? '4/5' : '16/11' }}>
-                <div className="w-full h-full transition-transform duration-500 group-hover:scale-[1.04]">
-                  {p.content}
-                </div>
+              <div
+                className={`relative overflow-hidden ${p.isEmail || p.title.includes('TikTok') ? 'bg-white' : 'bg-[#F5F6F4] px-4 pt-4'}`}
+                style={{ aspectRatio: p.title.includes('TikTok') ? '4/5' : '16/11' }}
+              >
+                <div className="w-full h-full">{p.content}</div>
                 {p.badge && (
                   <span className="absolute top-2.5 right-2.5 text-[9px] font-bold uppercase tracking-wide bg-navy/85 backdrop-blur-sm text-white rounded-md px-2 py-1">
                     {p.badge}
@@ -410,8 +413,9 @@ export function Portfolio() {
                   </div>
                 )}
                 {p.caseStudy && (
-                  <Link href={`/work/${p.caseStudy}`} className="inline-flex items-center gap-1.5 mt-3 mr-5 text-xs font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
+                  <Link href={`/work/${p.caseStudy}`} className="inline-flex items-center gap-1.5 mt-3 mr-5 py-1 text-xs font-semibold text-navy hover:text-teal-dark transition-colors duration-200">
                     {p.caseLabel ?? 'View Case Study'} <ArrowRight size={13} aria-hidden="true" />
+                    <span className="sr-only">: {p.title}</span>
                   </Link>
                 )}
                 {p.liveUrl && (
@@ -419,9 +423,10 @@ export function Portfolio() {
                     href={p.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 mt-3 text-xs font-semibold text-teal-dark hover:text-teal transition-colors duration-200"
+                    className="inline-flex items-center gap-1.5 mt-3 py-1 text-xs font-semibold text-teal-dark hover:text-teal transition-colors duration-200"
                   >
                     Visit Website <ArrowUpRight size={13} aria-hidden="true" />
+                    <span className="sr-only"> {p.title} (opens in a new tab)</span>
                   </a>
                 )}
               </div>
@@ -465,5 +470,6 @@ export function Portfolio() {
         </div>
       </div>
     </section>
+    </MotionConfig>
   )
 }

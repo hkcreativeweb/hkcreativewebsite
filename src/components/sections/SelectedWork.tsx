@@ -1,21 +1,18 @@
 import Link from 'next/link'
 import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { featuredProject, supportingProjects, type WebsiteProject } from '@/data/projects'
+import { PreviewImage } from '@/components/ProjectPreview'
 
 function Shot({ p, priority = false }: { p: WebsiteProject; priority?: boolean }) {
   if (!p.image) return null
   return (
-    <div className="overflow-hidden border border-hairline bg-white">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+    <div className="overflow-hidden rounded-lg border border-hairline bg-white" style={{ aspectRatio: '16 / 10' }}>
+      <PreviewImage
         src={p.image}
-        alt={p.alt}
-        width={1440}
-        height={900}
-        loading={priority ? 'eager' : 'lazy'}
-        decoding="async"
-        style={{ aspectRatio: '16 / 10' }}
-        className="w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+        alt={p.alt ?? `${p.title} website preview`}
+        sizes={priority ? '(min-width: 1024px) 820px, 92vw' : '(min-width: 1024px) 400px, (min-width: 640px) 46vw, 92vw'}
+        priority={priority}
+        className="transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]"
       />
     </div>
   )

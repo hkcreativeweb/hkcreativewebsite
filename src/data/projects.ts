@@ -1,6 +1,7 @@
 // Single source of truth for project information: homepage "Selected work", /portfolio and the /work/[slug] case studies.
 // Only add information that is true. Optional sections (challenge, built, results, gallery) are simply not shown when absent.
-// Screenshots live in /public/images.
+// Screenshots live in /public/images. Website previews are real captures of each live site, made with
+// `node scripts/capture-portfolio.mjs` (desktop: <slug>-desktop-<800|1200|1600>.webp, mobile: <slug>-mobile-<390|780>.webp).
 
 export interface ResultGroup {
   name: string
@@ -47,7 +48,7 @@ export const featuredProject: WebsiteProject = {
     'Weekly price updates',
   ],
   url: 'https://www.fuelcrisisengland.co.uk/',
-  image: '/images/portfolio/fce-home.webp',
+  image: '/images/portfolio/fuel-crisis-england-desktop-1600.webp',
   alt: 'Fuel Crisis England website homepage',
   services: ['Website design', 'Web development'],
   technologies: ['Next.js', 'React', 'Tailwind'],
@@ -67,7 +68,7 @@ const sterlingTransfers: WebsiteProject = {
     'Clear pre-payment terms shown throughout',
   ],
   url: 'https://sterling-transfers.vercel.app/',
-  image: '/images/portfolio/sterling-transfers.webp',
+  image: '/images/portfolio/sterling-transfers-desktop-1600.webp',
   alt: 'Sterling Transfers website homepage',
   metaDescription: 'A website for a Surrey-based pre-booked airport and private transfer business, built around a clear quote request and straightforward booking terms.',
   services: ['Website design', 'Web development'],
@@ -89,7 +90,7 @@ const renovationResolutionProject: WebsiteProject = {
     'Responsive, mobile-friendly design',
   ],
   url: 'https://renovation-resolution1.vercel.app/',
-  image: '/images/portfolio/renovation-resolution.jpg',
+  image: '/images/portfolio/renovation-resolution-desktop-1600.webp',
   alt: 'Renovation Resolution website homepage',
   services: ['Website design', 'Web development'],
   technologies: ['Next.js', 'React', 'Tailwind'],
@@ -109,7 +110,7 @@ const hotFoodHouse: WebsiteProject = {
     'Features stay hidden until the business details exist',
   ],
   url: 'https://hot-food-house.vercel.app/',
-  image: '/images/portfolio/hot-food-house.webp',
+  image: '/images/portfolio/hot-food-house-desktop-1600.webp',
   alt: 'Hot Food House website homepage',
   metaDescription: 'A demo website for a halal takeaway with a full menu, deals and a basket preview. Online ordering stays switched off until a provider is connected.',
   services: ['Website design', 'Web development'],
@@ -131,7 +132,7 @@ const noorAndCo: WebsiteProject = {
     'Licensed, locally hosted photography with a documented source for each image',
   ],
   url: 'https://noor-and-co-inky.vercel.app/',
-  image: '/images/portfolio/noor-and-co.webp',
+  image: '/images/portfolio/noor-and-co-desktop-1600.webp',
   alt: 'NOOR & CO. storefront homepage',
   metaDescription: 'A demo storefront for an Islamic lifestyle and gifting brand, with working filters, product galleries and a demonstration basket, built ready to move to Shopify.',
   services: ['Website design', 'Web development', 'E-commerce'],
@@ -190,7 +191,7 @@ export const eidProject: ListedProject = {
   type: 'Informative Website',
   description: 'An informative site covering the dates, history, traditions and facts of Eid al-Fitr and Eid al-Adha 2026, with a quiz and games.',
   url: 'https://eid-website-2026.vercel.app/',
-  image: '/images/portfolio/eid-2026.webp',
+  image: '/images/portfolio/eid-2026-desktop-1600.webp',
   alt: 'Eid 2026 website preview',
   technologies: ['Next.js', 'React'],
 }
@@ -200,7 +201,7 @@ export const templateProject: ListedProject = {
   type: 'Reusable Website Template',
   description: 'A lightweight, config-driven website template that can be customised for any local business without touching components.',
   url: 'https://premium-business-template-phi.vercel.app/',
-  image: '/images/portfolio/template.webp',
+  image: '/images/portfolio/premium-business-template-desktop-1600.webp',
   alt: 'Premium Business Template demo preview',
   technologies: ['Next.js', 'TypeScript'],
 }
