@@ -156,6 +156,9 @@ const addiesdiveCatalogue: WebsiteProject = {
   url: 'https://addiesdive-catalogue.vercel.app/',
   image: '/images/portfolio/addiesdive-catalogue-desktop-1600.webp',
   alt: 'Addiesdive Watch Catalogue homepage with the Built for the Elements hero',
+  gallery: [
+    { src: '/images/portfolio/addiesdive-catalogue-shop-1440.webp', alt: 'Addiesdive Watch Catalogue shop page with search, type filters and watch cards showing USD prices, GBP equivalents and official listing links' },
+  ],
   metaDescription: 'An unofficial, independent watch catalogue portfolio project with search, filters, dial options and GBP price equivalents, linking to official Addiesdive listings.',
   services: ['Website design', 'Web development'],
   technologies: ['React', 'TypeScript', 'Vite'],
