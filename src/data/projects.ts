@@ -144,7 +144,7 @@ const addiesdiveCatalogue: WebsiteProject = {
   title: 'Addiesdive Watch Catalogue',
   type: 'Product catalogue (unofficial demo)',
   description: 'A dark, industrial watch catalogue with search, filters and dial options, linking to official listings.',
-  overview: 'An independent, unofficial catalogue of 11 Addiesdive watch models, built as a portfolio project. It is not affiliated with or endorsed by Addiesdive, takes no orders or payments, and sends visitors to the official product pages.',
+  overview: 'An independent, unofficial catalogue of 13 Addiesdive watch models, built as a portfolio project. It is not affiliated with or endorsed by Addiesdive, takes no orders or payments, and sends visitors to the official product pages.',
   built: 'A React catalogue built from Addiesdive’s public product data: a search and filter shop, product pages with dial switching and specification tables, USD reference prices with approximate GBP equivalents from European Central Bank rates, an About page and a watch buying guide. Product photos are used with permission.',
   features: [
     'Search plus filters for type, movement, case size and price',
