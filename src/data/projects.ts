@@ -116,6 +116,28 @@ const hotFoodHouse: WebsiteProject = {
   technologies: ['Next.js', 'Plain CSS'],
 }
 
+const noorAndCo: WebsiteProject = {
+  slug: 'noor-and-co',
+  title: 'NOOR & CO.',
+  type: 'E-commerce storefront (demo)',
+  description: 'Premium Islamic lifestyle and gifting store, built ready to move to Shopify.',
+  overview: 'A demo storefront for an Islamic lifestyle and gifting brand, with prayer essentials, homeware and a Nikah & Wedding Gifts collection. Products are sample listings and checkout is switched off until the store moves to Shopify.',
+  built: 'The full storefront: collection pages with working filters, product pages with galleries and variants, a demonstration basket, a journal, and returns, shipping and privacy policies written for UK consumer law. Product data, prices and images are structured so the store can be rebuilt as a native Shopify theme.',
+  features: [
+    'Collection filters by recipient, occasion, gift type and price',
+    'Product galleries with variant selection and a saved demonstration basket',
+    'Nikah & Wedding Gifts landing page and gift finder',
+    'Policies written for UK consumer and privacy law, with launch placeholders',
+    'Licensed, locally hosted photography with a documented source for each image',
+  ],
+  url: 'https://noor-and-co-inky.vercel.app/',
+  image: '/images/portfolio/noor-and-co.webp',
+  alt: 'NOOR & CO. storefront homepage',
+  metaDescription: 'A demo storefront for an Islamic lifestyle and gifting brand, with working filters, product galleries and a demonstration basket, built ready to move to Shopify.',
+  services: ['Website design', 'Web development', 'E-commerce'],
+  technologies: ['React', 'TypeScript', 'Vite'],
+}
+
 /** Homepage "Selected work": one featured project plus supporting projects. */
 export const supportingProjects: WebsiteProject[] = [sterlingTransfers, renovationResolutionProject]
 
@@ -148,7 +170,7 @@ export const tiktokCampaign: WebsiteProject = {
 }
 
 /** Every project that has a /work/[slug] case study page. */
-export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, tiktokCampaign]
+export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, noorAndCo, tiktokCampaign]
 
 export const getProject = (slug: string) => allProjects.find((p) => p.slug === slug)
 

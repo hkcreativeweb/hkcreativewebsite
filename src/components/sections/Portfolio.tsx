@@ -207,6 +207,7 @@ interface SecondaryProject {
 
 const sterling = getProject('sterling-transfers')!
 const hotFoodHouse = getProject('hot-food-house')!
+const noorAndCo = getProject('noor-and-co')!
 const renovation = getProject('renovation-resolution')!
 
 function ProjectShot({ p }: { p: { title: string; url?: string; image?: string; alt?: string } }) {
@@ -223,6 +224,7 @@ const secondaryProjects: SecondaryProject[] = [
     { p: renovation, meta: 'Live project', badge: null },
     { p: eidProject, meta: 'Live project', badge: null },
     { p: sterling, meta: 'Live project', badge: null },
+    { p: noorAndCo, meta: 'Demo build', badge: 'Demo' },
     { p: hotFoodHouse, meta: 'Demo build', badge: 'Demo' },
     { p: templateProject, meta: 'Template demo', badge: 'Template' },
   ].map(({ p, meta, badge }): SecondaryProject => ({
