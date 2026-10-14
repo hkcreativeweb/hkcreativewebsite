@@ -21,6 +21,7 @@ export const SITES = {
   "eid-2026": "https://eid-website-2026.vercel.app/",
   "hot-food-house": "https://hot-food-house.vercel.app/",
   "noor-and-co": "https://noor-and-co-inky.vercel.app/",
+  "addiesdive-catalogue": "https://addiesdive-catalogue.vercel.app/",
   "premium-business-template": "https://premium-business-template-phi.vercel.app/",
 };
 

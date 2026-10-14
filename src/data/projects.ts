@@ -139,6 +139,28 @@ const noorAndCo: WebsiteProject = {
   technologies: ['React', 'TypeScript', 'Vite'],
 }
 
+const addiesdiveCatalogue: WebsiteProject = {
+  slug: 'addiesdive-catalogue',
+  title: 'Addiesdive Watch Catalogue',
+  type: 'Product catalogue (unofficial demo)',
+  description: 'A dark, industrial watch catalogue with search, filters and dial options, linking to official listings.',
+  overview: 'An independent, unofficial catalogue of 11 Addiesdive watch models, built as a portfolio project. It is not affiliated with or endorsed by Addiesdive, takes no orders or payments, and sends visitors to the official product pages.',
+  built: 'A React catalogue built from Addiesdive’s public product data: a search and filter shop, product pages with dial switching and specification tables, USD reference prices with approximate GBP equivalents from European Central Bank rates, an About page and a watch buying guide. Product photos are used with permission.',
+  features: [
+    'Search plus filters for type, movement, case size and price',
+    'Product pages with dial options, photo galleries and full specification tables',
+    'USD reference prices with dated, documented GBP conversions',
+    'Links from every model to its official Addiesdive listing',
+    'Independent buying guide on comparing listings and total costs',
+  ],
+  url: 'https://addiesdive-catalogue.vercel.app/',
+  image: '/images/portfolio/addiesdive-catalogue-desktop-1600.webp',
+  alt: 'Addiesdive Watch Catalogue homepage with the Built for the Elements hero',
+  metaDescription: 'An unofficial, independent watch catalogue portfolio project with search, filters, dial options and GBP price equivalents, linking to official Addiesdive listings.',
+  services: ['Website design', 'Web development'],
+  technologies: ['React', 'TypeScript', 'Vite'],
+}
+
 /** Homepage "Selected work": one featured project plus supporting projects. */
 export const supportingProjects: WebsiteProject[] = [sterlingTransfers, renovationResolutionProject]
 
@@ -171,7 +193,7 @@ export const tiktokCampaign: WebsiteProject = {
 }
 
 /** Every project that has a /work/[slug] case study page. */
-export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, noorAndCo, tiktokCampaign]
+export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, noorAndCo, addiesdiveCatalogue, tiktokCampaign]
 
 export const getProject = (slug: string) => allProjects.find((p) => p.slug === slug)
 
