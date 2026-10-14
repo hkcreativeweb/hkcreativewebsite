@@ -34,6 +34,25 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
   )
 }
 
+/** Wraps a website screenshot so clicking it opens the live site in a new tab (plain wrapper when there is no URL). */
+function SiteLink({ url, title, className, children }: { url?: string; title: string; className: string; children: React.ReactNode }) {
+  if (!url) return <div className={className}>{children}</div>
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visit the ${title} website (opens in a new tab)`}
+      className={`group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-dark ${className}`}
+    >
+      {children}
+      <span aria-hidden="true" className="pointer-events-none absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-md bg-navy/90 px-3 py-1.5 text-xs font-semibold text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+        Visit website <ArrowUpRight size={13} />
+      </span>
+    </a>
+  )
+}
+
 // Where each thing I did is described on the services page
 const serviceAnchor: Record<string, string> = {
   'Website design': '/services#service-01',
@@ -96,7 +115,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
           </header>
 
           {p.image && (
-            <div className="overflow-hidden border border-hairline bg-white mb-12">
+            <SiteLink url={p.url} title={p.title} className="relative block overflow-hidden border border-hairline bg-white mb-12">
               <Image
                 src={p.image}
                 alt={p.alt ?? p.title}
@@ -105,9 +124,9 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
                 sizes="(min-width: 1280px) 1216px, 100vw"
                 priority
                 style={{ aspectRatio: '16 / 10' }}
-                className="w-full object-cover object-top"
+                className="w-full object-cover object-top transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.01]"
               />
-            </div>
+            </SiteLink>
           )}
 
           <Block title="Overview"><p className="max-w-2xl">{p.overview}</p></Block>
@@ -158,13 +177,24 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
           {p.gallery && (
             <Block title="Screenshots">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {p.gallery.map((g) => (
-                  <div key={g.src} className="relative border border-hairline bg-white overflow-hidden aspect-[9/16]">
-                    <Image src={g.src} alt={g.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover object-top" />
-                  </div>
-                ))}
-              </div>
+              {p.url ? (
+                // Website screenshots: full width at their natural 16:10 ratio, each opening the live site.
+                <div className="grid grid-cols-1 gap-6">
+                  {p.gallery.map((g) => (
+                    <SiteLink key={g.src} url={p.url} title={p.title} className="relative block border border-hairline bg-white overflow-hidden aspect-[16/10]">
+                      <Image src={g.src} alt={g.alt} fill sizes="(min-width: 1280px) 1216px, 100vw" className="object-cover object-top transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.01]" />
+                    </SiteLink>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {p.gallery.map((g) => (
+                    <div key={g.src} className="relative border border-hairline bg-white overflow-hidden aspect-[9/16]">
+                      <Image src={g.src} alt={g.alt} fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover object-top" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </Block>
           )}
 
