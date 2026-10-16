@@ -159,6 +159,7 @@ const noorAndCo = getProject('noor-and-co')!
 const pakora = getProject('pakora-restaurant')!
 const addiesdive = getProject('addiesdive-catalogue')!
 const renovation = getProject('renovation-resolution')!
+const setYourWatch = getProject('set-your-watch')!
 
 function ProjectShot({ p }: { p: { title: string; url?: string; image?: string; alt?: string } }) {
   return (
@@ -177,6 +178,7 @@ function ProjectShot({ p }: { p: { title: string; url?: string; image?: string; 
 
 const secondaryProjects: SecondaryProject[] = [
   ...[
+    { p: setYourWatch, meta: 'Live website', badge: null },
     { p: renovation, meta: 'Live project', badge: null },
     { p: eidProject, meta: 'Live project', badge: null },
     { p: sterling, meta: 'Live project', badge: null },

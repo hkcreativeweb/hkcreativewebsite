@@ -54,6 +54,27 @@ export const featuredProject: WebsiteProject = {
   technologies: ['Next.js', 'React', 'Tailwind'],
 }
 
+const setYourWatch: WebsiteProject = {
+  slug: 'set-your-watch',
+  title: 'Set Your Watch UK',
+  type: 'Independent project · Web design & development',
+  description: 'Live UK time synced to the National Physical Laboratory, with interactive watch-setting, moon phase and chronograph tools and clear guides for watch owners.',
+  overview: 'An independent website for watch enthusiasts: a live UK clock synchronised with the National Physical Laboratory’s public time service, interactive practice watches and beginner-friendly guides to setting and understanding watches.',
+  built: 'The full website: a live UK clock with server-side NTP sync and honest sync status, interactive practice watches for setting time, date and moon phase, a chronograph and tachymeter demo, an automatic-movement simulator with crown positions, and guides to watch functions and care.',
+  features: [
+    'Live UK clock synced to NPL time, with automatic GMT/BST',
+    'Interactive practice watches for time, date and moon phase',
+    'Chronograph, tachymeter and diver’s bezel tools',
+    'Automatic-movement simulator and watch-care guides',
+  ],
+  url: 'https://setyourwatch.co.uk/',
+  image: '/images/portfolio/set-your-watch-desktop-1600.webp',
+  alt: 'Set Your Watch UK website homepage with a live analogue and digital UK clock',
+  metaDescription: 'Set Your Watch UK: an independent, live website with a UK clock synced to the National Physical Laboratory’s time service, interactive watch-setting tools and guides for watch owners.',
+  services: ['Website design', 'Web development'],
+  technologies: ['Next.js', 'React', 'TypeScript'],
+}
+
 const sterlingTransfers: WebsiteProject = {
   slug: 'sterling-transfers',
   title: 'Sterling Transfers',
@@ -223,7 +244,7 @@ export const tiktokCampaign: WebsiteProject = {
 }
 
 /** Every project that has a /work/[slug] case study page. */
-export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, hotFoodHouse, noorAndCo, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
+export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, setYourWatch, hotFoodHouse, noorAndCo, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
 
 export const getProject = (slug: string) => allProjects.find((p) => p.slug === slug)
 

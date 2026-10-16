@@ -16,6 +16,7 @@ import sharp from "sharp";
 
 export const SITES = {
   "fuel-crisis-england": "https://www.fuelcrisisengland.co.uk/",
+  "set-your-watch": "https://setyourwatch.co.uk/",
   "sterling-transfers": "https://sterling-transfers.vercel.app/",
   "renovation-resolution": "https://renovation-resolution1.vercel.app/",
   "eid-2026": "https://eid-website-2026.vercel.app/",
