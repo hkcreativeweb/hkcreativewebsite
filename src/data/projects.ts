@@ -160,6 +160,28 @@ const noorAndCo: WebsiteProject = {
   technologies: ['React', 'TypeScript', 'Vite'],
 }
 
+const sultanAndGrove: WebsiteProject = {
+  slug: 'sultan-and-grove',
+  title: 'Sultan & Grove',
+  type: 'E-commerce storefront (demo)',
+  description: 'Premium dates and gifting store with its own visual identity, a date finder and a demonstration basket.',
+  overview: 'A demo storefront for a premium dates and gifting brand, built to show a prospective client what their future website could look like. Products, prices and brand commitments are clearly marked as demonstration content, and checkout and the enquiry form are not connected.',
+  built: 'A complete storefront with its own identity (wordmark, tagline, palette, typography and a date-palm favicon): collection pages with filtering and sorting, product pages with galleries and pack-size variants, a demonstration basket, search, About and Contact pages and delivery and policy pages. Unverified details such as ingredients, origins and charity figures are shown as placeholders or left out rather than invented.',
+  features: [
+    'Collection pages with type filtering and sorting, and a Date Sweets concept range',
+    'Product pages with galleries, pack-size variants and a saved demonstration basket',
+    'Find Your Perfect Dates: a three-question guide that recommends a product or collection',
+    'Contact form with accessible validation that makes clear nothing is sent in the demo',
+    'Product and breadcrumb structured data, a sitemap and licensed, locally hosted photography',
+  ],
+  url: 'https://sultan-and-grove.vercel.app/',
+  image: '/images/portfolio/sultan-and-grove-desktop-1600.webp',
+  alt: 'Sultan & Grove storefront homepage',
+  metaDescription: 'A demo storefront for a premium dates and gifting brand, with its own identity, collection and product pages, a date finder and a demonstration basket.',
+  services: ['Website design', 'Web development', 'E-commerce', 'Brand identity'],
+  technologies: ['Next.js', 'React', 'TypeScript'],
+}
+
 const addiesdiveCatalogue: WebsiteProject = {
   slug: 'addiesdive-catalogue',
   title: 'Addiesdive Watch Catalogue',
@@ -244,7 +266,7 @@ export const tiktokCampaign: WebsiteProject = {
 }
 
 /** Every project that has a /work/[slug] case study page. */
-export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, setYourWatch, hotFoodHouse, noorAndCo, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
+export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, setYourWatch, hotFoodHouse, noorAndCo, sultanAndGrove, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
 
 export const getProject = (slug: string) => allProjects.find((p) => p.slug === slug)
 
