@@ -156,6 +156,7 @@ interface SecondaryProject {
 const sterling = getProject('sterling-transfers')!
 const hotFoodHouse = getProject('hot-food-house')!
 const noorAndCo = getProject('noor-and-co')!
+const rizqShop = getProject('rizqshop')!
 const sultanAndGrove = getProject('sultan-and-grove')!
 const pakora = getProject('pakora-restaurant')!
 const addiesdive = getProject('addiesdive-catalogue')!
@@ -184,6 +185,7 @@ const secondaryProjects: SecondaryProject[] = [
     { p: eidProject, meta: 'Live project', badge: null },
     { p: sterling, meta: 'Live project', badge: null },
     { p: noorAndCo, meta: 'Demo build', badge: 'Demo' },
+    { p: rizqShop, meta: 'Demo build', badge: 'Demo' },
     { p: sultanAndGrove, meta: 'Demo build', badge: 'Demo' },
     { p: addiesdive, meta: 'Demo build', badge: 'Demo' },
     { p: hotFoodHouse, meta: 'Demo build', badge: 'Demo' },

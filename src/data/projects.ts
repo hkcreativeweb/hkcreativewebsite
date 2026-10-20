@@ -160,6 +160,28 @@ const noorAndCo: WebsiteProject = {
   technologies: ['React', 'TypeScript', 'Vite'],
 }
 
+const rizqShop: WebsiteProject = {
+  slug: 'rizqshop',
+  title: 'RizqShop',
+  type: 'E-commerce storefront (demo)',
+  description: 'Premium Islamic gifting store with its own Arabic logo, a gift finder quiz and a Nikah invitation studio.',
+  overview: 'A demo storefront for a premium Islamic gifting brand, built to show a prospective client what their website could look like. Products and prices are clearly marked as samples, and checkout, the contact form and invitation purchases are not connected.',
+  built: 'A multi-page storefront with its own identity (a gift-box and رزق logo drawn from real Arabic letter outlines, a sage, ivory and forest palette, and a drop-down navigation), collection and product pages, a journal, and a story page. It includes a six-question gift finder that matches real catalogue data, and a Nikah Invitation Studio with eleven designs, a live preview, a shareable guest page with countdown and map link, and an animated 9:16 video invitation preview. Details that are not confirmed, such as materials, stock, prices and MP4 export, are marked as pending rather than invented.',
+  features: [
+    'Gift finder quiz that recommends products by recipient, occasion, type, budget and style',
+    'Nikah Invitation Studio with live preview, programme and RSVP details, and WhatsApp, email and text sharing',
+    'Animated palace-style video invitation preview in vertical 9:16 format',
+    'Journal, Our Story and inspiration pages, with Qur’an and hadith references checked against named sources',
+    'UK-focused policy pages, no tracking scripts or cookies, and licensed, locally hosted photography with documented sources',
+  ],
+  url: 'https://rizqshop.vercel.app/',
+  image: '/images/portfolio/rizqshop-desktop-1600.webp',
+  alt: 'RizqShop storefront homepage',
+  metaDescription: 'A demo storefront for a premium Islamic gifting brand, with a gift finder quiz, a Nikah invitation studio and its own Arabic logo, built ready to move to Shopify.',
+  services: ['Website design', 'Web development', 'E-commerce', 'Brand identity'],
+  technologies: ['React', 'TypeScript', 'Vite'],
+}
+
 const sultanAndGrove: WebsiteProject = {
   slug: 'sultan-and-grove',
   title: 'Sultan & Grove',
@@ -266,7 +288,7 @@ export const tiktokCampaign: WebsiteProject = {
 }
 
 /** Every project that has a /work/[slug] case study page. */
-export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, setYourWatch, hotFoodHouse, noorAndCo, sultanAndGrove, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
+export const allProjects: WebsiteProject[] = [featuredProject, ...supportingProjects, setYourWatch, hotFoodHouse, noorAndCo, rizqShop, sultanAndGrove, addiesdiveCatalogue, pakoraRestaurant, tiktokCampaign]
 
 export const getProject = (slug: string) => allProjects.find((p) => p.slug === slug)
 

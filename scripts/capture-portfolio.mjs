@@ -22,6 +22,7 @@ export const SITES = {
   "eid-2026": "https://eid-website-2026.vercel.app/",
   "hot-food-house": "https://hot-food-house.vercel.app/",
   "noor-and-co": "https://noor-and-co-inky.vercel.app/",
+  "rizqshop": "https://rizqshop.vercel.app/",
   "sultan-and-grove": "https://sultan-and-grove.vercel.app/",
   "addiesdive-catalogue": "https://addiesdive-catalogue.vercel.app/",
   "pakora-restaurant": "https://pakora-restaurant.vercel.app/",
